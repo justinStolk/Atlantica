@@ -6,7 +6,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class FollowState : BaseState
 {
-    [SerializeField] private float followingDistance;
+    [SerializeField] private float minimumDistance, followThreshold;
 
     [SerializeField] private Transform followTarget;
     
@@ -15,7 +15,7 @@ public class FollowState : BaseState
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.stoppingDistance = followingDistance;
+        agent.stoppingDistance = minimumDistance;
     }
     public override void OnStateEnter()
     {
@@ -29,12 +29,12 @@ public class FollowState : BaseState
 
     public override void OnStateFixedUpdate()
     {
-        
+
     }
 
     public override void OnStateUpdate()
     {
-        if (!agent.pathPending && !agent.hasPath || agent.destination != followTarget.position)
+        if (agent.destination != followTarget.position && Vector3.Distance(transform.position, followTarget.position) > followThreshold)
         {
             agent.SetDestination(followTarget.position);
         }
