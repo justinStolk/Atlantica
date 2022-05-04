@@ -7,32 +7,39 @@ public class FirstPersonMove : MonoBehaviour
     public Camera cam;
     public Rigidbody rigid;
     public Collider collider;
+
     public Vector3 spawnPoint;
+
     public float JumpForce = 5;
     public float moveSpeed = 10;
     public float turnSpeed = 4.0f;
     public float minTurnAngle = -90.0f;
     public float maxTurnAngle = 90.0f;
+
     private float rotX;
+
     private bool isGrounded;
-    private bool canDoubleJump;
     private bool jumpedTwice;
     private bool isWatered;
+
+    public bool playerInControl;
+    public bool canDoubleJump;
+
     public Transform groundCheck;
+
     public float groundDistance = 0.4f;
+
     public LayerMask groundMask;
     public LayerMask waterMask;
     // Start is called before the first frame update
     void Start()
     {
         jumpedTwice = false;
-        canDoubleJump = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(isGrounded);
         if (transform.position.y < -50 || Input.GetKeyDown(KeyCode.R))
         {
             transform.position = spawnPoint;
@@ -40,10 +47,12 @@ public class FirstPersonMove : MonoBehaviour
         
         GroundCheck();
         WaterCheck();
-        //Debug.Log(isGrounded);
-        KeyboardMovement();
-        MouseAiming();
-        BubbelJump();
+        if (playerInControl)
+        {
+            KeyboardMovement();
+            MouseAiming();
+            BubbelJump();
+        }
     }
 
     void MouseAiming()
