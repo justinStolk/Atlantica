@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Ending : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Ending : MonoBehaviour
 
     public GameObject endCanvas;
 
+    public UnityEvent endEvent;
+
     void Start()
     {
 
@@ -25,6 +28,7 @@ public class Ending : MonoBehaviour
         if (playerAtEnd)
         {
             endCanvas.SetActive(true);
+            endEvent.Invoke();
         }
     }
 

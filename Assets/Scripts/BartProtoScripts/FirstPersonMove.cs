@@ -35,6 +35,8 @@ public class FirstPersonMove : MonoBehaviour
     void Start()
     {
         jumpedTwice = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
