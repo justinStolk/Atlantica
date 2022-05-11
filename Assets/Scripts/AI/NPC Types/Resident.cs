@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Resident : MonoBehaviour
+public class Resident : MonoBehaviour, IInteractable
 {
     private FSM stateMachine;
 
@@ -20,5 +20,8 @@ public class Resident : MonoBehaviour
         stateMachine.FSMFixedUpdate();
     }
 
-
+    public void Interact()
+    {
+        stateMachine.SwitchState(typeof(TalkingState));
+    }
 }
