@@ -1,0 +1,17 @@
+﻿title: Intro
+tags:
+---
+<<set $playername to "NogGeenNaam">>
+Cool: Hey you, I've never seen you before!
+Cool: And that's quite something, I've been riding this train for years!
+Cool: So tell me, what's your name?
+Cool: ...
+Cool: Ah, it's {$playername}? How very nice!
+Cool: Where are you going? 
+Cool: ...
+Cool: I see... That's quite the adventure.
+Cool: There are a few things you should know before you leave this train!
+Cool: "Super cool exposition about the world"
+Cool: Oh, it seems we've arrived!
+Cool: I don't have to get off at this stop, but good luck {$playername}!
+===

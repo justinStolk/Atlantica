@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Resident : MonoBehaviour, IInteractable
+public class PlayerFSM : MonoBehaviour
 {
     private FSM stateMachine;
-
     private void Start()
     {
-        stateMachine = new FSM(typeof(WanderState), GetComponents<BaseState>());
+        stateMachine = new FSM(typeof(WalkingState), GetComponents<BaseState>());
     }
     private void Update()
     {
@@ -18,10 +17,5 @@ public class Resident : MonoBehaviour, IInteractable
     private void FixedUpdate()
     {
         stateMachine.FSMFixedUpdate();
-    }
-
-    public void Interact()
-    {
-        stateMachine.SwitchState(typeof(TalkingState));
     }
 }

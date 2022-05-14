@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class FSM
 {
-
-    private BaseState currentState;
+    public BaseState CurrentState { get; private set; }
+    public BaseState PreviousState { get; private set; }
+    
     private Dictionary<System.Type, BaseState> states = new();
+
+
     public FSM(System.Type startState, params BaseState[] allStates)
     {
         foreach (BaseState state in allStates)
@@ -18,19 +21,20 @@ public class FSM
     }
     public void FSMUpdate()
     {
-        currentState?.OnStateUpdate();
+        CurrentState?.OnStateUpdate();
     }
 
     public void FSMFixedUpdate()
     {
-        currentState?.OnStateFixedUpdate();
+        CurrentState?.OnStateFixedUpdate();
     }
 
     public void SwitchState(System.Type newState)
     {
-        currentState?.OnStateExit();
-        currentState = states[newState];
-        currentState?.OnStateEnter();
+        PreviousState = CurrentState;
+        CurrentState?.OnStateExit();
+        CurrentState = states[newState];
+        CurrentState?.OnStateEnter();
     }
 
 }
