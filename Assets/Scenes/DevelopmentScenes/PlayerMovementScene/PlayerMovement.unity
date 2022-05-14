@@ -273,7 +273,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.5125725, y: 1}
+    m_SensorSize: {x: 2.133005, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -296,7 +296,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 499390287}
-  m_LocalRotation: {x: 0.018180821, y: -0.00000002561137, z: 0.000000010477379, w: 0.9998348}
+  m_LocalRotation: {x: 0.018180821, y: -0.000000026077032, z: 0.000000010360964, w: 0.9998348}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -575,7 +575,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.5125725, y: 1}
+    m_SensorSize: {x: 2.133005, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -598,7 +598,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 990029035}
-  m_LocalRotation: {x: -4.5474735e-13, y: -0.000000031664968, z: 0.000000011816155,
+  m_LocalRotation: {x: -9.094947e-13, y: -0.00000003213063, z: 0.0000000119325705,
     w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -1012,7 +1012,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.5125725, y: 1}
+    m_SensorSize: {x: 2.133005, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -1035,7 +1035,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229086593}
-  m_LocalRotation: {x: -0.018150125, y: -0.000000015366822, z: 0.00000000547152, w: 0.9998353}
+  m_LocalRotation: {x: -0.01815014, y: -0.000000015832484, z: 0.000000005529728, w: 0.9998353}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1061,6 +1061,7 @@ GameObject:
   - component: {fileID: 1350258866}
   - component: {fileID: 1350258865}
   - component: {fileID: 1350258864}
+  - component: {fileID: 1350258867}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1207,10 +1208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29be96f370332f142afe535080e46b2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WaterSurface: 0
-  Distance_Surface: 0
-  InWater: 0
-  swimLevel: 0.25
+  waterLevel: {fileID: 1350258867}
   GroundMask:
     serializedVersion: 2
     m_Bits: 64
@@ -1245,11 +1243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67bf70aa1407a9048b645955b6195f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waterLevel: {fileID: 1350258867}
   SwimmingUp: 0
-  WaterSurface: 0
-  Distance_Surface: 0
-  InWater: 1
-  swimLevel: 0.25
+  SwimmingDown: 0
   GroundMask:
     serializedVersion: 2
     m_Bits: 64
@@ -1257,6 +1253,22 @@ MonoBehaviour:
   UpwardForce: 1
   maxSpeed: 5
   playerCamera: {fileID: 1759010552}
+--- !u!114 &1350258867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350258857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81143fc8e87818e4ea43e9b7a963a6b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WaterSurface: 0
+  Distance_Surface: 0
+  InWater: 0
+  swimLevel: 0.4
 --- !u!1 &1510987782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1567,7 +1579,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759010550}
-  m_LocalRotation: {x: 0.0009561859, y: 0.98362255, z: -0.1801626, w: 0.0052204295}
+  m_LocalRotation: {x: 0.00095618627, y: 0.98362255, z: -0.1801626, w: 0.00522043}
   m_LocalPosition: {x: 0.5337008, y: 8.860001, z: 6.281792}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1732,7 +1744,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.5125725, y: 1}
+    m_SensorSize: {x: 2.133005, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16

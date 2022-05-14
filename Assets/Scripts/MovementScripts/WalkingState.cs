@@ -6,10 +6,7 @@ using UnityEngine.InputSystem;
 
 public class WalkingState : BaseState
 {
-    public float WaterSurface, Distance_Surface;
-    public bool InWater;
-    public float swimLevel = 1.25f;
-
+    public WaterLevelCheck waterLevel;
     //LayerMasks
     public LayerMask GroundMask;
     public LayerMask WaterMask;
@@ -31,12 +28,12 @@ public class WalkingState : BaseState
     public override void OnStateEnter()
     {
         Debug.Log("WALK");
-        InWater = false;
+        waterLevel.InWater = false;
 
         rb = GetComponent<Rigidbody>();
         playerActionsAsset = new ThirdPersonActions();
 
-        playerActionsAsset.Player.Swim.started += DoJump;
+        playerActionsAsset.Player.Jump.started += DoJump;
         move = playerActionsAsset.Player.Move;
         playerActionsAsset.Player.Enable();
 
@@ -46,7 +43,7 @@ public class WalkingState : BaseState
 
     public override void OnStateExit()
     {
-        playerActionsAsset.Player.Swim.started -= DoJump;
+        playerActionsAsset.Player.Jump.started -= DoJump;
         playerActionsAsset.Player.Disable();
     }
 
@@ -72,12 +69,12 @@ public class WalkingState : BaseState
 
         LookAt();
 
-        if (InWater)
+        if (waterLevel.InWater)
         {
-            GetWaterLevel();
+            waterLevel.GetWaterLevel();
         }
 
-        if (Distance_Surface >= swimLevel)
+        if (waterLevel.Distance_Surface >= waterLevel.swimLevel)
         {
             owner.SwitchState(typeof(SwimmingState));
         }
@@ -141,12 +138,6 @@ public class WalkingState : BaseState
         //    return true;
         //else
         //    return false;
-    }
-
-    private void GetWaterLevel()
-    {
-        Distance_Surface = WaterSurface - transform.position.y;
-        Distance_Surface = Mathf.Clamp(Distance_Surface, 0, float.MaxValue);
     }
 
 }

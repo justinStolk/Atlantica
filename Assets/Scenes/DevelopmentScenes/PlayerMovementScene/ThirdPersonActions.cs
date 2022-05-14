@@ -55,9 +55,18 @@ public partial class @ThirdPersonActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Swim"",
+                    ""name"": ""SwimUp"",
                     ""type"": ""Button"",
                     ""id"": ""2ccadcc1-47b0-4971-991f-e14289d5db11"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwimDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""acde851f-00a8-47b2-92fc-d227339cbaa0"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -188,10 +197,10 @@ public partial class @ThirdPersonActions : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""4bcf3628-97c2-4140-a488-40eb4e24bd69"",
                     ""path"": ""<Keyboard>/space"",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
-                    ""action"": ""Swim"",
+                    ""action"": ""SwimUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -202,7 +211,7 @@ public partial class @ThirdPersonActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
-                    ""action"": ""Swim"",
+                    ""action"": ""SwimUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -225,6 +234,17 @@ public partial class @ThirdPersonActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Controller"",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bbd1d9e8-8d0b-4f5a-9e1b-209a1aaea881"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""SwimDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -266,7 +286,8 @@ public partial class @ThirdPersonActions : IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
-        m_Player_Swim = m_Player.FindAction("Swim", throwIfNotFound: true);
+        m_Player_SwimUp = m_Player.FindAction("SwimUp", throwIfNotFound: true);
+        m_Player_SwimDown = m_Player.FindAction("SwimDown", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
     }
 
@@ -330,7 +351,8 @@ public partial class @ThirdPersonActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Look;
-    private readonly InputAction m_Player_Swim;
+    private readonly InputAction m_Player_SwimUp;
+    private readonly InputAction m_Player_SwimDown;
     private readonly InputAction m_Player_Interact;
     public struct PlayerActions
     {
@@ -339,7 +361,8 @@ public partial class @ThirdPersonActions : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Look => m_Wrapper.m_Player_Look;
-        public InputAction @Swim => m_Wrapper.m_Player_Swim;
+        public InputAction @SwimUp => m_Wrapper.m_Player_SwimUp;
+        public InputAction @SwimDown => m_Wrapper.m_Player_SwimDown;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -359,9 +382,12 @@ public partial class @ThirdPersonActions : IInputActionCollection2, IDisposable
                 @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @Swim.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwim;
-                @Swim.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwim;
-                @Swim.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwim;
+                @SwimUp.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwimUp;
+                @SwimUp.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwimUp;
+                @SwimUp.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwimUp;
+                @SwimDown.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwimDown;
+                @SwimDown.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwimDown;
+                @SwimDown.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwimDown;
                 @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
@@ -378,9 +404,12 @@ public partial class @ThirdPersonActions : IInputActionCollection2, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
-                @Swim.started += instance.OnSwim;
-                @Swim.performed += instance.OnSwim;
-                @Swim.canceled += instance.OnSwim;
+                @SwimUp.started += instance.OnSwimUp;
+                @SwimUp.performed += instance.OnSwimUp;
+                @SwimUp.canceled += instance.OnSwimUp;
+                @SwimDown.started += instance.OnSwimDown;
+                @SwimDown.performed += instance.OnSwimDown;
+                @SwimDown.canceled += instance.OnSwimDown;
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
@@ -411,7 +440,8 @@ public partial class @ThirdPersonActions : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
-        void OnSwim(InputAction.CallbackContext context);
+        void OnSwimUp(InputAction.CallbackContext context);
+        void OnSwimDown(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
     }
 }

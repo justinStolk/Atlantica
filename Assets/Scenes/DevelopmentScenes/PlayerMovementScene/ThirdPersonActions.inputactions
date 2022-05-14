@@ -33,9 +33,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Swim",
+                    "name": "SwimUp",
                     "type": "Button",
                     "id": "2ccadcc1-47b0-4971-991f-e14289d5db11",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SwimDown",
+                    "type": "Button",
+                    "id": "acde851f-00a8-47b2-92fc-d227339cbaa0",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -166,10 +175,10 @@
                     "name": "",
                     "id": "4bcf3628-97c2-4140-a488-40eb4e24bd69",
                     "path": "<Keyboard>/space",
-                    "interactions": "Hold",
+                    "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "Swim",
+                    "action": "SwimUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -180,7 +189,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Swim",
+                    "action": "SwimUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -203,6 +212,17 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bbd1d9e8-8d0b-4f5a-9e1b-209a1aaea881",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "SwimDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

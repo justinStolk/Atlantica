@@ -6,11 +6,11 @@ using UnityEngine.InputSystem;
 
 public class SwimmingState : BaseState
 {
-    public bool SwimmingUp = false;
-    public float WaterSurface, Distance_Surface;
-    public bool InWater;
-    public float swimLevel = 1.25f;
+    public WaterLevelCheck waterLevel;
 
+    public bool SwimmingUp = false;
+    public bool SwimmingDown = false;
+    
     public LayerMask GroundMask;
 
     //Input fields
@@ -30,25 +30,29 @@ public class SwimmingState : BaseState
     public override void OnStateEnter()
     {
         Debug.Log("SWIM");
-        InWater = true;
+        waterLevel.InWater = true;
 
         rb = GetComponent<Rigidbody>();
         playerActionsAsset = new ThirdPersonActions();
 
-        playerActionsAsset.Player.Swim.started += SwimUp;
-        playerActionsAsset.Player.Swim.canceled += SwimDown;
+        playerActionsAsset.Player.SwimUp.started += SwimUp;
+        playerActionsAsset.Player.SwimDown.started += SwimDown;
+        playerActionsAsset.Player.SwimUp.canceled += ResetVelocity;
+        playerActionsAsset.Player.SwimDown.canceled += ResetVelocity;
         move = playerActionsAsset.Player.Move;
         playerActionsAsset.Player.Enable();
         rb.drag = 8f;
+        rb.useGravity = false;
     }
 
 
     public override void OnStateExit()
     {
-        playerActionsAsset.Player.Swim.started -= SwimUp;
-        playerActionsAsset.Player.Swim.canceled -= SwimDown;
+        playerActionsAsset.Player.SwimUp.started -= SwimUp;
+        playerActionsAsset.Player.SwimDown.started -= SwimDown;
 
         playerActionsAsset.Player.Disable();
+        rb.useGravity = true;
     }
 
     public override void OnStateFixedUpdate()
@@ -73,9 +77,9 @@ public class SwimmingState : BaseState
 
         LookAt();
 
-        if (InWater)
+        if (waterLevel.InWater)
         {
-            GetWaterLevel();
+            waterLevel.GetWaterLevel();
         }
 
         if(SwimmingUp == true)
@@ -83,16 +87,22 @@ public class SwimmingState : BaseState
             forceDirection += Vector3.up * UpwardForce;
         }
 
+        if(SwimmingDown == true)
+        {
+            forceDirection += Vector3.down * UpwardForce;
+        }
+        
+
         if (Physics.Raycast(transform.position, Vector3.down, 1.1f, GroundMask)){
 
-            if (Distance_Surface < swimLevel)
+            if (waterLevel.Distance_Surface < waterLevel.swimLevel)
             {
                 owner.SwitchState(typeof(WalkingState));
             }
         }
         else
         {
-            transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, float.MinValue, WaterSurface - swimLevel), transform.position.z);
+            transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, float.MinValue, waterLevel.WaterSurface - waterLevel.swimLevel), transform.position.z);
         }
     }
 
@@ -132,17 +142,22 @@ public class SwimmingState : BaseState
 
     private void SwimUp(InputAction.CallbackContext obj)
     {
+        Debug.Log("UP");
         SwimmingUp = true;
     }
 
     private void SwimDown(InputAction.CallbackContext obj)
     {
-        SwimmingUp = false;
+        Debug.Log("Down");
+        SwimmingDown = true;
     }
 
-    private void GetWaterLevel()
+    private void ResetVelocity(InputAction.CallbackContext obj)
     {
-        Distance_Surface = WaterSurface - transform.position.y;
-        Distance_Surface = Mathf.Clamp(Distance_Surface, 0, float.MaxValue);
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        
+        SwimmingDown = false;
+        SwimmingUp = false;
     }
 }

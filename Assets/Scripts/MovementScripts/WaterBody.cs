@@ -17,22 +17,22 @@ public class WaterBody : MonoBehaviour
     {
         if(other.GetComponent<WalkingState>() == playerWalk)
         {
-            if (!playerWalk.InWater)
+            if (!playerWalk.waterLevel.InWater)
             {
-                playerWalk.InWater = true;
+                playerWalk.waterLevel.InWater = true;
             }
 
-            if (playerWalk.WaterSurface != transform.position.y)
+            if (playerWalk.waterLevel.WaterSurface != transform.position.y)
             {
-                playerWalk.WaterSurface = transform.position.y;
+                playerWalk.waterLevel.WaterSurface = transform.position.y;
             }
         }
 
         if(other.GetComponent<SwimmingState>() == playerSwim)
         {
-            if (playerSwim.WaterSurface != transform.position.y)
+            if (playerSwim.waterLevel.WaterSurface != transform.position.y)
             {
-                playerSwim.WaterSurface = transform.position.y;
+                playerSwim.waterLevel.WaterSurface = transform.position.y;
             }
         }
     }
@@ -41,9 +41,9 @@ public class WaterBody : MonoBehaviour
     {
         if (other.GetComponent<SwimmingState>() == playerSwim)
         {
-            if (playerSwim.InWater)
+            if (playerSwim.waterLevel.InWater)
             {
-                playerSwim.InWater = false;
+                playerSwim.waterLevel.InWater = false;
             }
         }
     }

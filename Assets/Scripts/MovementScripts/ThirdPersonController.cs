@@ -27,14 +27,14 @@ public class ThirdPersonController : MonoBehaviour
 
     private void OnEnable()
     {
-        playerActionsAsset.Player.Swim.started += DoJump;
+        playerActionsAsset.Player.Jump.started += DoJump;
         move = playerActionsAsset.Player.Move;
         playerActionsAsset.Player.Enable();
     }
 
     private void OnDisable()
     {
-        playerActionsAsset.Player.Swim.started -= DoJump;
+        playerActionsAsset.Player.Jump.started -= DoJump;
         playerActionsAsset.Player.Disable();
     }
 
