@@ -18,4 +18,5 @@ public class PlayerFSM : MonoBehaviour
     {
         stateMachine.FSMFixedUpdate();
     }
+
 }

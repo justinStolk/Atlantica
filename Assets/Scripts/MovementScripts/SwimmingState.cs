@@ -14,8 +14,7 @@ public class SwimmingState : BaseState
     public LayerMask GroundMask;
 
     //Input fields
-    private ThirdPersonActions playerActionsAsset;
-    private InputAction move;
+    private PlayerManager playerManager;
 
     //Movement fields
     private Rigidbody rb;
@@ -29,36 +28,34 @@ public class SwimmingState : BaseState
 
     public override void OnStateEnter()
     {
+        playerManager = GetComponent<PlayerManager>();
         Debug.Log("SWIM");
         waterLevel.InWater = true;
 
         rb = GetComponent<Rigidbody>();
-        playerActionsAsset = new ThirdPersonActions();
 
-        playerActionsAsset.Player.SwimUp.started += SwimUp;
-        playerActionsAsset.Player.SwimDown.started += SwimDown;
-        playerActionsAsset.Player.SwimUp.canceled += ResetVelocity;
-        playerActionsAsset.Player.SwimDown.canceled += ResetVelocity;
-        move = playerActionsAsset.Player.Move;
-        playerActionsAsset.Player.Enable();
+        playerManager.playerActionsAsset.Player.SwimUp.started += SwimUp;
+        playerManager.playerActionsAsset.Player.SwimDown.started += SwimDown;
+        playerManager.playerActionsAsset.Player.SwimUp.canceled += ResetVelocity;
+        playerManager.playerActionsAsset.Player.SwimDown.canceled += ResetVelocity;
+        
         rb.drag = 8f;
         rb.useGravity = false;
     }
 
-
     public override void OnStateExit()
     {
-        playerActionsAsset.Player.SwimUp.started -= SwimUp;
-        playerActionsAsset.Player.SwimDown.started -= SwimDown;
+        playerManager.playerActionsAsset.Player.SwimUp.started -= SwimUp;
+        playerManager.playerActionsAsset.Player.SwimDown.started -= SwimDown;
 
-        playerActionsAsset.Player.Disable();
         rb.useGravity = true;
+        Debug.Log("Changing");
     }
 
     public override void OnStateFixedUpdate()
     {
-        forceDirection += move.ReadValue<Vector2>().x * GetCameraRight(playerCamera) * moveForce;
-        forceDirection += move.ReadValue<Vector2>().y * GetCameraForward(playerCamera) * moveForce;
+        forceDirection += playerManager.move.ReadValue<Vector2>().x * GetCameraRight(playerCamera) * moveForce;
+        forceDirection += playerManager.move.ReadValue<Vector2>().y * GetCameraForward(playerCamera) * moveForce;
 
         rb.AddForce(forceDirection, ForceMode.Impulse);
         forceDirection = Vector3.zero;
@@ -104,6 +101,8 @@ public class SwimmingState : BaseState
         {
             transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, float.MinValue, waterLevel.WaterSurface - waterLevel.swimLevel), transform.position.z);
         }
+
+
     }
 
     public override void OnStateUpdate()
@@ -111,12 +110,14 @@ public class SwimmingState : BaseState
 
     }
 
+    
+
     private void LookAt()
     {
         Vector3 direction = rb.velocity;
         direction.y = 0f;
 
-        if (move.ReadValue<Vector2>().sqrMagnitude > 0.1f && direction.sqrMagnitude > 0.1f)
+        if (playerManager.move.ReadValue<Vector2>().sqrMagnitude > 0.1f && direction.sqrMagnitude > 0.1f)
         {
             this.rb.rotation = Quaternion.LookRotation(direction, Vector3.up);
         }

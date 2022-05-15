@@ -1,5 +1,5 @@
 {
-    "name": "ThirdPersonActions",
+    "name": "PlayerInputActions",
     "maps": [
         {
             "name": "Player",
@@ -54,6 +54,15 @@
                     "name": "Interact",
                     "type": "Button",
                     "id": "2b768b22-15ec-45e0-b5eb-ab18d97760a0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchBackPack",
+                    "type": "Button",
+                    "id": "3fdec4a5-a00d-4eef-b9d7-98059fa07e74",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -223,6 +232,100 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "SwimDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "30d6799f-39e2-42a3-90b5-a06616174e54",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "SwitchBackPack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Backpack",
+            "id": "8d65ebec-87f0-445c-82f7-4b4492ac4be7",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "54b142dd-572e-4fd2-978f-eb745501d90c",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "WASD",
+                    "id": "7fde6ca3-3269-4373-969d-89d15c5e152e",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "fdc80cb3-0580-432d-a7b4-4ecdc3c61849",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "efd1ecd5-b156-4e3f-9601-16fb1d1c9a19",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "0b160b01-69c0-48ed-a397-dae8315b6c39",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "36cf071e-4ccb-4c24-a112-c84c4815f939",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "f7c3477d-ff2e-431a-b1d8-b00f2c60e61c",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "StickDeadzone(min=0.2)",
+                    "groups": "Controller",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
