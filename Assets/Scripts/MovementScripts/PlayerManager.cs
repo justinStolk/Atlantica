@@ -12,27 +12,43 @@ public class PlayerManager : MonoBehaviour
     private WalkingState walkingState;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         playerActionsAsset = new PlayerInputActions();
         playerInput = GetComponent<PlayerInput>();
+        playerActionsAsset.Player.Enable();
         walkingState = GetComponent<WalkingState>();
 
         move = playerActionsAsset.Player.Move;
-        playerActionsAsset.Player.Enable();
-        playerActionsAsset.Player.SwitchBackPack.started += SwitchBackpack;
+        //playerActionsAsset.Player.SwitchBackPack.started += SwitchBackpack;
     }
 
     // Update is called once per frame
     void Update()
     {
         //Debug.Log(playerInput.currentActionMap);
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Debug.Log("Disable");
+            playerActionsAsset.Player.Disable();
+            Debug.Log("switch map");
+            playerInput.SwitchCurrentActionMap("Backpack");
+            Debug.Log("switch state");
+            walkingState.SwitchState();
+            Debug.Log("Complete");
+        }
     }
 
-    private void SwitchBackpack(InputAction.CallbackContext obj)
-    {
-        playerActionsAsset.Player.Disable();
-        playerInput.SwitchCurrentActionMap("Backpack");
-        walkingState.SwitchState();
-    }
+
+
+    //private void SwitchBackpack(InputAction.CallbackContext obj)
+    //{
+    //    Debug.Log("Disable");
+    //    playerActionsAsset.Player.Disable();
+    //    Debug.Log("switch map");
+    //    playerInput.SwitchCurrentActionMap("Backpack");
+    //    Debug.Log("switch state");
+    //    walkingState.SwitchState();
+    //    Debug.Log("Complete");
+    //}
 }

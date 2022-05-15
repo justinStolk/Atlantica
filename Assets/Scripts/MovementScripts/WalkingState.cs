@@ -29,13 +29,10 @@ public class WalkingState : BaseState
     public override void OnStateEnter()
     {
         playerManager = GetComponent<PlayerManager>();
-
         Debug.Log("WALK");
         waterLevel.InWater = false;
-
         rb = GetComponent<Rigidbody>();
         playerManager.playerActionsAsset.Player.Jump.started += DoJump;
-        
         rb.drag = 3.5f;
     }
 

@@ -282,6 +282,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SwitchBackPack"",
+                    ""type"": ""Button"",
+                    ""id"": ""5886bca9-89d2-4e27-a863-5cbbf2f75be7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -350,6 +359,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""66758ef0-cee6-497c-a914-296e899cca29"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""SwitchBackPack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -396,6 +416,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         // Backpack
         m_Backpack = asset.FindActionMap("Backpack", throwIfNotFound: true);
         m_Backpack_Move = m_Backpack.FindAction("Move", throwIfNotFound: true);
+        m_Backpack_SwitchBackPack = m_Backpack.FindAction("SwitchBackPack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -537,11 +558,13 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Backpack;
     private IBackpackActions m_BackpackActionsCallbackInterface;
     private readonly InputAction m_Backpack_Move;
+    private readonly InputAction m_Backpack_SwitchBackPack;
     public struct BackpackActions
     {
         private @PlayerInputActions m_Wrapper;
         public BackpackActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Backpack_Move;
+        public InputAction @SwitchBackPack => m_Wrapper.m_Backpack_SwitchBackPack;
         public InputActionMap Get() { return m_Wrapper.m_Backpack; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -554,6 +577,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_BackpackActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_BackpackActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_BackpackActionsCallbackInterface.OnMove;
+                @SwitchBackPack.started -= m_Wrapper.m_BackpackActionsCallbackInterface.OnSwitchBackPack;
+                @SwitchBackPack.performed -= m_Wrapper.m_BackpackActionsCallbackInterface.OnSwitchBackPack;
+                @SwitchBackPack.canceled -= m_Wrapper.m_BackpackActionsCallbackInterface.OnSwitchBackPack;
             }
             m_Wrapper.m_BackpackActionsCallbackInterface = instance;
             if (instance != null)
@@ -561,6 +587,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @SwitchBackPack.started += instance.OnSwitchBackPack;
+                @SwitchBackPack.performed += instance.OnSwitchBackPack;
+                @SwitchBackPack.canceled += instance.OnSwitchBackPack;
             }
         }
     }
@@ -596,5 +625,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     public interface IBackpackActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnSwitchBackPack(InputAction.CallbackContext context);
     }
 }
