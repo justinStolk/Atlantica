@@ -10,6 +10,7 @@ ScriptedImporter:
   script: {fileID: 11500000, guid: 053561912b1654d80a424bb0696a74ae, type: 3}
   sourceScripts:
   - {fileID: 6391573757903218779, guid: 333b9bd7324a4f24895ce8b927e6bcf4, type: 3}
+  - {fileID: 6391573757903218779, guid: 327c9461deacd2945b3e9868cbbfbca7, type: 3}
   compileErrors: []
   serializedDeclarations:
   - name: $playername
@@ -17,7 +18,7 @@ ScriptedImporter:
     defaultValueBool: 0
     defaultValueNumber: 0
     defaultValueString: 
-    description: Implicitly declared in Intro.yarn, node Intro
+    description: Implicitly declared in _Intro.yarn, node Intro
     isImplicit: 1
     sourceYarnAsset: {fileID: 6391573757903218779, guid: 333b9bd7324a4f24895ce8b927e6bcf4,
       type: 3}
