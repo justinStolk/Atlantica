@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 21891065}
   - component: {fileID: 21891064}
   m_Layer: 0
-  m_Name: BackpackObj
+  m_Name: BackpackGFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -370,7 +370,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.3490055, y: 1}
+    m_SensorSize: {x: 2.1439688, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -393,7 +393,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 499390287}
-  m_LocalRotation: {x: 0.018180821, y: 0.000000026077032, z: -0.000000010593794, w: 0.9998348}
+  m_LocalRotation: {x: 0.018180823, y: -0.00000006193295, z: 0.000000024971087, w: 0.9998348}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -881,7 +881,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.3490055, y: 1}
+    m_SensorSize: {x: 2.1439688, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -904,8 +904,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 990029035}
-  m_LocalRotation: {x: 4.5474735e-13, y: 0.000000031199306, z: -0.00000001169974,
-    w: 1}
+  m_LocalRotation: {x: 9.094947e-13, y: -0, z: 1.1641532e-10, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1318,7 +1317,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.3490055, y: 1}
+    m_SensorSize: {x: 2.1439688, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -1341,8 +1340,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229086593}
-  m_LocalRotation: {x: -0.018150125, y: 0.000000015832484, z: -0.0000000055879354,
-    w: 0.9998353}
+  m_LocalRotation: {x: -0.01815014, y: -0.000000045634806, z: 0.000000016530976, w: 0.9998353}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1365,6 +1363,7 @@ GameObject:
   - component: {fileID: 1350258860}
   - component: {fileID: 1350258859}
   - component: {fileID: 1350258858}
+  - component: {fileID: 1350258869}
   - component: {fileID: 1350258868}
   - component: {fileID: 1350258866}
   - component: {fileID: 1350258865}
@@ -1599,6 +1598,30 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+--- !u!114 &1350258869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350258857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1361c07944e43254c96f58c59f7803cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  move:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 2ddfb849-fa7a-4b54-b07b-67e0b40db5d9
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  rb: {fileID: 1859037959}
+  moveForce: 1
+  bpCamera: {fileID: 519938698}
 --- !u!1 &1510987782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1903,9 +1926,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759010550}
-  m_LocalRotation: {x: 0.00095618, y: 0.98362255, z: -0.1801626, w: 0.0052203964}
+  m_LocalRotation: {x: 0.00095617416, y: 0.98362255, z: -0.1801626, w: 0.0052203657}
   m_LocalPosition: {x: 0.5337008, y: 8.860001, z: 6.281792}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 499390289}
@@ -2068,7 +2091,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.3490055, y: 1}
+    m_SensorSize: {x: 2.1439688, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -2209,8 +2232,9 @@ GameObject:
   - component: {fileID: 1859037956}
   - component: {fileID: 1859037958}
   - component: {fileID: 1859037957}
+  - component: {fileID: 1859037959}
   m_Layer: 0
-  m_Name: BackpackHolder
+  m_Name: Backpack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2224,7 +2248,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1859037955}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.037300587, y: 0.07800007, z: -0.6002958}
+  m_LocalPosition: {x: 0.037300587, y: 0.07800007, z: -0.706}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2240,7 +2264,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1859037955}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
@@ -2275,7 +2299,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1859037955}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1361c07944e43254c96f58c59f7803cc, type: 3}
   m_Name: 
@@ -2289,8 +2313,25 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  rb: {fileID: 0}
   moveForce: 1
   bpCamera: {fileID: 519938698}
+--- !u!54 &1859037959
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859037955}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2014996648
 GameObject:
   m_ObjectHideFlags: 0

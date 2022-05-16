@@ -20,35 +20,35 @@ public class PlayerManager : MonoBehaviour
         walkingState = GetComponent<WalkingState>();
 
         move = playerActionsAsset.Player.Move;
-        //playerActionsAsset.Player.SwitchBackPack.started += SwitchBackpack;
+        playerActionsAsset.Player.SwitchBackPack.started += SwitchBackpack;
     }
 
     // Update is called once per frame
     void Update()
     {
         //Debug.Log(playerInput.currentActionMap);
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            Debug.Log("Disable");
-            playerActionsAsset.Player.Disable();
-            Debug.Log("switch map");
-            playerInput.SwitchCurrentActionMap("Backpack");
-            Debug.Log("switch state");
-            walkingState.SwitchState();
-            Debug.Log("Complete");
-        }
+        //if (Input.GetKeyDown(KeyCode.T))
+        //{
+        //    Debug.Log("Disable");
+        //    //playerActionsAsset.Player.Disable();
+        //    Debug.Log("switch map");
+        //    playerInput.SwitchCurrentActionMap("Backpack");
+        //    Debug.Log("switch state");
+        //    walkingState.SwitchState();
+        //    Debug.Log("Complete");
+        //}
     }
 
 
 
-    //private void SwitchBackpack(InputAction.CallbackContext obj)
-    //{
-    //    Debug.Log("Disable");
-    //    playerActionsAsset.Player.Disable();
-    //    Debug.Log("switch map");
-    //    playerInput.SwitchCurrentActionMap("Backpack");
-    //    Debug.Log("switch state");
-    //    walkingState.SwitchState();
-    //    Debug.Log("Complete");
-    //}
+    private void SwitchBackpack(InputAction.CallbackContext obj)
+    {
+        Debug.Log("Disable");
+        //playerActionsAsset.Player.Disable();
+        Debug.Log("switch map");
+        playerInput.SwitchCurrentActionMap("Backpack");
+        Debug.Log("switch state");
+        walkingState.SwitchState();
+        Debug.Log("Complete");
+    }
 }

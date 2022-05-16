@@ -8,15 +8,20 @@ public class BackpackFlyingState : BaseState
     public PlayerInputActions playerActionsAsset;
     public InputAction move;
 
-    private Rigidbody rb;
+    [SerializeField] private Rigidbody rb;
     private Vector3 forceDirection = Vector3.zero;
 
     [SerializeField] private float moveForce = 1f;
     [SerializeField] private Camera bpCamera;
 
+    private void Start()
+    {
+        playerActionsAsset = GetComponent<PlayerManager>().playerActionsAsset;
+    }
+
     public override void OnStateEnter()
     {
-        playerActionsAsset.Backpack.Enable();
+        //playerActionsAsset.Backpack.Enable();
         move = playerActionsAsset.Backpack.Move;
 
         Debug.Log("You are now controlling the rogzak!");
