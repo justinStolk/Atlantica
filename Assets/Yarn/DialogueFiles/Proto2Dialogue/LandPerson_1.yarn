@@ -20,12 +20,10 @@ position: -119,-351
 Vhabi: What can I help you with, Player?
 -> Player: What happened to the solar panels outside?
     <<jump Corruption>>
--> Player: Can you tell me more about (City name)?
+-> Player: Can you tell me more about the city?
     <<jump Worldbuilding>>
--> Player: Where do I start my investigation?
+-> Player: Where do I start my investigation? (CONTINUE)
     <<jump Quest>>
--> Player: I've learned enough, thank you!
-    <<stop>>
 ===
 
 title: Corruption
@@ -83,7 +81,7 @@ position: 353,-358
     Vhabi: The governments knew about this all along, but kept the information from the rest of society.
     Vhabi gets a far away look in his eyes.
     Vhabi: Too many lives were lost when the Flood happened..
-    Vhabi: The surviving populations settled onto the remaining land or water cities like the core structure we are standing on right now.
+    Vhabi: The surviving populations settled onto the remaining land or built water cities like the core structure we are standing on right now.
     <<jump WorldbuildingQuestions>>
 -> Player: The Revolution?
     Vhabi: Our new cities didn't always look and work the way they do now. Just after the Flood, the same broken systems were still in place that had been for centuries.
@@ -103,5 +101,5 @@ Vhabi: The source of the corruption is right underneath our city. Your task is t
 Vhabi: Don't forget to put on a Raypack to help you move and breathe easily underwater. After that, you can jump into any body of water outside.
 Vhabi: I wish you the best of luck!
 Player: I will try my best. Thank you!
-<<jump IntroQuestions>>
+<<stop>>
 ===
