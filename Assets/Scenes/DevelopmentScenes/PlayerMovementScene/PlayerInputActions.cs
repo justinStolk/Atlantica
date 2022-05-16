@@ -291,6 +291,24 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Up"",
+                    ""type"": ""Button"",
+                    ""id"": ""e4ba6620-95d6-448a-a07a-7e8a9a361156"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""43cf8d93-06af-49ee-ae73-a87ee03877d3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -370,6 +388,28 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""SwitchBackPack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ecbd4834-06b6-435a-9711-584cb92e61ed"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e703f24e-7d0f-423b-9691-355163825d22"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -417,6 +457,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Backpack = asset.FindActionMap("Backpack", throwIfNotFound: true);
         m_Backpack_Move = m_Backpack.FindAction("Move", throwIfNotFound: true);
         m_Backpack_SwitchBackPack = m_Backpack.FindAction("SwitchBackPack", throwIfNotFound: true);
+        m_Backpack_Up = m_Backpack.FindAction("Up", throwIfNotFound: true);
+        m_Backpack_Down = m_Backpack.FindAction("Down", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -559,12 +601,16 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private IBackpackActions m_BackpackActionsCallbackInterface;
     private readonly InputAction m_Backpack_Move;
     private readonly InputAction m_Backpack_SwitchBackPack;
+    private readonly InputAction m_Backpack_Up;
+    private readonly InputAction m_Backpack_Down;
     public struct BackpackActions
     {
         private @PlayerInputActions m_Wrapper;
         public BackpackActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Backpack_Move;
         public InputAction @SwitchBackPack => m_Wrapper.m_Backpack_SwitchBackPack;
+        public InputAction @Up => m_Wrapper.m_Backpack_Up;
+        public InputAction @Down => m_Wrapper.m_Backpack_Down;
         public InputActionMap Get() { return m_Wrapper.m_Backpack; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -580,6 +626,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @SwitchBackPack.started -= m_Wrapper.m_BackpackActionsCallbackInterface.OnSwitchBackPack;
                 @SwitchBackPack.performed -= m_Wrapper.m_BackpackActionsCallbackInterface.OnSwitchBackPack;
                 @SwitchBackPack.canceled -= m_Wrapper.m_BackpackActionsCallbackInterface.OnSwitchBackPack;
+                @Up.started -= m_Wrapper.m_BackpackActionsCallbackInterface.OnUp;
+                @Up.performed -= m_Wrapper.m_BackpackActionsCallbackInterface.OnUp;
+                @Up.canceled -= m_Wrapper.m_BackpackActionsCallbackInterface.OnUp;
+                @Down.started -= m_Wrapper.m_BackpackActionsCallbackInterface.OnDown;
+                @Down.performed -= m_Wrapper.m_BackpackActionsCallbackInterface.OnDown;
+                @Down.canceled -= m_Wrapper.m_BackpackActionsCallbackInterface.OnDown;
             }
             m_Wrapper.m_BackpackActionsCallbackInterface = instance;
             if (instance != null)
@@ -590,6 +642,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @SwitchBackPack.started += instance.OnSwitchBackPack;
                 @SwitchBackPack.performed += instance.OnSwitchBackPack;
                 @SwitchBackPack.canceled += instance.OnSwitchBackPack;
+                @Up.started += instance.OnUp;
+                @Up.performed += instance.OnUp;
+                @Up.canceled += instance.OnUp;
+                @Down.started += instance.OnDown;
+                @Down.performed += instance.OnDown;
+                @Down.canceled += instance.OnDown;
             }
         }
     }
@@ -626,5 +684,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnSwitchBackPack(InputAction.CallbackContext context);
+        void OnUp(InputAction.CallbackContext context);
+        void OnDown(InputAction.CallbackContext context);
     }
 }

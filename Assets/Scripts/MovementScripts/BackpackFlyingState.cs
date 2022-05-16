@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,22 +6,33 @@ using UnityEngine.InputSystem;
 
 public class BackpackFlyingState : BaseState
 {
-    public PlayerInputActions playerActionsAsset;
+    private PlayerInputActions playerActionsAsset;
     public InputAction move;
 
     [SerializeField] private Rigidbody rb;
-    private Vector3 forceDirection = Vector3.zero;
-
     [SerializeField] private float moveForce = 1f;
     [SerializeField] private Camera bpCamera;
+
+    private PlayerManager playerManager;
+    private Vector3 forceDirection = Vector3.zero;
+    private WaterLevelCheck waterLevelCheck;
 
     private void Start()
     {
         playerActionsAsset = GetComponent<PlayerManager>().playerActionsAsset;
+
+        playerActionsAsset.Backpack.SwitchBackPack.started += SwitchBackPack;
+        playerManager = GetComponent<PlayerManager>();
+        waterLevelCheck = GetComponent<WaterLevelCheck>();
+        
     }
+
 
     public override void OnStateEnter()
     {
+        playerActionsAsset.Player.Disable();
+        playerActionsAsset.Backpack.Enable();
+
         //playerActionsAsset.Backpack.Enable();
         move = playerActionsAsset.Backpack.Move;
 
@@ -29,7 +41,8 @@ public class BackpackFlyingState : BaseState
 
     public override void OnStateExit()
     {
-        
+        playerActionsAsset.Player.Enable();
+        playerActionsAsset.Backpack.Disable();
     }
 
     public override void OnStateFixedUpdate()
@@ -77,4 +90,17 @@ public class BackpackFlyingState : BaseState
         return right.normalized;
     }
 
+    private void SwitchBackPack(InputAction.CallbackContext obj)
+    {
+        Debug.Log("test");
+        if(waterLevelCheck.InWater == true)
+        {
+            owner.SwitchState(typeof(SwimmingState));
+        }
+        else
+        {
+            owner.SwitchState(typeof(WalkingState));
+        }
+        playerManager.SwitchPlayer();
+    }
 }
