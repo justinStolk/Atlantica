@@ -232,6 +232,7 @@ GameObject:
   - component: {fileID: 254746831}
   - component: {fileID: 254746830}
   - component: {fileID: 254746833}
+  - component: {fileID: 254746834}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -297,14 +298,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 254746829}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 20, z: 0}
+  m_LocalRotation: {x: 0.24684015, y: -0.29045945, z: 0.077828385, w: 0.9212198}
+  m_LocalPosition: {x: 21, y: 12.9, z: -17.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: -35, z: 0}
 --- !u!114 &254746833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,6 +430,18 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
+--- !u!114 &254746834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254746829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a0619fb5fded9419c813e5c76188e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &348002470
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,7 +485,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &737392215
 GameObject:
@@ -661,12 +674,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 748686271}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16, y: 1, z: 11.8}
+  m_LocalPosition: {x: 4.06, y: 10.16, z: -3.56}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1279694475
 GameObject:
@@ -680,6 +693,7 @@ GameObject:
   - component: {fileID: 1279694478}
   - component: {fileID: 1279694477}
   - component: {fileID: 1279694476}
+  - component: {fileID: 1279694480}
   m_Layer: 0
   m_Name: MirrorObject
   m_TagString: Reflector
@@ -763,8 +777,26 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1279694480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279694475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a1f817cfd00b06429a193890de0b712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stanceRotationValues:
+  - 0
+  - -10
+  - -20
+  - -25
+  - -30
 --- !u!1 &1454636021
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,6 +1123,7 @@ GameObject:
   - component: {fileID: 1542348073}
   - component: {fileID: 1542348072}
   - component: {fileID: 1542348071}
+  - component: {fileID: 1542348075}
   m_Layer: 0
   m_Name: MirrorObject (1)
   m_TagString: Reflector
@@ -1176,6 +1209,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1542348075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542348070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a1f817cfd00b06429a193890de0b712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stanceRotationValues:
+  - 0
+  - -10
+  - -15
+  - -24
+  - -29
 --- !u!1 &1586459780
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,6 +1337,7 @@ GameObject:
   - component: {fileID: 1830359007}
   - component: {fileID: 1830359006}
   - component: {fileID: 1830359005}
+  - component: {fileID: 1830359009}
   m_Layer: 0
   m_Name: MirrorObject (2)
   m_TagString: Reflector
@@ -1364,10 +1416,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1830359004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.5, y: 1, z: 13.5}
+  m_LocalPosition: {x: 6.45, y: 1, z: 13.5}
   m_LocalScale: {x: 2, y: 2, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1830359009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830359004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629adacde54e99441b41fd5727fb0d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stanceRotationValues:
+  - 0
+  - 10
+  - 15
+  - 20
