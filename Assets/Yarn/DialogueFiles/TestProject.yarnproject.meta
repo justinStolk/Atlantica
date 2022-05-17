@@ -11,16 +11,7 @@ ScriptedImporter:
   sourceScripts:
   - {fileID: 6391573757903218779, guid: 333b9bd7324a4f24895ce8b927e6bcf4, type: 3}
   compileErrors: []
-  serializedDeclarations:
-  - name: $playername
-    typeName: String
-    defaultValueBool: 0
-    defaultValueNumber: 0
-    defaultValueString: 
-    description: Implicitly declared in Intro.yarn, node Intro
-    isImplicit: 1
-    sourceYarnAsset: {fileID: 6391573757903218779, guid: 333b9bd7324a4f24895ce8b927e6bcf4,
-      type: 3}
+  serializedDeclarations: []
   defaultLanguage: en-GB
   languagesToSourceAssets: []
   useAddressableAssets: 0
