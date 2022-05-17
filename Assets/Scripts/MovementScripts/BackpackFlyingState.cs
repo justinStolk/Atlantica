@@ -6,27 +6,34 @@ using UnityEngine.InputSystem;
 
 public class BackpackFlyingState : BaseState
 {
-    private PlayerInputActions playerActionsAsset;
     public InputAction move;
+    public float UpDownForce;
 
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float moveForce = 1f;
     [SerializeField] private Camera bpCamera;
 
+    private PlayerInputActions playerActionsAsset;
     private PlayerManager playerManager;
     private Vector3 forceDirection = Vector3.zero;
     private WaterLevelCheck waterLevelCheck;
+    private float upDown;
 
     private void Start()
     {
         playerActionsAsset = GetComponent<PlayerManager>().playerActionsAsset;
 
         playerActionsAsset.Backpack.SwitchBackPack.started += SwitchBackPack;
+        playerActionsAsset.Backpack.UpDown.started += ctx => upDown = ctx.ReadValue<float>();
+        playerActionsAsset.Backpack.UpDown.canceled += ctx => upDown = 0;
         playerManager = GetComponent<PlayerManager>();
         waterLevelCheck = GetComponent<WaterLevelCheck>();
-        
     }
 
+    //private void UpDown_started(InputAction.CallbackContext obj)
+    //{
+    //    upDown = obj.ReadValue<float>();
+    //}
 
     public override void OnStateEnter()
     {
@@ -54,6 +61,7 @@ public class BackpackFlyingState : BaseState
         forceDirection = Vector3.zero;
         LookAt();
 
+        forceDirection += Vector3.up * UpDownForce * upDown * Time.fixedDeltaTime;
     }
 
     public override void OnStateUpdate()

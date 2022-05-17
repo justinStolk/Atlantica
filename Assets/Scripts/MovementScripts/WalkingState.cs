@@ -135,10 +135,4 @@ public class WalkingState : BaseState
             owner.SwitchState(typeof(SwimmingState));
         }
     }
-
-    public void SwitchState()
-    {
-        owner.SwitchState(typeof(BackpackFlyingState));
-    }
-
 }

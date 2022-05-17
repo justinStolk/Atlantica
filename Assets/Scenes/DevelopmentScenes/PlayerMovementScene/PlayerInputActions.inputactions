@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleBackPackFollow",
+                    "type": "Button",
+                    "id": "9acabde0-0630-44c0-b30f-6d3d97286417",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -245,6 +254,17 @@
                     "action": "SwitchBackPack",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f2fc79b2-ae88-4187-bab4-d1b4e7cdd594",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleBackPackFollow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -271,18 +291,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Up",
-                    "type": "Button",
-                    "id": "e4ba6620-95d6-448a-a07a-7e8a9a361156",
-                    "expectedControlType": "Button",
+                    "name": "UpDown",
+                    "type": "Value",
+                    "id": "137be78d-8106-45f7-8057-056df7630975",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
-                    "name": "Down",
+                    "name": "TogglePlayerFollow",
                     "type": "Button",
-                    "id": "43cf8d93-06af-49ee-ae73-a87ee03877d3",
+                    "id": "50431331-a3e5-4e4e-a488-1ec81a2f25b7",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -368,24 +388,46 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "ecbd4834-06b6-435a-9711-584cb92e61ed",
-                    "path": "<Keyboard>/space",
+                    "name": "1D Axis",
+                    "id": "274efbe2-a2b7-45b0-8f36-1c6d3e81340c",
+                    "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Up",
-                    "isComposite": false,
+                    "action": "UpDown",
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "e703f24e-7d0f-423b-9691-355163825d22",
+                    "name": "negative",
+                    "id": "9619078d-93a6-410e-8da0-aaa3f2bfadff",
                     "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Down",
+                    "action": "UpDown",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "285bc855-d51b-44b1-b7a4-10738822ce94",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UpDown",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "d4d40003-9054-4b2a-8d87-09b2d4cb239a",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TogglePlayerFollow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

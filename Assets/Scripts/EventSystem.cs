@@ -6,7 +6,7 @@ public static class EventSystem
 {
     public enum EventType
     {
-
+        ON_BACKPACK_TOGGLED
     }
 
     private static Dictionary<EventType, System.Action> eventActions = new();

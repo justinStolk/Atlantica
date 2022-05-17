@@ -102,7 +102,6 @@ public class SwimmingState : BaseState
             transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, float.MinValue, waterLevel.WaterSurface - waterLevel.swimLevel), transform.position.z);
         }
 
-
     }
 
     public override void OnStateUpdate()
@@ -110,7 +109,6 @@ public class SwimmingState : BaseState
 
     }
 
-    
 
     private void LookAt()
     {

@@ -89,6 +89,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleBackPackFollow"",
+                    ""type"": ""Button"",
+                    ""id"": ""9acabde0-0630-44c0-b30f-6d3d97286417"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -267,6 +276,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""SwitchBackPack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f2fc79b2-ae88-4187-bab4-d1b4e7cdd594"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleBackPackFollow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -293,18 +313,18 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Up"",
-                    ""type"": ""Button"",
-                    ""id"": ""e4ba6620-95d6-448a-a07a-7e8a9a361156"",
-                    ""expectedControlType"": ""Button"",
+                    ""name"": ""UpDown"",
+                    ""type"": ""Value"",
+                    ""id"": ""137be78d-8106-45f7-8057-056df7630975"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Down"",
+                    ""name"": ""TogglePlayerFollow"",
                     ""type"": ""Button"",
-                    ""id"": ""43cf8d93-06af-49ee-ae73-a87ee03877d3"",
+                    ""id"": ""50431331-a3e5-4e4e-a488-1ec81a2f25b7"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -390,24 +410,46 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""ecbd4834-06b6-435a-9711-584cb92e61ed"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""name"": ""1D Axis"",
+                    ""id"": ""274efbe2-a2b7-45b0-8f36-1c6d3e81340c"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Up"",
-                    ""isComposite"": false,
+                    ""action"": ""UpDown"",
+                    ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""e703f24e-7d0f-423b-9691-355163825d22"",
+                    ""name"": ""negative"",
+                    ""id"": ""9619078d-93a6-410e-8da0-aaa3f2bfadff"",
                     ""path"": ""<Keyboard>/ctrl"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Down"",
+                    ""action"": ""UpDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""285bc855-d51b-44b1-b7a4-10738822ce94"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UpDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d4d40003-9054-4b2a-8d87-09b2d4cb239a"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TogglePlayerFollow"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -453,12 +495,13 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_SwimDown = m_Player.FindAction("SwimDown", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_SwitchBackPack = m_Player.FindAction("SwitchBackPack", throwIfNotFound: true);
+        m_Player_ToggleBackPackFollow = m_Player.FindAction("ToggleBackPackFollow", throwIfNotFound: true);
         // Backpack
         m_Backpack = asset.FindActionMap("Backpack", throwIfNotFound: true);
         m_Backpack_Move = m_Backpack.FindAction("Move", throwIfNotFound: true);
         m_Backpack_SwitchBackPack = m_Backpack.FindAction("SwitchBackPack", throwIfNotFound: true);
-        m_Backpack_Up = m_Backpack.FindAction("Up", throwIfNotFound: true);
-        m_Backpack_Down = m_Backpack.FindAction("Down", throwIfNotFound: true);
+        m_Backpack_UpDown = m_Backpack.FindAction("UpDown", throwIfNotFound: true);
+        m_Backpack_TogglePlayerFollow = m_Backpack.FindAction("TogglePlayerFollow", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -525,6 +568,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SwimDown;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_SwitchBackPack;
+    private readonly InputAction m_Player_ToggleBackPackFollow;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -536,6 +580,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @SwimDown => m_Wrapper.m_Player_SwimDown;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @SwitchBackPack => m_Wrapper.m_Player_SwitchBackPack;
+        public InputAction @ToggleBackPackFollow => m_Wrapper.m_Player_ToggleBackPackFollow;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -566,6 +611,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @SwitchBackPack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchBackPack;
                 @SwitchBackPack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchBackPack;
                 @SwitchBackPack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchBackPack;
+                @ToggleBackPackFollow.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleBackPackFollow;
+                @ToggleBackPackFollow.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleBackPackFollow;
+                @ToggleBackPackFollow.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleBackPackFollow;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -591,6 +639,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @SwitchBackPack.started += instance.OnSwitchBackPack;
                 @SwitchBackPack.performed += instance.OnSwitchBackPack;
                 @SwitchBackPack.canceled += instance.OnSwitchBackPack;
+                @ToggleBackPackFollow.started += instance.OnToggleBackPackFollow;
+                @ToggleBackPackFollow.performed += instance.OnToggleBackPackFollow;
+                @ToggleBackPackFollow.canceled += instance.OnToggleBackPackFollow;
             }
         }
     }
@@ -601,16 +652,16 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private IBackpackActions m_BackpackActionsCallbackInterface;
     private readonly InputAction m_Backpack_Move;
     private readonly InputAction m_Backpack_SwitchBackPack;
-    private readonly InputAction m_Backpack_Up;
-    private readonly InputAction m_Backpack_Down;
+    private readonly InputAction m_Backpack_UpDown;
+    private readonly InputAction m_Backpack_TogglePlayerFollow;
     public struct BackpackActions
     {
         private @PlayerInputActions m_Wrapper;
         public BackpackActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Backpack_Move;
         public InputAction @SwitchBackPack => m_Wrapper.m_Backpack_SwitchBackPack;
-        public InputAction @Up => m_Wrapper.m_Backpack_Up;
-        public InputAction @Down => m_Wrapper.m_Backpack_Down;
+        public InputAction @UpDown => m_Wrapper.m_Backpack_UpDown;
+        public InputAction @TogglePlayerFollow => m_Wrapper.m_Backpack_TogglePlayerFollow;
         public InputActionMap Get() { return m_Wrapper.m_Backpack; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -626,12 +677,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @SwitchBackPack.started -= m_Wrapper.m_BackpackActionsCallbackInterface.OnSwitchBackPack;
                 @SwitchBackPack.performed -= m_Wrapper.m_BackpackActionsCallbackInterface.OnSwitchBackPack;
                 @SwitchBackPack.canceled -= m_Wrapper.m_BackpackActionsCallbackInterface.OnSwitchBackPack;
-                @Up.started -= m_Wrapper.m_BackpackActionsCallbackInterface.OnUp;
-                @Up.performed -= m_Wrapper.m_BackpackActionsCallbackInterface.OnUp;
-                @Up.canceled -= m_Wrapper.m_BackpackActionsCallbackInterface.OnUp;
-                @Down.started -= m_Wrapper.m_BackpackActionsCallbackInterface.OnDown;
-                @Down.performed -= m_Wrapper.m_BackpackActionsCallbackInterface.OnDown;
-                @Down.canceled -= m_Wrapper.m_BackpackActionsCallbackInterface.OnDown;
+                @UpDown.started -= m_Wrapper.m_BackpackActionsCallbackInterface.OnUpDown;
+                @UpDown.performed -= m_Wrapper.m_BackpackActionsCallbackInterface.OnUpDown;
+                @UpDown.canceled -= m_Wrapper.m_BackpackActionsCallbackInterface.OnUpDown;
+                @TogglePlayerFollow.started -= m_Wrapper.m_BackpackActionsCallbackInterface.OnTogglePlayerFollow;
+                @TogglePlayerFollow.performed -= m_Wrapper.m_BackpackActionsCallbackInterface.OnTogglePlayerFollow;
+                @TogglePlayerFollow.canceled -= m_Wrapper.m_BackpackActionsCallbackInterface.OnTogglePlayerFollow;
             }
             m_Wrapper.m_BackpackActionsCallbackInterface = instance;
             if (instance != null)
@@ -642,12 +693,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @SwitchBackPack.started += instance.OnSwitchBackPack;
                 @SwitchBackPack.performed += instance.OnSwitchBackPack;
                 @SwitchBackPack.canceled += instance.OnSwitchBackPack;
-                @Up.started += instance.OnUp;
-                @Up.performed += instance.OnUp;
-                @Up.canceled += instance.OnUp;
-                @Down.started += instance.OnDown;
-                @Down.performed += instance.OnDown;
-                @Down.canceled += instance.OnDown;
+                @UpDown.started += instance.OnUpDown;
+                @UpDown.performed += instance.OnUpDown;
+                @UpDown.canceled += instance.OnUpDown;
+                @TogglePlayerFollow.started += instance.OnTogglePlayerFollow;
+                @TogglePlayerFollow.performed += instance.OnTogglePlayerFollow;
+                @TogglePlayerFollow.canceled += instance.OnTogglePlayerFollow;
             }
         }
     }
@@ -679,12 +730,13 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnSwimDown(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnSwitchBackPack(InputAction.CallbackContext context);
+        void OnToggleBackPackFollow(InputAction.CallbackContext context);
     }
     public interface IBackpackActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnSwitchBackPack(InputAction.CallbackContext context);
-        void OnUp(InputAction.CallbackContext context);
-        void OnDown(InputAction.CallbackContext context);
+        void OnUpDown(InputAction.CallbackContext context);
+        void OnTogglePlayerFollow(InputAction.CallbackContext context);
     }
 }
