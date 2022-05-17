@@ -11,7 +11,7 @@ public class PlayerManager : MonoBehaviour
     public InputAction move;
     public Transform backpack;
     public Transform player;
-    public BackpackFollow backpackFollow;
+    //public BackpackFollow backpackFollow;
 
     public CinemachineFreeLook camera;
 
