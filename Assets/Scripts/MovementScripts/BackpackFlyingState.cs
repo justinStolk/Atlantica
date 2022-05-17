@@ -23,17 +23,14 @@ public class BackpackFlyingState : BaseState
     {
         playerActionsAsset = GetComponent<PlayerManager>().playerActionsAsset;
 
-        playerActionsAsset.Backpack.SwitchBackPack.started += SwitchBackPack;
+        //playerActionsAsset.Backpack.SwitchToPlayer.started += SwitchToPlayer;
         playerActionsAsset.Backpack.UpDown.started += ctx => upDown = ctx.ReadValue<float>();
         playerActionsAsset.Backpack.UpDown.canceled += ctx => upDown = 0;
         playerManager = GetComponent<PlayerManager>();
         waterLevelCheck = GetComponent<WaterLevelCheck>();
     }
 
-    //private void UpDown_started(InputAction.CallbackContext obj)
-    //{
-    //    upDown = obj.ReadValue<float>();
-    //}
+   
 
     public override void OnStateEnter()
     {
@@ -42,6 +39,8 @@ public class BackpackFlyingState : BaseState
 
         //playerActionsAsset.Backpack.Enable();
         move = playerActionsAsset.Backpack.Move;
+
+        EventSystem.CallEvent(EventSystem.EventType.ON_BACKPACK_RELEASE);
 
         Debug.Log("You are now controlling the rogzak!");
     }
@@ -98,17 +97,17 @@ public class BackpackFlyingState : BaseState
         return right.normalized;
     }
 
-    private void SwitchBackPack(InputAction.CallbackContext obj)
-    {
-        Debug.Log("test");
-        if(waterLevelCheck.InWater == true)
-        {
-            owner.SwitchState(typeof(SwimmingState));
-        }
-        else
-        {
-            owner.SwitchState(typeof(WalkingState));
-        }
-        playerManager.SwitchPlayer();
-    }
+    //private void SwitchBackPack(InputAction.CallbackContext obj)
+    //{
+    //    Debug.Log("SwitchToPlayer");
+    //    if(waterLevelCheck.InWater == true)
+    //    {
+    //        owner.SwitchState(typeof(SwimmingState));
+    //    }
+    //    else
+    //    {
+    //        owner.SwitchState(typeof(WalkingState));
+    //    }
+    //    playerManager.SwitchPlayer();
+    //}
 }

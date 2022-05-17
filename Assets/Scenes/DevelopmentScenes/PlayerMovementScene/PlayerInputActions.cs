@@ -82,7 +82,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SwitchBackPack"",
+                    ""name"": ""SwitchToBackPack"",
                     ""type"": ""Button"",
                     ""id"": ""3fdec4a5-a00d-4eef-b9d7-98059fa07e74"",
                     ""expectedControlType"": ""Button"",
@@ -273,7 +273,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
-                    ""action"": ""SwitchBackPack"",
+                    ""action"": ""SwitchToBackPack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -304,7 +304,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""SwitchBackPack"",
+                    ""name"": ""SwitchToPlayer"",
                     ""type"": ""Button"",
                     ""id"": ""5886bca9-89d2-4e27-a863-5cbbf2f75be7"",
                     ""expectedControlType"": ""Button"",
@@ -405,7 +405,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
-                    ""action"": ""SwitchBackPack"",
+                    ""action"": ""SwitchToPlayer"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -494,12 +494,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_SwimUp = m_Player.FindAction("SwimUp", throwIfNotFound: true);
         m_Player_SwimDown = m_Player.FindAction("SwimDown", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
-        m_Player_SwitchBackPack = m_Player.FindAction("SwitchBackPack", throwIfNotFound: true);
+        m_Player_SwitchToBackPack = m_Player.FindAction("SwitchToBackPack", throwIfNotFound: true);
         m_Player_ToggleBackPackFollow = m_Player.FindAction("ToggleBackPackFollow", throwIfNotFound: true);
         // Backpack
         m_Backpack = asset.FindActionMap("Backpack", throwIfNotFound: true);
         m_Backpack_Move = m_Backpack.FindAction("Move", throwIfNotFound: true);
-        m_Backpack_SwitchBackPack = m_Backpack.FindAction("SwitchBackPack", throwIfNotFound: true);
+        m_Backpack_SwitchToPlayer = m_Backpack.FindAction("SwitchToPlayer", throwIfNotFound: true);
         m_Backpack_UpDown = m_Backpack.FindAction("UpDown", throwIfNotFound: true);
         m_Backpack_TogglePlayerFollow = m_Backpack.FindAction("TogglePlayerFollow", throwIfNotFound: true);
     }
@@ -567,7 +567,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SwimUp;
     private readonly InputAction m_Player_SwimDown;
     private readonly InputAction m_Player_Interact;
-    private readonly InputAction m_Player_SwitchBackPack;
+    private readonly InputAction m_Player_SwitchToBackPack;
     private readonly InputAction m_Player_ToggleBackPackFollow;
     public struct PlayerActions
     {
@@ -579,7 +579,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @SwimUp => m_Wrapper.m_Player_SwimUp;
         public InputAction @SwimDown => m_Wrapper.m_Player_SwimDown;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
-        public InputAction @SwitchBackPack => m_Wrapper.m_Player_SwitchBackPack;
+        public InputAction @SwitchToBackPack => m_Wrapper.m_Player_SwitchToBackPack;
         public InputAction @ToggleBackPackFollow => m_Wrapper.m_Player_ToggleBackPackFollow;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -608,9 +608,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
-                @SwitchBackPack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchBackPack;
-                @SwitchBackPack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchBackPack;
-                @SwitchBackPack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchBackPack;
+                @SwitchToBackPack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchToBackPack;
+                @SwitchToBackPack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchToBackPack;
+                @SwitchToBackPack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchToBackPack;
                 @ToggleBackPackFollow.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleBackPackFollow;
                 @ToggleBackPackFollow.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleBackPackFollow;
                 @ToggleBackPackFollow.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleBackPackFollow;
@@ -636,9 +636,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
-                @SwitchBackPack.started += instance.OnSwitchBackPack;
-                @SwitchBackPack.performed += instance.OnSwitchBackPack;
-                @SwitchBackPack.canceled += instance.OnSwitchBackPack;
+                @SwitchToBackPack.started += instance.OnSwitchToBackPack;
+                @SwitchToBackPack.performed += instance.OnSwitchToBackPack;
+                @SwitchToBackPack.canceled += instance.OnSwitchToBackPack;
                 @ToggleBackPackFollow.started += instance.OnToggleBackPackFollow;
                 @ToggleBackPackFollow.performed += instance.OnToggleBackPackFollow;
                 @ToggleBackPackFollow.canceled += instance.OnToggleBackPackFollow;
@@ -651,7 +651,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Backpack;
     private IBackpackActions m_BackpackActionsCallbackInterface;
     private readonly InputAction m_Backpack_Move;
-    private readonly InputAction m_Backpack_SwitchBackPack;
+    private readonly InputAction m_Backpack_SwitchToPlayer;
     private readonly InputAction m_Backpack_UpDown;
     private readonly InputAction m_Backpack_TogglePlayerFollow;
     public struct BackpackActions
@@ -659,7 +659,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         private @PlayerInputActions m_Wrapper;
         public BackpackActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Backpack_Move;
-        public InputAction @SwitchBackPack => m_Wrapper.m_Backpack_SwitchBackPack;
+        public InputAction @SwitchToPlayer => m_Wrapper.m_Backpack_SwitchToPlayer;
         public InputAction @UpDown => m_Wrapper.m_Backpack_UpDown;
         public InputAction @TogglePlayerFollow => m_Wrapper.m_Backpack_TogglePlayerFollow;
         public InputActionMap Get() { return m_Wrapper.m_Backpack; }
@@ -674,9 +674,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_BackpackActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_BackpackActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_BackpackActionsCallbackInterface.OnMove;
-                @SwitchBackPack.started -= m_Wrapper.m_BackpackActionsCallbackInterface.OnSwitchBackPack;
-                @SwitchBackPack.performed -= m_Wrapper.m_BackpackActionsCallbackInterface.OnSwitchBackPack;
-                @SwitchBackPack.canceled -= m_Wrapper.m_BackpackActionsCallbackInterface.OnSwitchBackPack;
+                @SwitchToPlayer.started -= m_Wrapper.m_BackpackActionsCallbackInterface.OnSwitchToPlayer;
+                @SwitchToPlayer.performed -= m_Wrapper.m_BackpackActionsCallbackInterface.OnSwitchToPlayer;
+                @SwitchToPlayer.canceled -= m_Wrapper.m_BackpackActionsCallbackInterface.OnSwitchToPlayer;
                 @UpDown.started -= m_Wrapper.m_BackpackActionsCallbackInterface.OnUpDown;
                 @UpDown.performed -= m_Wrapper.m_BackpackActionsCallbackInterface.OnUpDown;
                 @UpDown.canceled -= m_Wrapper.m_BackpackActionsCallbackInterface.OnUpDown;
@@ -690,9 +690,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @SwitchBackPack.started += instance.OnSwitchBackPack;
-                @SwitchBackPack.performed += instance.OnSwitchBackPack;
-                @SwitchBackPack.canceled += instance.OnSwitchBackPack;
+                @SwitchToPlayer.started += instance.OnSwitchToPlayer;
+                @SwitchToPlayer.performed += instance.OnSwitchToPlayer;
+                @SwitchToPlayer.canceled += instance.OnSwitchToPlayer;
                 @UpDown.started += instance.OnUpDown;
                 @UpDown.performed += instance.OnUpDown;
                 @UpDown.canceled += instance.OnUpDown;
@@ -729,13 +729,13 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnSwimUp(InputAction.CallbackContext context);
         void OnSwimDown(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
-        void OnSwitchBackPack(InputAction.CallbackContext context);
+        void OnSwitchToBackPack(InputAction.CallbackContext context);
         void OnToggleBackPackFollow(InputAction.CallbackContext context);
     }
     public interface IBackpackActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnSwitchBackPack(InputAction.CallbackContext context);
+        void OnSwitchToPlayer(InputAction.CallbackContext context);
         void OnUpDown(InputAction.CallbackContext context);
         void OnTogglePlayerFollow(InputAction.CallbackContext context);
     }

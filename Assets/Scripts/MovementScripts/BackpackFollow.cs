@@ -10,7 +10,9 @@ public class BackpackFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EventSystem.SubscribeEvent(EventSystem.EventType.ON_BACKPACK_TOGGLED, Tog);
+        EventSystem.SubscribeEvent(EventSystem.EventType.ON_BACKPACK_RELEASE, ReleaseBackPack);
+        EventSystem.SubscribeEvent(EventSystem.EventType.ON_BACKPACK_TAKE, TakeBackPack);
+
     }
 
     // Update is called once per frame
@@ -23,8 +25,14 @@ public class BackpackFollow : MonoBehaviour
         }  
     }
 
-    void Tog()
+    void ReleaseBackPack()
     {
-        followPlayer = !followPlayer;
+            followPlayer = false;
     }
+
+    void TakeBackPack()
+    {
+            followPlayer = true;
+    }
+
 }

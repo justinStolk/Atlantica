@@ -370,7 +370,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1439688, y: 1}
+    m_SensorSize: {x: 2.762, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -393,7 +393,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 499390287}
-  m_LocalRotation: {x: 0.018180821, y: -0.000000013504177, z: 0.0000000052386895,
+  m_LocalRotation: {x: 0.018180821, y: 0.000000013504177, z: -0.0000000052386895,
     w: 0.9998348}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -673,7 +673,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1439688, y: 1}
+    m_SensorSize: {x: 2.762, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -696,7 +696,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 990029035}
-  m_LocalRotation: {x: -0, y: -4.656613e-10, z: 1.7462298e-10, w: 1}
+  m_LocalRotation: {x: -0, y: 0.0000000041909516, z: -0.0000000015133992, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -844,7 +844,7 @@ GameObject:
   - component: {fileID: 1112369266}
   - component: {fileID: 1112369265}
   - component: {fileID: 1112369264}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1109,7 +1109,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1439688, y: 1}
+    m_SensorSize: {x: 2.762, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -1132,7 +1132,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229086593}
-  m_LocalRotation: {x: -0.018150125, y: 0.0000000055879354, z: -0.0000000019208528,
+  m_LocalRotation: {x: -0.018150125, y: 0.0000000069849193, z: -0.0000000025029294,
     w: 0.9998353}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -1159,12 +1159,12 @@ GameObject:
   - component: {fileID: 1350258869}
   - component: {fileID: 1350258868}
   - component: {fileID: 1350258866}
-  - component: {fileID: 1350258865}
   - component: {fileID: 1350258864}
   - component: {fileID: 1350258867}
-  m_Layer: 0
+  - component: {fileID: 1350258870}
+  m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1320,18 +1320,6 @@ MonoBehaviour:
   jumpForce: 10
   maxSpeed: 5
   playerCamera: {fileID: 1759010552}
---- !u!114 &1350258865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1350258857}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75113bdc0ebaa124699a7c144552515b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1350258866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1393,6 +1381,7 @@ MonoBehaviour:
     m_Flags: 0
   backpack: {fileID: 1859037956}
   player: {fileID: 1350258863}
+  backpackFollow: {fileID: 0}
   camera: {fileID: 1759010555}
 --- !u!114 &1350258869
 MonoBehaviour:
@@ -1419,6 +1408,23 @@ MonoBehaviour:
   rb: {fileID: 1859037959}
   moveForce: 0.5
   bpCamera: {fileID: 1759010552}
+--- !u!114 &1350258870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350258857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cadb99eb8967212458781e1943036464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layermask:
+    serializedVersion: 2
+    m_Bits: 119
+  sphereRadius: 2
+  maxDistance: 5
 --- !u!1 &1510987782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,7 +1658,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1518915164}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BackpackHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1754,7 +1760,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759010550}
-  m_LocalRotation: {x: 0.0009561839, y: 0.98362255, z: -0.1801626, w: 0.005220419}
+  m_LocalRotation: {x: 0.0009561835, y: 0.98362255, z: -0.1801626, w: 0.005220415}
   m_LocalPosition: {x: 0.5337008, y: 8.860001, z: 6.281792}
   m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
   m_ConstrainProportionsScale: 0
@@ -1919,7 +1925,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1439688, y: 1}
+    m_SensorSize: {x: 2.762, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -2062,7 +2068,7 @@ GameObject:
   - component: {fileID: 1859037960}
   m_Layer: 0
   m_Name: Backpack
-  m_TagString: Untagged
+  m_TagString: Backpack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

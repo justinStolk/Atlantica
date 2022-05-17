@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
+using System;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PlayerManager : MonoBehaviour
     public InputAction move;
     public Transform backpack;
     public Transform player;
+    public BackpackFollow backpackFollow;
 
     public CinemachineFreeLook camera;
 
@@ -21,21 +23,20 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-
         playerActionsAsset = new PlayerInputActions();
-        playerInput = GetComponent<PlayerInput>();
         playerActionsAsset.Player.Enable();
+
+        playerInput = GetComponent<PlayerInput>();
         walkingState = GetComponent<WalkingState>();
         waterLevelCheck = GetComponent<WaterLevelCheck>();
-        move = playerActionsAsset.Player.Move;
-        playerActionsAsset.Player.SwitchBackPack.canceled += SwitchBackpack;
 
-        //Toggle is Q
-        playerActionsAsset.Backpack.TogglePlayerFollow.started += ctx => EventSystem.CallEvent(EventSystem.EventType.ON_BACKPACK_TOGGLED);
-        playerActionsAsset.Backpack.TogglePlayerFollow.started += ctx => SwitchPlayer();
-        playerActionsAsset.Player.ToggleBackPackFollow.started += ctx => EventSystem.CallEvent(EventSystem.EventType.ON_BACKPACK_TOGGLED);
-        playerActionsAsset.Player.ToggleBackPackFollow.started += SwitchBackpack;
+        move = playerActionsAsset.Player.Move;
+
+        playerActionsAsset.Player.SwitchToBackPack.canceled += SwitchToBackpack;
+        playerActionsAsset.Backpack.SwitchToPlayer.started += SwitchToPlayer;
+        
     }
+
 
     private void Start()
     {
@@ -52,22 +53,41 @@ public class PlayerManager : MonoBehaviour
         stateMachine.FSMFixedUpdate();
     }
 
-    private void SwitchBackpack(InputAction.CallbackContext obj)
+    //ON PRESS R, TOGGLES VIEW AND MOVEMENT TO BACKPACK
+    private void SwitchToBackpack(InputAction.CallbackContext obj)
     {
         camera.m_Follow = backpack;
         camera.m_LookAt = backpack;
+        EventSystem.CallEvent(EventSystem.EventType.ON_BACKPACK_RELEASE);
 
         stateMachine.SwitchState(typeof(BackpackFlyingState));
         playerInput.SwitchCurrentActionMap("Backpack");
+        
     }
 
-    public void SwitchPlayer()
+    //ON PRESS R, TOGGLES VIEW AND MOVEMENT TO PLAYER
+    private void SwitchToPlayer(InputAction.CallbackContext obj)
     {
-        Debug.Log("Follow player");
+        if (waterLevelCheck.InWater == true)
+        {
+            stateMachine.SwitchState(typeof(SwimmingState));
+        }
+        else
+        {
+            stateMachine.SwitchState(typeof(WalkingState));
+        }
+
+        SwitchPlayerView();
+    }
+
+    public void SwitchPlayerView()
+    {
         camera.m_Follow = player;
         camera.m_LookAt = player;
 
         playerInput.SwitchCurrentActionMap("Player");
-        
+        //EventSystem.CallEvent(EventSystem.EventType.ON_PLAYER_VIEW);
     }
+
+
 }

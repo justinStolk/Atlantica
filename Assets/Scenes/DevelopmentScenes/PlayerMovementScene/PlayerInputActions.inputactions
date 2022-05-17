@@ -60,7 +60,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SwitchBackPack",
+                    "name": "SwitchToBackPack",
                     "type": "Button",
                     "id": "3fdec4a5-a00d-4eef-b9d7-98059fa07e74",
                     "expectedControlType": "Button",
@@ -251,7 +251,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "SwitchBackPack",
+                    "action": "SwitchToBackPack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -282,7 +282,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "SwitchBackPack",
+                    "name": "SwitchToPlayer",
                     "type": "Button",
                     "id": "5886bca9-89d2-4e27-a863-5cbbf2f75be7",
                     "expectedControlType": "Button",
@@ -383,7 +383,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "SwitchBackPack",
+                    "action": "SwitchToPlayer",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
