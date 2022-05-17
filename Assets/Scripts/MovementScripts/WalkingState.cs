@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
+[RequireComponent(typeof(Rigidbody))]
 public class WalkingState : BaseState
 {
-    public float WaterSurface, Distance_Surface;
-    public bool InWater;
-    public float swimLevel = 1.25f;
-
+    public WaterLevelCheck waterLevel;
     //LayerMasks
     public LayerMask GroundMask;
     public LayerMask WaterMask;
 
     //Input fields
-    private ThirdPersonActions playerActionsAsset;
-    private InputAction move;
+    //private ThirdPersonActions playerActionsAsset;
+    //private InputAction move;
+    private PlayerManager playerManager;
 
     //Movement fields
     private Rigidbody rb;
@@ -30,30 +28,24 @@ public class WalkingState : BaseState
 
     public override void OnStateEnter()
     {
+        playerManager = GetComponent<PlayerManager>();
         Debug.Log("WALK");
-        InWater = false;
-
+        waterLevel.InWater = false;
         rb = GetComponent<Rigidbody>();
-        playerActionsAsset = new ThirdPersonActions();
-
-        playerActionsAsset.Player.Swim.started += DoJump;
-        move = playerActionsAsset.Player.Move;
-        playerActionsAsset.Player.Enable();
-
+        playerManager.playerActionsAsset.Player.Jump.started += DoJump;
         rb.drag = 3.5f;
     }
 
 
     public override void OnStateExit()
     {
-        playerActionsAsset.Player.Swim.started -= DoJump;
-        playerActionsAsset.Player.Disable();
+        playerManager.playerActionsAsset.Player.Jump.started -= DoJump;
     }
 
     public override void OnStateFixedUpdate()
     {
-        forceDirection += move.ReadValue<Vector2>().x * GetCameraRight(playerCamera) * moveForce;
-        forceDirection += move.ReadValue<Vector2>().y * GetCameraForward(playerCamera) * moveForce;
+        forceDirection += playerManager.move.ReadValue<Vector2>().x * GetCameraRight(playerCamera) * moveForce;
+        forceDirection += playerManager.move.ReadValue<Vector2>().y * GetCameraForward(playerCamera) * moveForce;
 
         rb.AddForce(forceDirection, ForceMode.Impulse);
         forceDirection = Vector3.zero;
@@ -72,28 +64,21 @@ public class WalkingState : BaseState
 
         LookAt();
 
-        if (InWater)
-        {
-            GetWaterLevel();
-        }
-
-        if (Distance_Surface >= swimLevel)
-        {
-            owner.SwitchState(typeof(SwimmingState));
-        }
+        CheckWaterLevel();
     }
 
     public override void OnStateUpdate()
     {
         
     }
+    
 
     private void LookAt()
     {
         Vector3 direction = rb.velocity;
         direction.y = 0f;
 
-        if (move.ReadValue<Vector2>().sqrMagnitude > 0.1f && direction.sqrMagnitude > 0.1f)
+        if (playerManager.move.ReadValue<Vector2>().sqrMagnitude > 0.1f && direction.sqrMagnitude > 0.1f)
         {
             this.rb.rotation = Quaternion.LookRotation(direction, Vector3.up);
         }
@@ -136,17 +121,18 @@ public class WalkingState : BaseState
     private bool IsGrounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, 1.1f);
-
-        //if (Physics.Raycast(transform.position, Vector3.down, 1.1f))
-        //    return true;
-        //else
-        //    return false;
     }
 
-    private void GetWaterLevel()
+    private void CheckWaterLevel()
     {
-        Distance_Surface = WaterSurface - transform.position.y;
-        Distance_Surface = Mathf.Clamp(Distance_Surface, 0, float.MaxValue);
-    }
+        if (waterLevel.InWater)
+        {
+            waterLevel.GetWaterLevel();
+        }
 
+        if (waterLevel.Distance_Surface >= waterLevel.swimLevel)
+        {
+            owner.SwitchState(typeof(SwimmingState));
+        }
+    }
 }
