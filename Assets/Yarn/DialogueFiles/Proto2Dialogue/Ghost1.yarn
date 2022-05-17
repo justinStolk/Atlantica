@@ -1,4 +1,4 @@
-﻿title: Introduction
+﻿title: Introduction_Ghost
 ---
 Player: Hello?
 <<wait 3>>
@@ -38,7 +38,7 @@ position: 1,109
     Ghost: And we were buried along with it.
     <<jump Questions>>
 
--> Player: You're not a robot, aren't you? (CONTINUE)
+-> Player: You're not a robot, are you? (CONTINUE)
     Ghost: No. This is my vessel.
     Ghost: Not much else of me remains.
     Ghost: Only my work.
