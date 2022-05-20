@@ -9,6 +9,8 @@ public class TalkingState : BaseState
     [HideInInspector] public Transform Speaker;
     [HideInInspector] public bool IsTalking;
 
+    [SerializeField] private string nodeToTrigger;
+
     private DialogueRunner dialogueRunner;
     private BaseState previousState;
 
@@ -26,7 +28,7 @@ public class TalkingState : BaseState
         Vector3 speakerPos = new Vector3(Speaker.position.x, 0, Speaker.position.z);
         Vector3 myPos = new Vector3(transform.position.x, 0, transform.position.z);
         Vector3.RotateTowards(transform.position, Speaker.position, Mathf.Deg2Rad * 360, 90);
-        dialogueRunner.StartDialogue(dialogueRunner.startNode);
+        dialogueRunner.StartDialogue(nodeToTrigger);
     }
 
     public override void OnStateExit()
