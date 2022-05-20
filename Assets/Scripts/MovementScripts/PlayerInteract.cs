@@ -43,13 +43,24 @@ public class PlayerInteract : MonoBehaviour
             if (Physics.SphereCast(origin, sphereRadius, direction, out hit, maxDistance))
             {
                 currentHitDistance = hit.distance;
-                Debug.Log(currentHitDistance);
+                //Debug.Log(currentHitDistance);
                 interactionHit = true;
-                InteractText.gameObject.SetActive(true);
+
+                if (hit.transform.tag == "Backpack")
+                {
+                    InteractText.gameObject.SetActive(true);
+
+                }
+
+                if (hit.collider.gameObject.GetComponentInParent<IInteractable>() != null)
+                {
+                    InteractText.gameObject.SetActive(true);
+
+                }
             }
             else
             {
-                Debug.Log("NOTHING");
+                //Debug.Log("NOTHING");
                 interactionHit = false;
                 InteractText.gameObject.SetActive(false);
 
