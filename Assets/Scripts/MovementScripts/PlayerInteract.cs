@@ -20,10 +20,10 @@ public class PlayerInteract : MonoBehaviour
     void Start()
     {
         playerManager = GetComponent<PlayerManager>();
-        playerManager.playerActionsAsset.Player.Interact.started += RetrieveBackpack;
+        playerManager.playerActionsAsset.Player.Interact.started += InteractWith;
     }
 
-    private void RetrieveBackpack(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    private void InteractWith(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         origin = transform.position;
         direction = transform.forward;
@@ -32,13 +32,25 @@ public class PlayerInteract : MonoBehaviour
 
         if (Physics.SphereCast(origin, sphereRadius, direction, out hit, maxDistance))
         {
-            Debug.Log(hit);
             currentHitDistance = hit.distance;
             Debug.Log(currentHitDistance);
+
             if(hit.transform.tag == "Backpack")
             {
+                Debug.Log("BACKPACK SPOTTED");
                 EventSystem.CallEvent(EventSystem.EventType.ON_BACKPACK_TAKE);
             }
+
+            
+
+            if (hit.collider.gameObject.GetComponentInParent<IInteractable>() != null)
+            {
+
+                    Debug.Log("IINTERACTABLE SPOTTED");
+                    hit.collider.gameObject.GetComponentInParent<IInteractable>().Interact();
+            }
+
+            
         }
         else
         {
@@ -46,6 +58,8 @@ public class PlayerInteract : MonoBehaviour
         }
 
     }
+
+    
 
     private void OnDrawGizmosSelected()
     {
