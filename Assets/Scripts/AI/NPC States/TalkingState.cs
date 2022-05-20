@@ -15,6 +15,8 @@ public class TalkingState : BaseState
     private void Start()
     {
         dialogueRunner = GetComponent<DialogueRunner>();
+        Speaker = FindObjectOfType<PlayerFSM>().transform;
+        dialogueRunner.dialogueViews = FindObjectsOfType<DialogueViewBase>();
     }
     public override void OnStateEnter()
     {
