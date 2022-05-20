@@ -10,13 +10,16 @@ public class LaserBeam
     private List<Vector3> laserPoints = new();
     private List<Transform> reflectorPoints = new();
     private List<Vector3> reflectorRotations = new();
+    private float laserDistance;
 
-    public LaserBeam(Vector3 laserPosition, Vector3 laserDirection, Material laserMaterial)
+    public LaserBeam(Vector3 laserPosition, Vector3 laserDirection, float maxLaserDistance, Material laserMaterial)
     {
         laserObject = new GameObject("Laser", typeof(LineRenderer));
         laser = laserObject.GetComponent<LineRenderer>();
         position = laserPosition;
         direction = laserDirection;
+
+        laserDistance = maxLaserDistance;
 
         laser.startWidth = 0.1f;
         laser.endWidth = 0.1f;
@@ -32,7 +35,7 @@ public class LaserBeam
         laserPoints.Add(pos);
 
         Ray ray = new Ray(pos, dir);
-        if(Physics.Raycast(ray, out RaycastHit hit, 50))
+        if(Physics.Raycast(ray, out RaycastHit hit, laserDistance))
         {
             if (hit.transform.CompareTag("Reflector"))
             {
@@ -59,7 +62,7 @@ public class LaserBeam
         }
         else
         {
-            laserPoints.Add(ray.GetPoint(50));
+            laserPoints.Add(ray.GetPoint(laserDistance));
             UpdateLaser();
         }
 
@@ -97,30 +100,40 @@ public class LaserBeam
     public void EvaluateLaser()
     {
         //Fix multireflection blocking issue with for-loop here
-        Ray ray = new Ray(position, direction);
-        if(Physics.Raycast(ray, out RaycastHit hit, 50))
+        for(int i = 0; i < laserPoints.Count - 1; i ++)
         {
-            if (!hit.transform.CompareTag("Reflector"))
+            Vector3 pos = laserPoints[i];
+            Vector3 dir = (laserPoints[i + 1] - laserPoints[i]).normalized;
+            Ray ray = new Ray(pos, dir);
+            if (Physics.Raycast(ray, out RaycastHit hit, laserDistance))
             {
-                RecastLaser();
-                return;
-            }
-            else
-            {
-                if (!laserPoints.Contains(hit.point))
+                if (!hit.transform.CompareTag("Reflector"))
                 {
                     RecastLaser();
                     return;
                 }
+                else
+                {
+                    if (!laserPoints.Contains(hit.point))
+                    {
+                        RecastLaser();
+                        return;
+                    }
+                }
+            }else if (!laserPoints.Contains(ray.GetPoint(laserDistance)))
+            {
+                RecastLaser();
+                return;
             }
         }
-
+        //Ray ray = new Ray(position, direction);
         for(int i = 0; i < reflectorPoints.Count; i++)
         {
             Transform reflectorPoint = reflectorPoints[i];
             if(reflectorPoint.eulerAngles != reflectorRotations[i])
             {
                 RecastLaser();
+                return;
             }
         }
     }
