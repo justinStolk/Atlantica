@@ -1,44 +1,45 @@
 ﻿title: Introduction_Ghost
 ---
-Player: Hello?
-<<wait 3>>
-Player: Are you.. awake?
+<<set $PlayerName to "Zilla">>
+{$PlayerName}: Hello?
+//<<wait 3>>
+{$PlayerName}: Are you.. awake?
 Ghost: Yes.
-Player: I didn't expect to talk to anybody down here.
+{$PlayerName}: I didn't expect to talk to anybody down here.
 <<jump Questions>>
 ===
 
 title: Questions
 position: 1,109
 ---
--> Player: Who are you?
-    <<wait 2>>
+-> {$PlayerName}: Who are you?
+    //<<wait 2>>
     Ghost: My name was the last to go.
     Ghost: It's hard to remember.
     Ghost: Just like my face.
-    <<wait 1>>
+    //<<wait 1>>
     Ghost: Do you see my face?
-    -> Player: It's.. vague.
+    -> {$PlayerName}: It's.. vague.
         Ghost: Not much remains.
-    -> Player: It's beautiful.
+    -> {$PlayerName}: It's beautiful.
         Ghost: That is.. kind.
     <<jump Questions>>
 
--> Player: How long have you been here?
-    <<wait 2>>
+-> {$PlayerName}: How long have you been here?
+    //<<wait 2>>
     Ghost: When I watched the walls break,
     Ghost: and braced for the crashing waves,
     Ghost: I thought the end was upon us.
     Ghost: But I awoke again,
     Ghost: and I'm still here,
     Ghost: though everybody has forgotten.
-    <<wait 1>>
+    //<<wait 1>>
     Ghost: This sand looks like ash.
     Ghost: This city is Pompeii.
     Ghost: And we were buried along with it.
     <<jump Questions>>
 
--> Player: You're not a robot, are you? (CONTINUE)
+-> {$PlayerName}: You're not a robot, are you? (CONTINUE)
     Ghost: No. This is my vessel.
     Ghost: Not much else of me remains.
     Ghost: Only my work.
@@ -50,18 +51,18 @@ position: 1,109
 title: PuzzleExplanation
 position: 0,241
 ---
-Player: Your work?
+{$PlayerName}: Your work?
 Ghost: In a past life, I was an inventor.
 Ghost: Working on a cleaner future.
 Ghost: My life's work was a solar panel,
 Ghost: That could power a city whole.
-Player: Like the one in (city name)!
+{$PlayerName}: Like the one in (city name)!
 Ghost: Tell me, was my invention realized?
 Ghost: If you could show me it works,
 Ghost: by reflecting the light in this room,
 Ghost: you will have my eternal gratitude.
 <<stop>>
-//-> Player: Your fear?
-//-> Player: Your anger?
+//-> {$PlayerName}: Your fear?
+//-> {$PlayerName}: Your anger?
     //Ghost: Rich men something something aaa
 ===
