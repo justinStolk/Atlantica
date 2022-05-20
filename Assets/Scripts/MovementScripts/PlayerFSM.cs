@@ -9,6 +9,7 @@ public class PlayerFSM : MonoBehaviour
     {
         stateMachine = new FSM(typeof(WalkingState), GetComponents<BaseState>());
     }
+
     private void Update()
     {
         stateMachine.FSMUpdate();
@@ -18,4 +19,5 @@ public class PlayerFSM : MonoBehaviour
     {
         stateMachine.FSMFixedUpdate();
     }
+
 }
