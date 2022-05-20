@@ -62,6 +62,7 @@ public class PlayerManager : MonoBehaviour
 
         stateMachine.SwitchState(typeof(BackpackFlyingState));
         playerInput.SwitchCurrentActionMap("Backpack");
+        Debug.Log("GA NAAR BACKPACK");
         
     }
 
