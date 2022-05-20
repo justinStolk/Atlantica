@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
 
-[RequireComponent(typeof(DialogueRunner))]
 public class TalkingState : BaseState
 {
     [HideInInspector] public Transform Speaker;
     [HideInInspector] public bool IsTalking;
 
+    [SerializeField] private YarnProject yarnProject;
     [SerializeField] private string nodeToTrigger;
 
     private DialogueRunner dialogueRunner;
@@ -16,19 +16,24 @@ public class TalkingState : BaseState
 
     private void Start()
     {
-        dialogueRunner = GetComponent<DialogueRunner>();
+        dialogueRunner = FindObjectOfType<DialogueRunner>();
         Speaker = FindObjectOfType<PlayerManager>().transform;
         dialogueRunner.dialogueViews = FindObjectsOfType<DialogueViewBase>();
     }
     public override void OnStateEnter()
     {
-        dialogueRunner.onDialogueComplete.AddListener(OnDialogueConcluded);
-        IsTalking = true;
-        previousState = owner.PreviousState;
-        Vector3 speakerPos = new Vector3(Speaker.position.x, 0, Speaker.position.z);
-        Vector3 myPos = new Vector3(transform.position.x, 0, transform.position.z);
-        Vector3.RotateTowards(transform.position, Speaker.position, Mathf.Deg2Rad * 360, 90);
-        dialogueRunner.StartDialogue(nodeToTrigger);
+        if(owner.PreviousState.GetType() != typeof(TalkingState))
+        {
+            dialogueRunner.onDialogueComplete.AddListener(OnDialogueConcluded);
+            IsTalking = true;
+            previousState = owner.PreviousState;
+            Vector3 speakerPos = new Vector3(Speaker.position.x, 0, Speaker.position.z);
+            Vector3 myPos = new Vector3(transform.position.x, 0, transform.position.z);
+            Vector3.RotateTowards(myPos, speakerPos, Mathf.Deg2Rad * 360, 90);
+            dialogueRunner.SetProject(yarnProject);
+            dialogueRunner.startNode = nodeToTrigger;
+            dialogueRunner.StartDialogue(dialogueRunner.startNode);
+        }
     }
 
     public override void OnStateExit()
@@ -46,6 +51,7 @@ public class TalkingState : BaseState
         if (!IsTalking)
         {
             dialogueRunner.onDialogueComplete.RemoveListener(OnDialogueConcluded);
+            Debug.Log(previousState.GetType());
             owner.SwitchState(previousState.GetType());
         }
     }
