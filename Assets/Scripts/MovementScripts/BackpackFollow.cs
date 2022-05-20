@@ -6,7 +6,7 @@ public class BackpackFollow : MonoBehaviour
 {
     public bool followPlayer = true;
     public GameObject backpackHolder;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -22,12 +22,13 @@ public class BackpackFollow : MonoBehaviour
         {
             transform.rotation = backpackHolder.transform.rotation;
             transform.position = backpackHolder.transform.position;
-        }  
+        }
     }
 
     void ReleaseBackPack()
     {
             followPlayer = false;
+        
     }
 
     void TakeBackPack()

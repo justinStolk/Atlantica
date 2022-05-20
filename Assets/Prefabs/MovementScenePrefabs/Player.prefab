@@ -213,6 +213,8 @@ MonoBehaviour:
   layermask:
     serializedVersion: 2
     m_Bits: 119
+  InteractText: {fileID: 0}
+  PlayerActive: 0
   sphereRadius: 2
   maxDistance: 5
 --- !u!136 &1729946555677632858
