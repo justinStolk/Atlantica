@@ -97,30 +97,36 @@ public class LaserBeam
     public void EvaluateLaser()
     {
         //Fix multireflection blocking issue with for-loop here
-        Ray ray = new Ray(position, direction);
-        if(Physics.Raycast(ray, out RaycastHit hit, 50))
+        for(int i = 0; i < laserPoints.Count - 1; i ++)
         {
-            if (!hit.transform.CompareTag("Reflector"))
+            Vector3 pos = laserPoints[i];
+            Vector3 dir = (laserPoints[i + 1] - laserPoints[i]).normalized;
+            Ray ray = new Ray(pos, dir);
+            if (Physics.Raycast(ray, out RaycastHit hit, 50))
             {
-                RecastLaser();
-                return;
-            }
-            else
-            {
-                if (!laserPoints.Contains(hit.point))
+                if (!hit.transform.CompareTag("Reflector"))
                 {
                     RecastLaser();
                     return;
                 }
+                else
+                {
+                    if (!laserPoints.Contains(hit.point))
+                    {
+                        RecastLaser();
+                        return;
+                    }
+                }
             }
         }
-
+        //Ray ray = new Ray(position, direction);
         for(int i = 0; i < reflectorPoints.Count; i++)
         {
             Transform reflectorPoint = reflectorPoints[i];
             if(reflectorPoint.eulerAngles != reflectorRotations[i])
             {
                 RecastLaser();
+                return;
             }
         }
     }
