@@ -1310,17 +1310,17 @@ PrefabInstance:
     - target: {fileID: 456294364047594670, guid: b5f3e39a50f94ba49befb9b896558ed7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.018180788
+      value: 0.018180802
       objectReference: {fileID: 0}
     - target: {fileID: 456294364047594670, guid: b5f3e39a50f94ba49befb9b896558ed7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000055879354
+      value: -0.000000018626451
       objectReference: {fileID: 0}
     - target: {fileID: 456294364047594670, guid: b5f3e39a50f94ba49befb9b896558ed7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000024214387
+      value: 0.000000007450581
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5f3e39a50f94ba49befb9b896558ed7, type: 3}
@@ -2498,17 +2498,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3775705550680687888, guid: 47cdd70b073c37d4eb570624e0ab96cc,
-        type: 3}
-      propertyPath: yarnProject
-      value: 
-      objectReference: {fileID: 7545569452688597077, guid: f785231434de74c4aa24b40e93dd4eb0,
-        type: 3}
-    - target: {fileID: 3775705550680687888, guid: 47cdd70b073c37d4eb570624e0ab96cc,
-        type: 3}
-      propertyPath: startAutomatically
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3775705550680687890, guid: 47cdd70b073c37d4eb570624e0ab96cc,
         type: 3}
       propertyPath: m_RootOrder
@@ -2564,22 +2553,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3775705550680687891, guid: 47cdd70b073c37d4eb570624e0ab96cc,
-        type: 3}
-      propertyPath: yarnProject
-      value: 
-      objectReference: {fileID: 7545569452688597077, guid: f785231434de74c4aa24b40e93dd4eb0,
-        type: 3}
-    - target: {fileID: 3775705550680687891, guid: 47cdd70b073c37d4eb570624e0ab96cc,
-        type: 3}
-      propertyPath: nodeToTrigger
-      value: Introduction_History
-      objectReference: {fileID: 0}
     - target: {fileID: 3775705550680687897, guid: 47cdd70b073c37d4eb570624e0ab96cc,
         type: 3}
       propertyPath: m_Name
       value: NPC_Resident
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3775705550680687888, guid: 47cdd70b073c37d4eb570624e0ab96cc, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47cdd70b073c37d4eb570624e0ab96cc, type: 3}

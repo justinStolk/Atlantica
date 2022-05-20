@@ -206,7 +206,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3775705550680687890}
   - component: {fileID: 3775705550680687901}
-  - component: {fileID: 3775705550680687888}
   - component: {fileID: 3775705550680687900}
   - component: {fileID: 3775705550680687903}
   - component: {fileID: 3775705550680687891}
@@ -255,39 +254,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 7
   m_ObstacleAvoidanceType: 4
---- !u!114 &3775705550680687888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3775705550680687897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bec29c0a230741bdac901dba8da47ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  yarnProject: {fileID: 7545569452688597077, guid: a9b357f08075f43cbad81d8ec757e1f7,
-    type: 3}
-  _variableStorage: {fileID: 0}
-  dialogueViews: []
-  startNode: Start
-  startAutomatically: 1
-  runSelectedOptionAsLine: 0
-  lineProvider: {fileID: 0}
-  verboseLogging: 1
-  onNodeStart:
-    m_PersistentCalls:
-      m_Calls: []
-  onNodeComplete:
-    m_PersistentCalls:
-      m_Calls: []
-  onDialogueComplete:
-    m_PersistentCalls:
-      m_Calls: []
-  onCommand:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &3775705550680687900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,3 +294,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speaker: {fileID: 0}
   IsTalking: 0
+  yarnProject: {fileID: 7545569452688597077, guid: f785231434de74c4aa24b40e93dd4eb0,
+    type: 3}
+  nodeToTrigger: Introduction_History
