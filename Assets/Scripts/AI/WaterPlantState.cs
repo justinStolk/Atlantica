@@ -48,7 +48,8 @@ public class WaterPlantState : BaseState
                 bot.WaterPlant(targetPlant);
                 if (targetPlant.MoistureLevel > targetPlant.MaxMoistureLevel - 1)
                 {
-                    owner.SwitchState(typeof(WaterPlantState));
+                    targetPlant = null;
+                    FindPlantToWater();
                 }
             }
         }
