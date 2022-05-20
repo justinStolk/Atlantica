@@ -19,6 +19,7 @@ public class PlayerManager : MonoBehaviour
     private WalkingState walkingState;
     private WaterLevelCheck waterLevelCheck;
     private FSM stateMachine;
+    private PlayerInteract playerInteract;
 
     // Start is called before the first frame update
     void Awake()
@@ -29,6 +30,7 @@ public class PlayerManager : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         walkingState = GetComponent<WalkingState>();
         waterLevelCheck = GetComponent<WaterLevelCheck>();
+        playerInteract = GetComponent<PlayerInteract>();
 
         move = playerActionsAsset.Player.Move;
 
@@ -59,7 +61,7 @@ public class PlayerManager : MonoBehaviour
         camera.m_Follow = backpack;
         camera.m_LookAt = backpack;
         EventSystem.CallEvent(EventSystem.EventType.ON_BACKPACK_RELEASE);
-
+        playerInteract.PlayerActive = false;
         stateMachine.SwitchState(typeof(BackpackFlyingState));
         playerInput.SwitchCurrentActionMap("Backpack");
         
@@ -76,6 +78,8 @@ public class PlayerManager : MonoBehaviour
         {
             stateMachine.SwitchState(typeof(WalkingState));
         }
+
+        playerInteract.PlayerActive = true;
 
         SwitchPlayerView();
     }
