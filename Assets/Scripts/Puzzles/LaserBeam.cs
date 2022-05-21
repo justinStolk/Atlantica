@@ -12,8 +12,9 @@ public class LaserBeam
     private List<Transform> reflectorPoints = new();
     private List<Vector3> reflectorRotations = new();
     private float laserDistance;
+    private LayerMask mask;
 
-    public LaserBeam(Vector3 laserPosition, Vector3 laserDirection, float maxLaserDistance, Material laserMaterial)
+    public LaserBeam(Vector3 laserPosition, Vector3 laserDirection, float maxLaserDistance, Material laserMaterial, LayerMask beamMask)
     {
         laserObject = new GameObject("Laser", typeof(LineRenderer));
         laser = laserObject.GetComponent<LineRenderer>();
@@ -28,6 +29,8 @@ public class LaserBeam
         laser.endColor = Color.yellow;
         laser.material = laserMaterial;
 
+        mask = beamMask;
+
         CastLaser(position, direction);
     }
 
@@ -36,7 +39,7 @@ public class LaserBeam
         laserPoints.Add(pos);
 
         Ray ray = new Ray(pos, dir);
-        if(Physics.Raycast(ray, out RaycastHit hit, laserDistance))
+        if(Physics.Raycast(ray, out RaycastHit hit, laserDistance, mask))
         {
             if (hit.transform.CompareTag("Reflector"))
             {
@@ -106,7 +109,7 @@ public class LaserBeam
             Vector3 pos = laserPoints[i];
             Vector3 dir = (laserPoints[i + 1] - laserPoints[i]).normalized;
             Ray ray = new Ray(pos, dir);
-            if (Physics.Raycast(ray, out RaycastHit hit, laserDistance))
+            if (Physics.Raycast(ray, out RaycastHit hit, laserDistance, mask))
             {
                 if (!hit.transform.CompareTag("Reflector"))
                 {
