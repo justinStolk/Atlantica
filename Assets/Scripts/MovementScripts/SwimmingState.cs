@@ -7,7 +7,6 @@ using Cinemachine;
 
 public class SwimmingState : BaseState
 {
-    public WaterLevelCheck waterLevel;
 
     public bool SwimmingUp = false;
     public bool SwimmingDown = false;
@@ -22,6 +21,7 @@ public class SwimmingState : BaseState
     [SerializeField] private float maxSpeed = 5f;
 
 
+    public WaterLevelCheck waterLevel;
     private PlayerManager playerManager;
     private Rigidbody rb;
     private Vector3 forceDirection = Vector3.zero;
@@ -32,6 +32,7 @@ public class SwimmingState : BaseState
         playerManager = GetComponent<PlayerManager>();
         camera = GetComponent<PlayerManager>().camera;
         rb = GetComponent<Rigidbody>();
+        waterLevel = GetComponent<WaterLevelCheck>();
     }
 
     public override void OnStateEnter()
