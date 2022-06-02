@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,7 +12,9 @@ public class BackpackFlyingState : BaseState
 
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float moveForce = 1f;
-    [SerializeField] private Camera bpCamera;
+    //[SerializeField] private Camera bpCamera;
+
+    private CinemachineFreeLook camera;
 
     private PlayerInputActions playerActionsAsset;
     private PlayerManager playerManager;
@@ -26,6 +29,7 @@ public class BackpackFlyingState : BaseState
         //playerActionsAsset.Backpack.SwitchToPlayer.started += SwitchToPlayer;
         playerActionsAsset.Backpack.UpDown.started += ctx => upDown = ctx.ReadValue<float>();
         playerActionsAsset.Backpack.UpDown.canceled += ctx => upDown = 0;
+        camera = GetComponent<PlayerManager>().camera;
         playerManager = GetComponent<PlayerManager>();
         waterLevelCheck = GetComponent<WaterLevelCheck>();
     }
@@ -53,8 +57,8 @@ public class BackpackFlyingState : BaseState
 
     public override void OnStateFixedUpdate()
     {
-        forceDirection += move.ReadValue<Vector2>().x * GetCameraRight(bpCamera) * moveForce;
-        forceDirection += move.ReadValue<Vector2>().y * GetCameraForward(bpCamera) * moveForce;
+        forceDirection += move.ReadValue<Vector2>().x * GetCameraRight(camera) * moveForce;
+        forceDirection += move.ReadValue<Vector2>().y * GetCameraForward(camera) * moveForce;
 
         rb.AddForce(forceDirection, ForceMode.Impulse);
         forceDirection = Vector3.zero;
@@ -83,16 +87,16 @@ public class BackpackFlyingState : BaseState
         }
     }
 
-    private Vector3 GetCameraForward(Camera playerCamera)
+    private Vector3 GetCameraForward(CinemachineFreeLook camera)
     {
-        Vector3 forward = playerCamera.transform.forward;
+        Vector3 forward = camera.transform.forward;
         forward.y = 0;
         return forward.normalized;
     }
 
-    private Vector3 GetCameraRight(Camera playerCamera)
+    private Vector3 GetCameraRight(CinemachineFreeLook camera)
     {
-        Vector3 right = playerCamera.transform.right;
+        Vector3 right = camera.transform.right;
         right.y = 0;
         return right.normalized;
     }

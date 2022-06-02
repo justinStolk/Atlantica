@@ -107,16 +107,16 @@ public class WalkingState : BaseState
 
     private void DoJump(InputAction.CallbackContext obj)
     {
-        Debug.Log("Jump");
+        //Debug.Log("Jump");
 
         if (IsGrounded())
         {
-            Debug.Log("Grounded");
+            //Debug.Log("Grounded");
             forceDirection += Vector3.up * jumpForce;
         }
         else
         {
-            Debug.Log("NOTGrounded");
+            //Debug.Log("NOTGrounded");
 
         }
     }
