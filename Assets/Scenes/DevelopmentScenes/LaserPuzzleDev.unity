@@ -473,6 +473,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laserMaterial: {fileID: 2100000, guid: 038d75c62aaecb74386d6ec53e3cbf83, type: 2}
   maxLightRayDistance: 70
+  beamLayerMask:
+    serializedVersion: 2
+    m_Bits: 225
 --- !u!4 &348002472
 Transform:
   m_ObjectHideFlags: 0
