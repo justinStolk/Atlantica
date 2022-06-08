@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 6460276018958845348}
   - component: {fileID: 6460276018958845351}
   - component: {fileID: 6460276018958845352}
+  - component: {fileID: 1859037962}
   m_Layer: 0
   m_Name: Backpack
-  m_TagString: Backpack
+  m_TagString: LaserTarget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6460276018958845347}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2.05, z: -0.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -64,6 +65,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followPlayer: 1
   backpackHolder: {fileID: 0}
+--- !u!114 &1859037962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6460276018958845347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f43c51a948194e0439092b4a4973346b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgraded: 0
 --- !u!1 &6460276019319597398
 GameObject:
   m_ObjectHideFlags: 0
