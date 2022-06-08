@@ -1053,6 +1053,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1729946556234670546}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1352893019 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6460276018958845347, guid: 60ea957818f0b5d41a02685027298ffd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6460276019340963488}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1438917377 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1729946555677632941, guid: afa319c53aaebd544bae2b7ab30e0daf,
@@ -1204,6 +1210,19 @@ Rigidbody:
     type: 3}
   m_PrefabInstance: {fileID: 6460276019340963488}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1859037962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352893019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f43c51a948194e0439092b4a4973346b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgraded: 0
 --- !u!1 &2014996648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1471,12 +1490,12 @@ PrefabInstance:
     - target: {fileID: 456294363557226258, guid: b5f3e39a50f94ba49befb9b896558ed7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000022351742
+      value: 0.0000000037252903
       objectReference: {fileID: 0}
     - target: {fileID: 456294363557226258, guid: b5f3e39a50f94ba49befb9b896558ed7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000037252903
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 456294364047594670, guid: b5f3e39a50f94ba49befb9b896558ed7,
         type: 3}
@@ -1501,17 +1520,17 @@ PrefabInstance:
     - target: {fileID: 456294364047594670, guid: b5f3e39a50f94ba49befb9b896558ed7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.21510218
+      value: 0.21510224
       objectReference: {fileID: 0}
     - target: {fileID: 456294364047594670, guid: b5f3e39a50f94ba49befb9b896558ed7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000001117587
+      value: -0.000000014901161
       objectReference: {fileID: 0}
     - target: {fileID: 456294364047594670, guid: b5f3e39a50f94ba49befb9b896558ed7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000018626449
+      value: -0.000000004656613
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5f3e39a50f94ba49befb9b896558ed7, type: 3}
@@ -1704,6 +1723,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Backpack
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460276018958845347, guid: 60ea957818f0b5d41a02685027298ffd,
+        type: 3}
+      propertyPath: m_TagString
+      value: LaserTarget
       objectReference: {fileID: 0}
     - target: {fileID: 6460276018958845348, guid: 60ea957818f0b5d41a02685027298ffd,
         type: 3}
