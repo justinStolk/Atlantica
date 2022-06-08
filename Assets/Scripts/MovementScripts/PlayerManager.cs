@@ -11,10 +11,12 @@ public class PlayerManager : MonoBehaviour
     public InputAction move;
     public Transform backpack;
     public Transform player;
+    public Transform cameraLook;
     //public BackpackFollow backpackFollow;
 
     public CinemachineFreeLook camera;
 
+    private UpgradeBackpack upgradeBackpack;
     private PlayerInput playerInput;
     private WalkingState walkingState;
     private WaterLevelCheck waterLevelCheck;
@@ -26,7 +28,7 @@ public class PlayerManager : MonoBehaviour
     {
         playerActionsAsset = new PlayerInputActions();
         playerActionsAsset.Player.Enable();
-
+        upgradeBackpack = backpack.GetComponent<UpgradeBackpack>();
         playerInput = GetComponent<PlayerInput>();
         walkingState = GetComponent<WalkingState>();
         waterLevelCheck = GetComponent<WaterLevelCheck>();
@@ -35,8 +37,7 @@ public class PlayerManager : MonoBehaviour
         move = playerActionsAsset.Player.Move;
 
         playerActionsAsset.Player.SwitchToBackPack.canceled += SwitchToBackpack;
-        playerActionsAsset.Backpack.SwitchToPlayer.started += SwitchToPlayer;
-        
+        playerActionsAsset.Backpack.SwitchToPlayer.started += SwitchToPlayer;        
     }
 
 
@@ -58,19 +59,31 @@ public class PlayerManager : MonoBehaviour
     //ON PRESS R, TOGGLES VIEW AND MOVEMENT TO BACKPACK
     private void SwitchToBackpack(InputAction.CallbackContext obj)
     {
-        camera.m_Follow = backpack;
-        camera.m_LookAt = backpack;
-        EventSystem.CallEvent(EventSystem.EventType.ON_BACKPACK_RELEASE);
-        playerInteract.PlayerActive = false;
-        stateMachine.SwitchState(typeof(BackpackFlyingState));
-        playerInput.SwitchCurrentActionMap("Backpack");
-        Debug.Log("GA NAAR BACKPACK");
+        if (upgradeBackpack.upgraded == true)
+        {
+            camera.m_Follow = backpack;
+            camera.m_LookAt = backpack;
+            cameraLook.transform.SetParent(backpack);
+            cameraLook.transform.position = new Vector3(backpack.transform.position.x, backpack.transform.position.y + 1, backpack.transform.position.z);
+            EventSystem.CallEvent(EventSystem.EventType.ON_BACKPACK_RELEASE);
+            playerInteract.PlayerActive = false;
+            stateMachine.SwitchState(typeof(BackpackFlyingState));
+            playerInput.SwitchCurrentActionMap("Backpack");
+            Debug.Log("GA NAAR BACKPACK");
+        }
+        else
+        {
+            Debug.Log("BackPack not yet upgraded");
+        }
         
     }
 
     //ON PRESS R, TOGGLES VIEW AND MOVEMENT TO PLAYER
     private void SwitchToPlayer(InputAction.CallbackContext obj)
     {
+        cameraLook.transform.SetParent(player);
+        cameraLook.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z);
+
         if (waterLevelCheck.InWater == true)
         {
             stateMachine.SwitchState(typeof(SwimmingState));

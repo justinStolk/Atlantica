@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class WalkingState : BaseState
@@ -12,26 +13,28 @@ public class WalkingState : BaseState
     public LayerMask WaterMask;
 
     //Input fields
-    //private ThirdPersonActions playerActionsAsset;
-    //private InputAction move;
     private PlayerManager playerManager;
+    private CinemachineFreeLook camera;
 
     //Movement fields
-    private Rigidbody rb;
-    private Vector3 forceDirection = Vector3.zero;
-
     [SerializeField] private float moveForce = 1f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float maxSpeed = 5f;
 
-    [SerializeField] private Camera playerCamera;
+    private Rigidbody rb;
+    private Vector3 forceDirection = Vector3.zero;
 
-    public override void OnStateEnter()
+
+    private void Start()
     {
         playerManager = GetComponent<PlayerManager>();
+        camera = GetComponent<PlayerManager>().camera;
+        rb = GetComponent<Rigidbody>();
+    }
+    public override void OnStateEnter()
+    {
         Debug.Log("WALK");
         waterLevel.InWater = false;
-        rb = GetComponent<Rigidbody>();
         playerManager.playerActionsAsset.Player.Jump.started += DoJump;
         rb.drag = 3.5f;
     }
@@ -44,8 +47,8 @@ public class WalkingState : BaseState
 
     public override void OnStateFixedUpdate()
     {
-        forceDirection += playerManager.move.ReadValue<Vector2>().x * GetCameraRight(playerCamera) * moveForce;
-        forceDirection += playerManager.move.ReadValue<Vector2>().y * GetCameraForward(playerCamera) * moveForce;
+        forceDirection += playerManager.move.ReadValue<Vector2>().x * GetCameraRight(camera) * moveForce;
+        forceDirection += playerManager.move.ReadValue<Vector2>().y * GetCameraForward(camera) * moveForce;
 
         rb.AddForce(forceDirection, ForceMode.Impulse);
         forceDirection = Vector3.zero;
@@ -88,32 +91,32 @@ public class WalkingState : BaseState
         }
     }
 
-    private Vector3 GetCameraForward(Camera playerCamera)
+    private Vector3 GetCameraForward(CinemachineFreeLook camera)
     {
-        Vector3 forward = playerCamera.transform.forward;
+        Vector3 forward = camera.transform.forward;
         forward.y = 0;
         return forward.normalized;
     }
 
-    private Vector3 GetCameraRight(Camera playerCamera)
+    private Vector3 GetCameraRight(CinemachineFreeLook camera)
     {
-        Vector3 right = playerCamera.transform.right;
+        Vector3 right = camera.transform.right;
         right.y = 0;
         return right.normalized;
     }
 
     private void DoJump(InputAction.CallbackContext obj)
     {
-        Debug.Log("Jump");
+        //Debug.Log("Jump");
 
         if (IsGrounded())
         {
-            Debug.Log("Grounded");
+            //Debug.Log("Grounded");
             forceDirection += Vector3.up * jumpForce;
         }
         else
         {
-            Debug.Log("NOTGrounded");
+            //Debug.Log("NOTGrounded");
 
         }
     }

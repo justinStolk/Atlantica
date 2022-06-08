@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class SwimmingState : BaseState
 {
-    public WaterLevelCheck waterLevel;
 
     public bool SwimmingUp = false;
     public bool SwimmingDown = false;
@@ -14,25 +14,31 @@ public class SwimmingState : BaseState
     public LayerMask GroundMask;
 
     //Input fields
-    private PlayerManager playerManager;
 
     //Movement fields
-    private Rigidbody rb;
-    private Vector3 forceDirection = Vector3.zero;
-
     [SerializeField] private float moveForce = 1f;
     [SerializeField] private float UpwardForce = 5f;
     [SerializeField] private float maxSpeed = 5f;
 
-    [SerializeField] private Camera playerCamera;
+
+    public WaterLevelCheck waterLevel;
+    private PlayerManager playerManager;
+    private Rigidbody rb;
+    private Vector3 forceDirection = Vector3.zero;
+    private CinemachineFreeLook camera;
+
+    private void Start()
+    {
+        playerManager = GetComponent<PlayerManager>();
+        camera = GetComponent<PlayerManager>().camera;
+        rb = GetComponent<Rigidbody>();
+        waterLevel = GetComponent<WaterLevelCheck>();
+    }
 
     public override void OnStateEnter()
     {
-        playerManager = GetComponent<PlayerManager>();
         Debug.Log("SWIM");
         waterLevel.InWater = true;
-
-        rb = GetComponent<Rigidbody>();
 
         playerManager.playerActionsAsset.Player.SwimUp.started += SwimUp;
         playerManager.playerActionsAsset.Player.SwimDown.started += SwimDown;
@@ -54,8 +60,8 @@ public class SwimmingState : BaseState
 
     public override void OnStateFixedUpdate()
     {
-        forceDirection += playerManager.move.ReadValue<Vector2>().x * GetCameraRight(playerCamera) * moveForce;
-        forceDirection += playerManager.move.ReadValue<Vector2>().y * GetCameraForward(playerCamera) * moveForce;
+        forceDirection += playerManager.move.ReadValue<Vector2>().x * GetCameraRight(camera) * moveForce;
+        forceDirection += playerManager.move.ReadValue<Vector2>().y * GetCameraForward(camera) * moveForce;
 
         rb.AddForce(forceDirection, ForceMode.Impulse);
         forceDirection = Vector3.zero;
@@ -125,18 +131,19 @@ public class SwimmingState : BaseState
         }
     }
 
-    private Vector3 GetCameraForward(Camera playerCamera)
+    private Vector3 GetCameraForward(CinemachineFreeLook camera)
     {
-        Vector3 forward = playerCamera.transform.forward;
+        Vector3 forward = camera.transform.forward;
         forward.y = 0;
         return forward.normalized;
     }
 
-    private Vector3 GetCameraRight(Camera playerCamera)
+    private Vector3 GetCameraRight(CinemachineFreeLook camera)
     {
-        Vector3 right = playerCamera.transform.right;
+        Vector3 right = camera.transform.right;
         right.y = 0;
         return right.normalized;
+        
     }
 
     private void SwimUp(InputAction.CallbackContext obj)
