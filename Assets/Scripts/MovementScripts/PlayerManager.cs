@@ -16,6 +16,7 @@ public class PlayerManager : MonoBehaviour
 
     public CinemachineFreeLook camera;
 
+    private PlayerAnimationManager playerAnim;
     private UpgradeBackpack upgradeBackpack;
     private PlayerInput playerInput;
     private WalkingState walkingState;
@@ -33,6 +34,7 @@ public class PlayerManager : MonoBehaviour
         walkingState = GetComponent<WalkingState>();
         waterLevelCheck = GetComponent<WaterLevelCheck>();
         playerInteract = GetComponent<PlayerInteract>();
+        playerAnim = GetComponent<PlayerAnimationManager>();
 
         move = playerActionsAsset.Player.Move;
 

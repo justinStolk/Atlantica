@@ -23,6 +23,7 @@ public class WalkingState : BaseState
 
     private Rigidbody rb;
     private Vector3 forceDirection = Vector3.zero;
+    private PlayerAnimationManager playerAnim;
 
 
     private void Start()
@@ -30,6 +31,7 @@ public class WalkingState : BaseState
         playerManager = GetComponent<PlayerManager>();
         camera = GetComponent<PlayerManager>().camera;
         rb = GetComponent<Rigidbody>();
+        playerAnim = GetComponent<PlayerAnimationManager>();
     }
     public override void OnStateEnter()
     {
@@ -113,10 +115,12 @@ public class WalkingState : BaseState
         {
             //Debug.Log("Grounded");
             forceDirection += Vector3.up * jumpForce;
+            playerAnim.jumping = true;
         }
         else
         {
             //Debug.Log("NOTGrounded");
+            playerAnim.jumping = false;
 
         }
     }
