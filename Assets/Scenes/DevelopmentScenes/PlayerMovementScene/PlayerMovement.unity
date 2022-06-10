@@ -1426,12 +1426,12 @@ PrefabInstance:
     - target: {fileID: 456294363557226258, guid: b5f3e39a50f94ba49befb9b896558ed7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000022351742
+      value: 0.0000000037252903
       objectReference: {fileID: 0}
     - target: {fileID: 456294363557226258, guid: b5f3e39a50f94ba49befb9b896558ed7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000037252903
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 456294364047594670, guid: b5f3e39a50f94ba49befb9b896558ed7,
         type: 3}
@@ -1456,17 +1456,17 @@ PrefabInstance:
     - target: {fileID: 456294364047594670, guid: b5f3e39a50f94ba49befb9b896558ed7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.21510221
+      value: 0.21510224
       objectReference: {fileID: 0}
     - target: {fileID: 456294364047594670, guid: b5f3e39a50f94ba49befb9b896558ed7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000018626451
+      value: -0.000000018626451
       objectReference: {fileID: 0}
     - target: {fileID: 456294364047594670, guid: b5f3e39a50f94ba49befb9b896558ed7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000018626451
+      value: -0.0000000055879354
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5f3e39a50f94ba49befb9b896558ed7, type: 3}
@@ -1622,8 +1622,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1729946557468372878, guid: afa319c53aaebd544bae2b7ab30e0daf,
         type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 133.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1729946557468372878, guid: afa319c53aaebd544bae2b7ab30e0daf,
+        type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.2
+      value: -17.7
       objectReference: {fileID: 0}
     - target: {fileID: 3993477937381999635, guid: afa319c53aaebd544bae2b7ab30e0daf,
         type: 3}

@@ -45,11 +45,11 @@ public class PlayerAnimationManager : MonoBehaviour
         if(waterLevel.InWater == true)
         {
             anim.SetBool("Swimming", true);
-            backPackHolder.transform.eulerAngles = new Vector3(transform.rotation.x + 90, player.transform.eulerAngles.y, transform.rotation.z);
+            //backPackHolder.transform.eulerAngles = new Vector3(transform.rotation.x + 90, player.transform.eulerAngles.y, transform.rotation.z);
 
             if(setPosition == false)
             {
-                backPackHolder.transform.position = new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z + 0.3f);
+                //backPackHolder.transform.position = new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z + 0.3f);
                 setPosition = true;
             }
         }
