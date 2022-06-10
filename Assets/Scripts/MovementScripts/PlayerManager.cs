@@ -9,7 +9,7 @@ public class PlayerManager : MonoBehaviour
 {
     public PlayerInputActions playerActionsAsset;
     public InputAction move;
-    public Transform backpack;
+    public GameObject backpack;
     public Transform player;
     public Transform cameraLook;
     //public BackpackFollow backpackFollow;
@@ -63,9 +63,9 @@ public class PlayerManager : MonoBehaviour
     {
         if (upgradeBackpack.upgraded == true)
         {
-            camera.m_Follow = backpack;
-            camera.m_LookAt = backpack;
-            cameraLook.transform.SetParent(backpack);
+            camera.m_Follow = backpack.transform;
+            camera.m_LookAt = backpack.transform;
+            cameraLook.transform.SetParent(backpack.transform);
             cameraLook.transform.position = new Vector3(backpack.transform.position.x, backpack.transform.position.y + 1, backpack.transform.position.z);
             EventSystem.CallEvent(EventSystem.EventType.ON_BACKPACK_RELEASE);
             playerInteract.PlayerActive = false;
@@ -104,7 +104,7 @@ public class PlayerManager : MonoBehaviour
     {
         camera.m_Follow = player;
         camera.m_LookAt = player;
-
+        
         playerInput.SwitchCurrentActionMap("Player");
         //EventSystem.CallEvent(EventSystem.EventType.ON_PLAYER_VIEW);
     }
