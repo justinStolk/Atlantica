@@ -15,12 +15,14 @@ public class WalkingState : BaseState
     //Input fields
     private PlayerManager playerManager;
     private CinemachineFreeLook camera;
+    //private IEnumerator jumpCooldown;
 
     //Movement fields
     [SerializeField] private float moveForce = 1f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float maxSpeed = 5f;
-
+    [SerializeField] private float jumpButtonTime = 2f;
+    //[SerializeField] private float jumpButtonGracePeriod = 2f;
     private Rigidbody rb;
     private Vector3 forceDirection = Vector3.zero;
     private PlayerAnimationManager playerAnim;
@@ -70,6 +72,12 @@ public class WalkingState : BaseState
         LookAt();
 
         CheckWaterLevel();
+        //IsGrounded();
+        //if (!IsGrounded())
+        //{
+        //    playerAnim.jumping = false;
+
+        //}
     }
 
     public override void OnStateUpdate()
@@ -109,19 +117,16 @@ public class WalkingState : BaseState
 
     private void DoJump(InputAction.CallbackContext obj)
     {
-        //Debug.Log("Jump");
 
         if (IsGrounded())
         {
-            //Debug.Log("Grounded");
-            forceDirection += Vector3.up * jumpForce;
             playerAnim.jumping = true;
+            StartCoroutine(jumpCooldown());
+            
         }
         else
         {
-            //Debug.Log("NOTGrounded");
             playerAnim.jumping = false;
-
         }
     }
 
@@ -141,5 +146,13 @@ public class WalkingState : BaseState
         {
             owner.SwitchState(typeof(SwimmingState));
         }
+    }
+
+    IEnumerator jumpCooldown()
+    {
+        yield return new WaitForSeconds(jumpButtonTime);
+        forceDirection += Vector3.up * jumpForce;
+        playerAnim.jumping = false;
+
     }
 }

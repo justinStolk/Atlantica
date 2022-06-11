@@ -10,7 +10,6 @@ public class PlayerAnimationManager : MonoBehaviour
     public GameObject backPackHolder;
     public GameObject player;
 
-    private bool setPosition;
     private float WalkingSpeed;
     private WaterLevelCheck waterLevel;
     private PlayerManager playerManager;
@@ -31,27 +30,30 @@ public class PlayerAnimationManager : MonoBehaviour
             anim.SetBool("Swimming", false);
             WalkingSpeed = rb.velocity.magnitude;
             anim.SetFloat("WalkingSpeed", WalkingSpeed);
-            setPosition = false;
-            if(jumping == true)
+
+            if(jumping == false)
             {
+                ResetJumpAnim();
+                anim.SetBool("Jumping", false);
+
+            }
+
+            if (jumping == true)
+            {
+                
                 anim.SetBool("Jumping", true);
-                jumping = false;
             }
-            else
-            {
-                anim.SetFloat("WalkingSpeed", WalkingSpeed);
-            }
+            
         }
         if(waterLevel.InWater == true)
         {
+            anim.SetBool("Jumping", false);
             anim.SetBool("Swimming", true);
-            //backPackHolder.transform.eulerAngles = new Vector3(transform.rotation.x + 90, player.transform.eulerAngles.y, transform.rotation.z);
-
-            if(setPosition == false)
-            {
-                //backPackHolder.transform.position = new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z + 0.3f);
-                setPosition = true;
-            }
         }
+    }
+
+    IEnumerator ResetJumpAnim()
+    {
+        yield return new WaitForSeconds(1f);
     }
 }
