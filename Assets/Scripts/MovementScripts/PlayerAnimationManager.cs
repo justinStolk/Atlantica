@@ -22,6 +22,11 @@ public class PlayerAnimationManager : MonoBehaviour
         //rb.GetComponent<Rigidbody>();
     }
 
+    void PlaySound(string path)
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(path, GetComponent<Transform>().position);
+    }
+
     // Update is called once per frame
     void Update()
     {

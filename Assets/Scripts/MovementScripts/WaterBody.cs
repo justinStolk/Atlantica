@@ -7,10 +7,13 @@ public class WaterBody : MonoBehaviour
     WalkingState playerWalk;
     SwimmingState playerSwim;
 
+    private FMODUnity.StudioEventEmitter eventEmitterRef;
+
     private void Start()
     {
         playerWalk = FindObjectOfType<WalkingState>();
         playerSwim = FindObjectOfType<SwimmingState>();
+        eventEmitterRef = GetComponent<FMODUnity.StudioEventEmitter>();
     }
 
     private void OnTriggerStay(Collider other)
@@ -26,6 +29,7 @@ public class WaterBody : MonoBehaviour
             {
                 playerWalk.waterLevel.WaterSurface = transform.position.y;
             }
+
         }
 
         if(other.GetComponent<SwimmingState>() == playerSwim)
@@ -34,6 +38,8 @@ public class WaterBody : MonoBehaviour
             {
                 playerSwim.waterLevel.WaterSurface = transform.position.y;
             }
+
+            eventEmitterRef.Play();
         }
     }
 
@@ -45,6 +51,7 @@ public class WaterBody : MonoBehaviour
             {
                 playerSwim.waterLevel.InWater = false;
             }
+            eventEmitterRef.Stop();
         }
     }
 }

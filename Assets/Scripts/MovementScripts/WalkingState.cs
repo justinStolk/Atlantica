@@ -26,7 +26,8 @@ public class WalkingState : BaseState
     private Rigidbody rb;
     private Vector3 forceDirection = Vector3.zero;
     private PlayerAnimationManager playerAnim;
-
+    
+    
 
     private void Start()
     {
