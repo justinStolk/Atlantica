@@ -417,8 +417,8 @@ MonoBehaviour:
   SwitchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: C:/Users/Jogchum/Documents/FMOD Studio/ExamplesUnity/ExamplesUnity.fspro
-  sourceBankPath: C:/Users/Jogchum/Documents/FMOD Studio/ExamplesUnity/Build
+  sourceProjectPath: Assets/FMODRootFolder/ExamplesUnity/ExamplesUnity.fspro
+  sourceBankPath: Assets/FMODRootFolder/ExamplesUnity/Build
   SourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
