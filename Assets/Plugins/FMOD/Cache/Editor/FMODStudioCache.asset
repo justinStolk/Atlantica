@@ -42,7 +42,7 @@ MonoBehaviour:
   Path: C:/Users/Jogchum/Documents/FMOD Studio/ExamplesUnity/Build/Desktop/VO.bank
   Name: VO
   StudioPath: bank:/VO
-  lastModified: 637905793165715187
+  lastModified: 637906444996896637
   FileSizes:
   - Name: Desktop
     Value: 38624
@@ -170,7 +170,7 @@ MonoBehaviour:
   Path: C:/Users/Jogchum/Documents/FMOD Studio/ExamplesUnity/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637905793161845739
+  lastModified: 637906444987627061
   FileSizes:
   - Name: Desktop
     Value: 4054
@@ -245,7 +245,7 @@ MonoBehaviour:
   Path: C:/Users/Jogchum/Documents/FMOD Studio/ExamplesUnity/Build/Desktop/Vehicles.bank
   Name: Vehicles
   StudioPath: bank:/Vehicles
-  lastModified: 637905793165535676
+  lastModified: 637906444996567518
   FileSizes:
   - Name: Desktop
     Value: 222464
@@ -265,7 +265,7 @@ MonoBehaviour:
   Path: C:/Users/Jogchum/Documents/FMOD Studio/ExamplesUnity/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 637905793165161602
+  lastModified: 637906444995704742
   FileSizes:
   - Name: Desktop
     Value: 21580064
@@ -731,7 +731,7 @@ MonoBehaviour:
   Path: C:/Users/Jogchum/Documents/FMOD Studio/ExamplesUnity/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637905793161825788
+  lastModified: 637906444987607111
   FileSizes:
   - Name: Desktop
     Value: 15592
@@ -951,7 +951,7 @@ MonoBehaviour:
   - {fileID: -1863703764122150509}
   StringsBanks:
   - {fileID: -6980416549888258898}
-  cacheTime: 637905793165715187
+  cacheTime: 637906444996896637
   cacheVersion: 131591
 --- !u!114 &235673247216461757
 MonoBehaviour:
@@ -1122,7 +1122,7 @@ MonoBehaviour:
   Path: C:/Users/Jogchum/Documents/FMOD Studio/ExamplesUnity/Build/Desktop/Dialogue_EN.bank
   Name: Dialogue_EN
   StudioPath: bank:/Dialogue_EN
-  lastModified: 637905793161563615
+  lastModified: 637906444987292859
   FileSizes:
   - Name: Desktop
     Value: 61120
@@ -1430,7 +1430,7 @@ MonoBehaviour:
   Path: C:/Users/Jogchum/Documents/FMOD Studio/ExamplesUnity/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 637905793162958783
+  lastModified: 637906444990331518
   FileSizes:
   - Name: Desktop
     Value: 12157376
@@ -1634,7 +1634,7 @@ MonoBehaviour:
   Path: C:/Users/Jogchum/Documents/FMOD Studio/ExamplesUnity/Build/Desktop/Dialogue_CN.bank
   Name: Dialogue_CN
   StudioPath: bank:/Dialogue_CN
-  lastModified: 637905793161412924
+  lastModified: 637906444987113337
   FileSizes:
   - Name: Desktop
     Value: 52416
@@ -1654,7 +1654,7 @@ MonoBehaviour:
   Path: C:/Users/Jogchum/Documents/FMOD Studio/ExamplesUnity/Build/Desktop/Dialogue_JP.bank
   Name: Dialogue_JP
   StudioPath: bank:/Dialogue_JP
-  lastModified: 637905793161726076
+  lastModified: 637906444987502310
   FileSizes:
   - Name: Desktop
     Value: 66560

@@ -6,6 +6,7 @@ public class WaterBody : MonoBehaviour
 {
     WalkingState playerWalk;
     SwimmingState playerSwim;
+    //public MusicControl musicSystem;
 
     private FMODUnity.StudioEventEmitter eventEmitterRef;
 
@@ -14,6 +15,15 @@ public class WaterBody : MonoBehaviour
         playerWalk = FindObjectOfType<WalkingState>();
         playerSwim = FindObjectOfType<SwimmingState>();
         eventEmitterRef = GetComponent<FMODUnity.StudioEventEmitter>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<SwimmingState>() == playerSwim)
+        {
+            
+            eventEmitterRef.Play();
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -38,8 +48,7 @@ public class WaterBody : MonoBehaviour
             {
                 playerSwim.waterLevel.WaterSurface = transform.position.y;
             }
-
-            eventEmitterRef.Play();
+            //musicSystem.StartMusic();
         }
     }
 
@@ -50,8 +59,12 @@ public class WaterBody : MonoBehaviour
             if (playerSwim.waterLevel.InWater)
             {
                 playerSwim.waterLevel.InWater = false;
+                //musicSystem.StopMusic();
+                eventEmitterRef.SendMessage("Stop");
+                Debug.Log("UIT T WATER");
             }
-            eventEmitterRef.Stop();
         }
     }
+
+    
 }
