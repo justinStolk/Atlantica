@@ -691,6 +691,9 @@ GameObject:
   - component: {fileID: 1729946555677632850}
   - component: {fileID: 1729946555677632941}
   - component: {fileID: 1729946555677632858}
+  - component: {fileID: 547532019}
+  - component: {fileID: 547532020}
+  - component: {fileID: 547532029}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -808,7 +811,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   backpack: {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 1729946555677632853}
   cameraLook: {fileID: 850949699}
   camera: {fileID: 0}
 --- !u!114 &1729946555677632848
@@ -854,6 +857,7 @@ MonoBehaviour:
   moveForce: 1
   jumpForce: 10
   maxSpeed: 5
+  jumpButtonTime: 0.7
 --- !u!114 &1729946555677632850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -899,10 +903,76 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.35
+  m_Height: 1.88
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.06, z: 0}
+--- !u!95 &547532019
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729946555677632940}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: fbd4eb78ceecb064e83c14cbcaf145ee, type: 3}
+  m_Controller: {fileID: 9100000, guid: 1530d5fb04ffe7e43921eaf88c2e4f90, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &547532020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729946555677632940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1d360a12b9cc54694fc15c8fb7a080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1729946555677632852}
+  jumping: 0
+  backPackHolder: {fileID: 1729946557468372873}
+  player: {fileID: 1729946555677632940}
+--- !u!114 &547532029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729946555677632940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 347416895
+      Data2: 1223030430
+      Data3: 47099559
+      Data4: -643625871
+    Path: event:/Character/Enemy Footsteps
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1729946557468372873
 GameObject:
   m_ObjectHideFlags: 0
@@ -927,7 +997,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1729946557468372873}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.4, y: 131.3, z: -16.1}
+  m_LocalPosition: {x: 0.002, y: 133.5, z: -17.7}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
