@@ -21,6 +21,7 @@ public class BackpackFlyingState : BaseState
     private Vector3 forceDirection = Vector3.zero;
     private WaterLevelCheck waterLevelCheck;
     private float upDown;
+    private PlayerAnimationManager playerAnim;
 
     private void Start()
     {
@@ -32,6 +33,7 @@ public class BackpackFlyingState : BaseState
         camera = GetComponent<PlayerManager>().camera;
         playerManager = GetComponent<PlayerManager>();
         waterLevelCheck = GetComponent<WaterLevelCheck>();
+        playerAnim = GetComponent<PlayerAnimationManager>();
     }
 
    
@@ -40,9 +42,11 @@ public class BackpackFlyingState : BaseState
     {
         playerActionsAsset.Player.Disable();
         playerActionsAsset.Backpack.Enable();
-
+        //playerAnim.controlBackpack = true;
+        playerManager.backpack.transform.Rotate(90f, 0, 0);
         //playerActionsAsset.Backpack.Enable();
         move = playerActionsAsset.Backpack.Move;
+        playerManager.backpack.GetComponentInChildren<MeshCollider>().isTrigger = false;
 
         EventSystem.CallEvent(EventSystem.EventType.ON_BACKPACK_RELEASE);
 
@@ -53,6 +57,7 @@ public class BackpackFlyingState : BaseState
     {
         playerActionsAsset.Player.Enable();
         playerActionsAsset.Backpack.Disable();
+        playerManager.backpack.GetComponentInChildren<MeshCollider>().isTrigger = true;
     }
 
     public override void OnStateFixedUpdate()
@@ -75,7 +80,7 @@ public class BackpackFlyingState : BaseState
     private void LookAt()
     {
         Vector3 direction = rb.velocity;
-        direction.y = 0f;
+        direction.y = -90f;
 
         if (move.ReadValue<Vector2>().sqrMagnitude > 0.1f && direction.sqrMagnitude > 0.1f)
         {
@@ -89,7 +94,7 @@ public class BackpackFlyingState : BaseState
 
     private Vector3 GetCameraForward(CinemachineFreeLook camera)
     {
-        Vector3 forward = camera.transform.forward;
+        Vector3 forward = camera.transform.up;
         forward.y = 0;
         return forward.normalized;
     }
@@ -100,18 +105,5 @@ public class BackpackFlyingState : BaseState
         right.y = 0;
         return right.normalized;
     }
-
-    //private void SwitchBackPack(InputAction.CallbackContext obj)
-    //{
-    //    Debug.Log("SwitchToPlayer");
-    //    if(waterLevelCheck.InWater == true)
-    //    {
-    //        owner.SwitchState(typeof(SwimmingState));
-    //    }
-    //    else
-    //    {
-    //        owner.SwitchState(typeof(WalkingState));
-    //    }
-    //    playerManager.SwitchPlayer();
-    //}
+    
 }
