@@ -12,7 +12,6 @@ public class BackpackFollow : MonoBehaviour
     {
         EventSystem.SubscribeEvent(EventSystem.EventType.ON_BACKPACK_RELEASE, ReleaseBackPack);
         EventSystem.SubscribeEvent(EventSystem.EventType.ON_BACKPACK_TAKE, TakeBackPack);
-
     }
 
     // Update is called once per frame

@@ -12,6 +12,8 @@ public class BackpackFlyingState : BaseState
 
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float moveForce = 1f;
+    [SerializeField] private float maxSpeed = 5f;
+
     //[SerializeField] private Camera bpCamera;
 
     private CinemachineFreeLook camera;
@@ -22,7 +24,7 @@ public class BackpackFlyingState : BaseState
     private WaterLevelCheck waterLevelCheck;
     private float upDown;
     private PlayerAnimationManager playerAnim;
-
+    private float boostState;
     private void Start()
     {
         playerActionsAsset = GetComponent<PlayerManager>().playerActionsAsset;
@@ -36,7 +38,20 @@ public class BackpackFlyingState : BaseState
         playerAnim = GetComponent<PlayerAnimationManager>();
     }
 
-   
+    private void DoBoost()
+    {
+        boostState = (playerManager.playerActionsAsset.Backpack.Boost.ReadValue<float>());
+
+        if (boostState == 1)
+        {
+            moveForce = 2f;
+        }
+        else
+        {
+            moveForce = 1f;
+        }
+
+    }
 
     public override void OnStateEnter()
     {
@@ -70,6 +85,7 @@ public class BackpackFlyingState : BaseState
         LookAt();
 
         forceDirection += Vector3.up * UpDownForce * upDown * Time.fixedDeltaTime;
+        DoBoost();
     }
 
     public override void OnStateUpdate()

@@ -40,12 +40,10 @@ public class PlayerAnimationManager : MonoBehaviour
             {
                 ResetJumpAnim();
                 anim.SetBool("Jumping", false);
-
             }
 
             if (jumping == true)
             {
-                
                 anim.SetBool("Jumping", true);
             }
             

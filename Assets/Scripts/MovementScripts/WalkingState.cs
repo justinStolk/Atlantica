@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
+using System;
 
 [RequireComponent(typeof(Rigidbody))]
 public class WalkingState : BaseState
@@ -26,8 +27,10 @@ public class WalkingState : BaseState
     private Rigidbody rb;
     private Vector3 forceDirection = Vector3.zero;
     private PlayerAnimationManager playerAnim;
-    
-    
+    private float jumpState;
+
+
+
 
     private void Start()
     {
@@ -44,6 +47,21 @@ public class WalkingState : BaseState
         rb.drag = 3.5f;
     }
 
+    private void DoSprint()
+    {
+        jumpState = (playerManager.playerActionsAsset.Player.Sprint.ReadValue<float>());
+
+        if (jumpState == 1 && IsGrounded())
+        {
+            maxSpeed = 10f;
+        }
+        else
+        {
+            maxSpeed = 5f;
+
+        }
+
+    }
 
     public override void OnStateExit()
     {
@@ -52,6 +70,7 @@ public class WalkingState : BaseState
 
     public override void OnStateFixedUpdate()
     {
+
         forceDirection += playerManager.move.ReadValue<Vector2>().x * GetCameraRight(camera) * moveForce;
         forceDirection += playerManager.move.ReadValue<Vector2>().y * GetCameraForward(camera) * moveForce;
 
@@ -71,7 +90,7 @@ public class WalkingState : BaseState
         }
 
         LookAt();
-
+        DoSprint();
         CheckWaterLevel();
         //IsGrounded();
         //if (!IsGrounded())
@@ -122,6 +141,7 @@ public class WalkingState : BaseState
         if (IsGrounded())
         {
             playerAnim.jumping = true;
+            forceDirection += Vector3.up * jumpForce;
             StartCoroutine(jumpCooldown());
             
         }
@@ -152,7 +172,6 @@ public class WalkingState : BaseState
     IEnumerator jumpCooldown()
     {
         yield return new WaitForSeconds(jumpButtonTime);
-        forceDirection += Vector3.up * jumpForce;
         playerAnim.jumping = false;
 
     }
