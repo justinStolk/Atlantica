@@ -13,6 +13,7 @@ public class LaserBeam
     private List<Vector3> reflectorRotations = new();
     private float laserDistance;
     private LayerMask mask;
+    private ILaserTarget hitTarget;
 
     public LaserBeam(Vector3 laserPosition, Vector3 laserDirection, float maxLaserDistance, Material laserMaterial, LayerMask beamMask)
     {
@@ -49,8 +50,10 @@ public class LaserBeam
                 reflectorPoints.Add(hit.transform);
                 reflectorRotations.Add(hit.transform.eulerAngles);
                 CastLaser(point, reflectedDirection);
-            }else if(hit.transform.CompareTag("LaserTarget"))
+            }else if(hit.transform.TryGetComponent(out ILaserTarget lt))
             {
+                hitTarget = lt;
+                hitTarget.OnTargetHit();
                 laserPoints.Add(hit.point);
                 laser.startColor = Color.green;
                 laser.endColor = Color.green;
@@ -90,6 +93,8 @@ public class LaserBeam
 
     void RecastLaser()
     {
+        hitTarget?.OnTargetExit();
+        hitTarget = null;
         laser.startWidth = 0.1f;
         laser.endWidth = 0.1f;
         laser.startColor = Color.red;

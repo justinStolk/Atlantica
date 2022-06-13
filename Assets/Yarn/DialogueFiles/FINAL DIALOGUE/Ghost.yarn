@@ -1,0 +1,100 @@
+title: Introduction_Ghost
+tags: 
+position: 11.627169370651245,494.6040368080139
+---
+<<set $PlayerName to "Dwyn">>
+An ancient looking android sits collapsed on the floor. It seems to be the center of the corruption.
+It is partly covered by holograms. I can see.. a face?
+{$PlayerName}: Hello?
+//<<wait 3>>
+{$PlayerName}: Are you.. awake?
+A tinny, faint voice sounds from the robot. It startles me.
+Ghost: Yes.
+{$PlayerName}: I didn't expect to talk to anybody down here.
+<<jump Questions>>
+===
+
+title: Questions
+tags: 
+position: 254.63649940490723,498.00405502319336
+---
+-> {$PlayerName}: Who are you?
+    //<<wait 2>>
+    Ghost: My name was the last to go.
+    Ghost: It's hard to remember.
+    Ghost: Just like my face.
+    //<<wait 1>>
+    Ghost: Do you see my face?
+    -> {$PlayerName}: It's.. vague.
+        Ghost: Not much remains.
+    -> {$PlayerName}: It's beautiful.
+        Ghost: That is.. kind.
+    <<jump Questions>>
+
+-> {$PlayerName}: How long have you been here?
+    //<<wait 2>>
+    Ghost: When I watched the walls break,
+    Ghost: and braced for the crashing waves,
+    Ghost: I thought the end was upon us.
+    Ghost: But I awoke again,
+    Ghost: and I'm still here,
+    Ghost: though everybody has forgotten.
+    //<<wait 1>>
+    Ghost: This sand looks like ash.
+    Ghost: This city is Pompeii.
+    Ghost: And we were buried along with it.
+    <<jump Questions>>
+
+-> {$PlayerName}: You're not a robot, are you? (CONTINUE)
+    Ghost: No. This is my vessel.
+    Ghost: Not much else of me remains.
+    Ghost: Only my work.
+    //Ghost: and my fear,
+    //Ghost: and my anger.
+    <<jump PuzzleExplanation>>
+===
+
+title: PuzzleExplanation
+tags: 
+position: 492.53704833984375,499.40411376953125
+---
+{$PlayerName}: Your work?
+Ghost: In a past life, I was an inventor.
+Ghost: Working on a cleaner future.
+Ghost: My life's work was a solar panel,
+Ghost: That could power a city whole.
+{$PlayerName}: Like the one in (city name)!
+Ghost: Tell me, was my invention realized?
+Ghost: If you could show me it works,
+//Ghost: by reflecting the light towards the panel, (is dit nodig voor sturing?)
+Ghost: you will save me from my own despair.
+Maybe if I help this.. ghost, it will stop the corruption spreading from them.
+<<stop>>
+//-> {$PlayerName}: Your fear?
+//-> {$PlayerName}: Your anger?
+    //Ghost: Rich men something something aaa
+===
+
+title: UpgradeExplanation
+tags:
+---
+{$PlayerName}: I reflected the light towards the solar panel!
+Ghost: Indeed. It seems it is not strong enough.
+Ghost: Just like me, it is corroding.
+Ghost: You will need a second light to power it whole.
+{$PlayerName}: My Raypack could get through the cracked wall downstairs, but it doesn't have enough power to separate..
+Ghost: Behind you is my workbench.
+Ghost: You could magnify it's power input there.
+===
+
+title: PuzzleFinished
+tags:
+---
+Ghost: It's.. working.
+The corruption is disappearing!
+Ghost: You showed me that I am not forgotten, after all these years.
+Ghost: As a result, my memory has been restored.
+Ghost: I cannot thank you enough.
+// Hologrammen verdwijnen met pretty particles ofzo?
+I should tell Vhabi about what happened here.
+===

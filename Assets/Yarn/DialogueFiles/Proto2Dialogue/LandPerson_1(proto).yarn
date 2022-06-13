@@ -1,0 +1,112 @@
+﻿title: Introduction_History
+tags: 
+position: -336,-351
+---
+<<set $PlayerName to "Dwyn">>
+It takes a moment for the man to notice I am standing here. He looks tired.
+Vhabi: Oh, hello! I’ve never seen you around here before. Who are you?
+{$PlayerName}: My name is {$PlayerName}, I'm a recent archeology graduate from the University of Espirit.
+{$PlayerName}: My professor sent me to help with the city's ongoing problem.
+{$PlayerName}: She told me I should search for you as soon as I arrived, as the city's historian.
+The man's face lights up with recognition.
+Vhabi: Of course! Your professor spoke very highly of you.
+Vhabi: Allow me to introduce myself properly. My name is Vhabi, and I'm an old university friend of your archeology professor.
+Vhabi: I am known as the city's historian, indeed!
+Vhabi: Feel free to take a look around my research centre. We have quite a collection of artefacts that might interest you, young archeologist.
+<<jump IntroQuestions>>
+===
+
+title: IntroQuestions
+position: -119,-351
+---
+Vhabi: What can I help you with, {$PlayerName}?
+-> {$PlayerName}: What happened to the solar panels outside?
+    <<jump Corruption>>
+-> {$PlayerName}: Can you tell me more about the city?
+    <<jump Worldbuilding>>
+-> {$PlayerName}: Where do I start my investigation? (CONTINUE)
+    <<jump Quest>>
+===
+
+title: Corruption
+position: 122,-471
+---
+Vhabi: Ah, the broken solar panels.. those are actually part of the reason you are here.
+Vhabi: You see, our systems filter the water from the ocean when it enters our city. But for months now, the water seems to be tainted by what we are calling the corruption.
+Vhabi: Our scientists have ruled out any possibility of it harming people directly, thank the gods. It seems to be only interested in our technology.
+Vhabi: The corruption is making specific parts of our machinery malfunction, but our mechanics are at a complete loss trying to fix them.
+Vhabi: You see, nothing is actually broken! Parts have just stopped working without reason, while others function perfectly still!
+{$PlayerName}: That's very worrying..
+<<jump CorruptionQuestions>>
+===
+
+title: CorruptionQuestions
+position: 353,-479
+---
+-> {$PlayerName}: Where did this corruption come from?
+    Vhabi: It seems to eminate from the ruins right below our city, on the bottom of the ocean.
+    Vhabi: We have been investigating the problem for some time, but..
+    Vhabi sighs.
+    Vhabi: As you can see, we have not been able to make much progress.
+    Vhabi: I was hoping a pair of fresh, young eyes like yours might do the trick. Which is why I contacted your professor.
+    <<jump CorruptionQuestions>>
+-> {$PlayerName}: Is it dangerous?
+    Vhabi: It used to be manageable. Things were breaking, sure, but we could work around it.
+    Vhabi: However, with our solar panels getting tainted as well..
+    Vhabi runs a hand through his hair. His brows are furrowed.
+    Vhabi: I am afraid these malfunctions will soon start impacting our power supply. Which is necessary to keep everything in our city running smoothly. We are a highly advanced society, after all.
+    Vhabi: If we don't find a solution to the corruption soon, this problem is going to get a lot bigger and scarier.
+    <<jump CorruptionQuestions>>
+-> {$PlayerName}: I have another question.
+    <<jump IntroQuestions>>
+===
+
+title: Worldbuilding
+position: 121,-346
+---
+Vhabi: Gladly! The core city was built in the year 2152, just after the Flood laid waste to most of the planet’s habitable land.
+Vhabi: Now, just over 100 years later, (city name) has grown into a closely knit and diverse community. We treat everybody as equals, there are no hierarchies.
+Vhabi: Every infrastructure in our city is completely sustainable. We have eliminated all hunger, poverty and polution.
+Vhabi: We have the revolution to thank for all that, of course.
+<<jump WorldbuildingQuestions>>
+===
+
+title: WorldbuildingQuestions
+position: 353,-358
+---
+-> {$PlayerName}: The Flood?
+    Vhabi: An archeologist who hasn't heard of the Flood!
+    The sound of Vhabi's warm laughter fills the air. He stops when he sees my confused expression.
+    Vhabi: Are you having a laugh?
+    Vhabi: I am happy to explain either way. In 2151, our dear planet's oceans had been rising to a dangerous level for a long time due to climate change.
+    Vhabi: Humanity protected itself by building mega-dikes and other protective structures. But due to rising economic instability and conflict, those structures started to fail.
+    Vhabi: The governments knew about this all along, but kept the information from the rest of society.
+    Vhabi gets a far away look in his eyes.
+    Vhabi: Too many lives were lost when the Flood happened..
+    Vhabi: The surviving populations settled onto the remaining land or built water cities like the core structure we are standing on right now.
+    <<jump WorldbuildingQuestions>>
+-> {$PlayerName}: The Revolution?
+    Vhabi: Our new cities didn't always look and work the way they do now. Just after the Flood, the same broken systems were still in place that had been for centuries.
+    Vhabi: Society was in shambles. More people were struggling to survive than ever before.
+    Vhabi: All over the world generations were realizing the dirty game our governments had played both before, during and after the Flood. Your ancestors banded together and made their voices heard!
+    Vhabi: You should take a look at the monument outside. My father's name is on it.
+    A proud smile graces Vhabi's face.
+    <<jump WorldbuildingQuestions>>
+-> {$PlayerName}: I have another question.
+    <<jump IntroQuestions>>
+===
+
+title: Quest
+position: 122,-227
+---
+Vhabi: The source of the corruption is right underneath our city. Your task is to swim down there, explore, and investigate the corruption.
+//Vhabi: Don't forget to put on a Raypack to help you move and breathe easily underwater. After that, you can jump into any body of water outside.
+Vhabi: I wish you the best of luck!
+{$PlayerName}: I will try my best. Thank you!
+<<stop>>
+===
+title: UpgradeExplanation
+tags: 
+---
+
+===

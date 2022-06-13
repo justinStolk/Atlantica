@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class GardeningBot : MonoBehaviour
 {
-    public float WaterLevel { get; private set; }
-
-    [SerializeField] private float wateringSpeed;
-    [SerializeField] private float maxWaterLevel;
+    public float WaterLevel;
+    public float MaxWaterLevel;
  
     private FSM stateMachine;
 
     // Start is called before the first frame update
     void Start()
     {
-        WaterLevel = maxWaterLevel;
+        WaterLevel = MaxWaterLevel;
         stateMachine = new FSM(typeof(WaterPlantState), GetComponents<BaseState>());
  
     }
@@ -24,27 +22,4 @@ public class GardeningBot : MonoBehaviour
     {
         stateMachine.FSMUpdate();
     }
-
-    public bool FillingBot(float fillAmount)
-    {
-        WaterLevel += fillAmount * Time.deltaTime;
-        Debug.Log("Water level: " + WaterLevel);
-        if(WaterLevel > maxWaterLevel)
-        {
-            WaterLevel = maxWaterLevel;
-            return true;
-        }
-        return false;
-    }
-    public void WaterPlant(Plant plantToWater)
-    {
-        float wateringAmount = wateringSpeed * Time.deltaTime;
-        if(WaterLevel >= wateringAmount && plantToWater.MoistureLevel < plantToWater.MaxMoistureLevel)
-        {
-            plantToWater.WaterPlant(wateringAmount);
-            WaterLevel -= wateringAmount;
-        }
-    }
-
-
 }
