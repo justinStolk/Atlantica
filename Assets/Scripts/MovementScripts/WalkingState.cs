@@ -70,7 +70,6 @@ public class WalkingState : BaseState
 
     public override void OnStateFixedUpdate()
     {
-        Debug.Log(jumpState);
 
         forceDirection += playerManager.move.ReadValue<Vector2>().x * GetCameraRight(camera) * moveForce;
         forceDirection += playerManager.move.ReadValue<Vector2>().y * GetCameraForward(camera) * moveForce;
@@ -142,6 +141,7 @@ public class WalkingState : BaseState
         if (IsGrounded())
         {
             playerAnim.jumping = true;
+            forceDirection += Vector3.up * jumpForce;
             StartCoroutine(jumpCooldown());
             
         }
@@ -172,7 +172,6 @@ public class WalkingState : BaseState
     IEnumerator jumpCooldown()
     {
         yield return new WaitForSeconds(jumpButtonTime);
-        forceDirection += Vector3.up * jumpForce;
         playerAnim.jumping = false;
 
     }
