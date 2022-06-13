@@ -41,10 +41,19 @@ public class RefillWaterState : BaseState
         if (!agent.hasPath && !agent.pathPending)
         {
             Debug.Log("I've probably reached the water station?");
-            if (!targetWaterStation.FillingGardeningBot(bot))
+            FillBot(targetWaterStation.waterFlowSpeed);
+            if (bot.WaterLevel >= bot.MaxWaterLevel)
             {
+                bot.WaterLevel = bot.MaxWaterLevel;
                 owner.SwitchState(typeof(WaterPlantState));
+                return;
             }
         }
     }
+    private void FillBot(float fillAmount)
+    {
+        bot.WaterLevel += fillAmount * Time.deltaTime;
+    }
+
+
 }
