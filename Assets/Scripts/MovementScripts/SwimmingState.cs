@@ -26,6 +26,8 @@ public class SwimmingState : BaseState
     private Rigidbody rb;
     private Vector3 forceDirection = Vector3.zero;
     private CinemachineFreeLook camera;
+    private float sprintState;
+    private BackpackFollow backpackFollow;
 
     private void Start()
     {
@@ -33,6 +35,7 @@ public class SwimmingState : BaseState
         camera = GetComponent<PlayerManager>().camera;
         rb = GetComponent<Rigidbody>();
         waterLevel = GetComponent<WaterLevelCheck>();
+        backpackFollow = playerManager.backpack.GetComponent<BackpackFollow>();
     }
 
     public override void OnStateEnter()
@@ -94,7 +97,8 @@ public class SwimmingState : BaseState
         {
             forceDirection += Vector3.down * UpwardForce;
         }
-        
+
+        DoSprint();
 
         if (Physics.Raycast(transform.position, Vector3.down, 1.1f, GroundMask)){
 
@@ -165,5 +169,22 @@ public class SwimmingState : BaseState
         
         SwimmingDown = false;
         SwimmingUp = false;
+    }
+
+    private void DoSprint()
+    {
+        sprintState = (playerManager.playerActionsAsset.Player.Sprint.ReadValue<float>());
+
+        if (sprintState == 1 && backpackFollow.followPlayer == true)
+        {
+            maxSpeed = 10f;
+            moveForce = 2f;
+        }
+        else
+        {
+            maxSpeed = 5f;
+            moveForce = 1f;
+        }
+
     }
 }

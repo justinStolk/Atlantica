@@ -1611,22 +1611,22 @@ PrefabInstance:
     - target: {fileID: 456294364047594670, guid: b5f3e39a50f94ba49befb9b896558ed7,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9765916
+      value: 0.9765915
       objectReference: {fileID: 0}
     - target: {fileID: 456294364047594670, guid: b5f3e39a50f94ba49befb9b896558ed7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.21510223
+      value: 0.21510218
       objectReference: {fileID: 0}
     - target: {fileID: 456294364047594670, guid: b5f3e39a50f94ba49befb9b896558ed7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000018626451
+      value: 0.00000001862645
       objectReference: {fileID: 0}
     - target: {fileID: 456294364047594670, guid: b5f3e39a50f94ba49befb9b896558ed7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000018626451
+      value: 0.0000000018626449
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5f3e39a50f94ba49befb9b896558ed7, type: 3}
@@ -1777,9 +1777,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1729946555677632941, guid: afa319c53aaebd544bae2b7ab30e0daf,
         type: 3}
+      propertyPath: maxDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1729946555677632941, guid: afa319c53aaebd544bae2b7ab30e0daf,
+        type: 3}
       propertyPath: InteractText
       value: 
       objectReference: {fileID: 1255162638}
+    - target: {fileID: 1729946555677632941, guid: afa319c53aaebd544bae2b7ab30e0daf,
+        type: 3}
+      propertyPath: sphereRadius
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 1729946557468372878, guid: afa319c53aaebd544bae2b7ab30e0daf,
         type: 3}
       propertyPath: m_LocalPosition.x

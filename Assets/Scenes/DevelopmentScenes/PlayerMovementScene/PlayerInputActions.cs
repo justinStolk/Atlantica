@@ -98,6 +98,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""279585ad-ce2f-41f8-beab-9d42646f7d3b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -268,11 +277,33 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""5187d3a2-2b4f-486d-a467-9e672e013d87"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""SwimDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""30d6799f-39e2-42a3-90b5-a06616174e54"",
                     ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
+                    ""action"": ""SwitchToBackPack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""02dd522e-96ea-4004-9258-5a81a4b18a5d"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""SwitchToBackPack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -285,6 +316,28 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ToggleBackPackFollow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""01947521-a9a7-4e1c-9314-9185d35b4535"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1dc50b2a-e5ba-4fbc-97a6-372083d5205c"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -325,6 +378,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""name"": ""TogglePlayerFollow"",
                     ""type"": ""Button"",
                     ""id"": ""50431331-a3e5-4e4e-a488-1ec81a2f25b7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Boost"",
+                    ""type"": ""Button"",
+                    ""id"": ""5f18fcca-3528-499c-980f-c8b398c691bf"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -410,6 +472,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
+                    ""name"": """",
+                    ""id"": ""430968de-0952-409d-bbc4-329444fe5854"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""SwitchToPlayer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
                     ""name"": ""1D Axis"",
                     ""id"": ""274efbe2-a2b7-45b0-8f36-1c6d3e81340c"",
                     ""path"": ""1DAxis"",
@@ -443,6 +516,39 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""292fa00e-3f69-4e8d-aad3-2d97928dd02b"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UpDown"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""bf357626-1fca-4e31-8ebf-99c2aff7aa3f"",
+                    ""path"": ""<Gamepad>/rightStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UpDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""ff646f46-0db2-460a-84e9-c661b7ec27cf"",
+                    ""path"": ""<Gamepad>/rightStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UpDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": """",
                     ""id"": ""d4d40003-9054-4b2a-8d87-09b2d4cb239a"",
                     ""path"": ""<Keyboard>/q"",
@@ -450,6 +556,28 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""TogglePlayerFollow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1ce2718a-83c4-4874-b407-a5fe0b563bda"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Boost"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2b9eaa20-8af9-44db-8380-9721296eb349"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Boost"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -496,12 +624,14 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_SwitchToBackPack = m_Player.FindAction("SwitchToBackPack", throwIfNotFound: true);
         m_Player_ToggleBackPackFollow = m_Player.FindAction("ToggleBackPackFollow", throwIfNotFound: true);
+        m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         // Backpack
         m_Backpack = asset.FindActionMap("Backpack", throwIfNotFound: true);
         m_Backpack_Move = m_Backpack.FindAction("Move", throwIfNotFound: true);
         m_Backpack_SwitchToPlayer = m_Backpack.FindAction("SwitchToPlayer", throwIfNotFound: true);
         m_Backpack_UpDown = m_Backpack.FindAction("UpDown", throwIfNotFound: true);
         m_Backpack_TogglePlayerFollow = m_Backpack.FindAction("TogglePlayerFollow", throwIfNotFound: true);
+        m_Backpack_Boost = m_Backpack.FindAction("Boost", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -569,6 +699,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_SwitchToBackPack;
     private readonly InputAction m_Player_ToggleBackPackFollow;
+    private readonly InputAction m_Player_Sprint;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -581,6 +712,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @SwitchToBackPack => m_Wrapper.m_Player_SwitchToBackPack;
         public InputAction @ToggleBackPackFollow => m_Wrapper.m_Player_ToggleBackPackFollow;
+        public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -614,6 +746,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @ToggleBackPackFollow.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleBackPackFollow;
                 @ToggleBackPackFollow.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleBackPackFollow;
                 @ToggleBackPackFollow.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleBackPackFollow;
+                @Sprint.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                @Sprint.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                @Sprint.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -642,6 +777,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @ToggleBackPackFollow.started += instance.OnToggleBackPackFollow;
                 @ToggleBackPackFollow.performed += instance.OnToggleBackPackFollow;
                 @ToggleBackPackFollow.canceled += instance.OnToggleBackPackFollow;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
             }
         }
     }
@@ -654,6 +792,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Backpack_SwitchToPlayer;
     private readonly InputAction m_Backpack_UpDown;
     private readonly InputAction m_Backpack_TogglePlayerFollow;
+    private readonly InputAction m_Backpack_Boost;
     public struct BackpackActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -662,6 +801,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @SwitchToPlayer => m_Wrapper.m_Backpack_SwitchToPlayer;
         public InputAction @UpDown => m_Wrapper.m_Backpack_UpDown;
         public InputAction @TogglePlayerFollow => m_Wrapper.m_Backpack_TogglePlayerFollow;
+        public InputAction @Boost => m_Wrapper.m_Backpack_Boost;
         public InputActionMap Get() { return m_Wrapper.m_Backpack; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -683,6 +823,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @TogglePlayerFollow.started -= m_Wrapper.m_BackpackActionsCallbackInterface.OnTogglePlayerFollow;
                 @TogglePlayerFollow.performed -= m_Wrapper.m_BackpackActionsCallbackInterface.OnTogglePlayerFollow;
                 @TogglePlayerFollow.canceled -= m_Wrapper.m_BackpackActionsCallbackInterface.OnTogglePlayerFollow;
+                @Boost.started -= m_Wrapper.m_BackpackActionsCallbackInterface.OnBoost;
+                @Boost.performed -= m_Wrapper.m_BackpackActionsCallbackInterface.OnBoost;
+                @Boost.canceled -= m_Wrapper.m_BackpackActionsCallbackInterface.OnBoost;
             }
             m_Wrapper.m_BackpackActionsCallbackInterface = instance;
             if (instance != null)
@@ -699,6 +842,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @TogglePlayerFollow.started += instance.OnTogglePlayerFollow;
                 @TogglePlayerFollow.performed += instance.OnTogglePlayerFollow;
                 @TogglePlayerFollow.canceled += instance.OnTogglePlayerFollow;
+                @Boost.started += instance.OnBoost;
+                @Boost.performed += instance.OnBoost;
+                @Boost.canceled += instance.OnBoost;
             }
         }
     }
@@ -731,6 +877,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnSwitchToBackPack(InputAction.CallbackContext context);
         void OnToggleBackPackFollow(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
     }
     public interface IBackpackActions
     {
@@ -738,5 +885,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnSwitchToPlayer(InputAction.CallbackContext context);
         void OnUpDown(InputAction.CallbackContext context);
         void OnTogglePlayerFollow(InputAction.CallbackContext context);
+        void OnBoost(InputAction.CallbackContext context);
     }
 }
