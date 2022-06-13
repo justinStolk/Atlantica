@@ -7,7 +7,8 @@ public static class EventSystem
     public enum EventType
     {
         ON_BACKPACK_RELEASE,
-        ON_BACKPACK_TAKE
+        ON_BACKPACK_TAKE,
+        ON_BACKPACK_UPGRADE
     }
 
     private static Dictionary<EventType, System.Action> eventActions = new();
