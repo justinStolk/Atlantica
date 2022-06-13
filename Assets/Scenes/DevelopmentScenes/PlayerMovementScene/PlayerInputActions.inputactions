@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "279585ad-ce2f-41f8-beab-9d42646f7d3b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -246,11 +255,33 @@
                 },
                 {
                     "name": "",
+                    "id": "5187d3a2-2b4f-486d-a467-9e672e013d87",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "SwimDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "30d6799f-39e2-42a3-90b5-a06616174e54",
                     "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
+                    "action": "SwitchToBackPack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "02dd522e-96ea-4004-9258-5a81a4b18a5d",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
                     "action": "SwitchToBackPack",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -263,6 +294,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "ToggleBackPackFollow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "01947521-a9a7-4e1c-9314-9185d35b4535",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1dc50b2a-e5ba-4fbc-97a6-372083d5205c",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -303,6 +356,15 @@
                     "name": "TogglePlayerFollow",
                     "type": "Button",
                     "id": "50431331-a3e5-4e4e-a488-1ec81a2f25b7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Boost",
+                    "type": "Button",
+                    "id": "5f18fcca-3528-499c-980f-c8b398c691bf",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -388,6 +450,17 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "430968de-0952-409d-bbc4-329444fe5854",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "SwitchToPlayer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "1D Axis",
                     "id": "274efbe2-a2b7-45b0-8f36-1c6d3e81340c",
                     "path": "1DAxis",
@@ -421,6 +494,39 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "1D Axis",
+                    "id": "292fa00e-3f69-4e8d-aad3-2d97928dd02b",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UpDown",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "positive",
+                    "id": "bf357626-1fca-4e31-8ebf-99c2aff7aa3f",
+                    "path": "<Gamepad>/rightStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UpDown",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "negative",
+                    "id": "ff646f46-0db2-460a-84e9-c661b7ec27cf",
+                    "path": "<Gamepad>/rightStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UpDown",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "d4d40003-9054-4b2a-8d87-09b2d4cb239a",
                     "path": "<Keyboard>/q",
@@ -428,6 +534,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "TogglePlayerFollow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1ce2718a-83c4-4874-b407-a5fe0b563bda",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Boost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2b9eaa20-8af9-44db-8380-9721296eb349",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Boost",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
