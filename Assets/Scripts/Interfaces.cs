@@ -7,3 +7,10 @@ public interface IInteractable
     void Interact();
 
 }
+
+public interface ILaserTarget
+{
+    void OnTargetHit();
+    void OnTargetExit();
+
+}
