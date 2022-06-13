@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Plant : MonoBehaviour
 {
-    public float MoistureLevel { get; private set; }
+    public float MoistureLevel { get; set; }
     public float MaxMoistureLevel { get { return maxMoistureLevel; } }
     
     [SerializeField] private float maxMoistureLevel;
@@ -15,7 +15,7 @@ public class Plant : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         MoistureLevel = Random.Range(4, maxMoistureLevel);
     }
@@ -49,7 +49,6 @@ public class Plant : MonoBehaviour
         if(MoistureLevel > maxMoistureLevel)
         {
             MoistureLevel = maxMoistureLevel;
-
         }
     }
 

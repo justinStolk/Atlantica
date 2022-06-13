@@ -152,9 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d67fe4b6d77e4b4a948c198136e23a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoistureLevel: 0
   maxMoistureLevel: 8
   moistureDecreaseValue: 0.02
   decaySpeed: 0.05
+  decayLevel: 0
 --- !u!4 &82298878
 Transform:
   m_ObjectHideFlags: 0
@@ -397,8 +399,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4059d18b10d95f54fb29b4ef462b38bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wateringSpeed: 2
-  maxWaterLevel: 20
+  WaterLevel: 0
+  MaxWaterLevel: 40
 --- !u!4 &586869248
 Transform:
   m_ObjectHideFlags: 0
@@ -439,6 +441,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ffe02b883f8c9041ab70707a2beea4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  preferredMinimalWaterLevel: 10
+  wateringSpeed: 4
 --- !u!195 &586869251
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1826,9 +1830,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d67fe4b6d77e4b4a948c198136e23a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoistureLevel: 0
   maxMoistureLevel: 12
   moistureDecreaseValue: 0.5
   decaySpeed: 0.07
+  decayLevel: 0
 --- !u!4 &1693953944
 Transform:
   m_ObjectHideFlags: 0
@@ -1973,9 +1979,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d67fe4b6d77e4b4a948c198136e23a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoistureLevel: 0
   maxMoistureLevel: 5
   moistureDecreaseValue: 0.1
   decaySpeed: 0.2
+  decayLevel: 0
 --- !u!4 &1801515437
 Transform:
   m_ObjectHideFlags: 0
@@ -2022,7 +2030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StationWaitPoint: {fileID: 1215431077}
-  waterFlowSpeed: 1
+  waterFlowSpeed: 5
 --- !u!4 &2106169847
 Transform:
   m_ObjectHideFlags: 0
@@ -2219,6 +2227,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ffe02b883f8c9041ab70707a2beea4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  preferredMinimalWaterLevel: 0
+  wateringSpeed: 0
 --- !u!114 &3775705552091284109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2231,8 +2241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4059d18b10d95f54fb29b4ef462b38bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wateringSpeed: 2
-  maxWaterLevel: 20
+  WaterLevel: 0
+  MaxWaterLevel: 0
 --- !u!1 &3775705552172821809
 GameObject:
   m_ObjectHideFlags: 0
