@@ -10,8 +10,18 @@ ScriptedImporter:
   script: {fileID: 11500000, guid: 053561912b1654d80a424bb0696a74ae, type: 3}
   sourceScripts:
   - {fileID: 6391573757903218779, guid: 6231defdac685494d9eb87fb6b17fbb3, type: 3}
+  - {fileID: 6391573757903218779, guid: 21726e37eeeefc14f95da8cd594f7eb4, type: 3}
   compileErrors: []
-  serializedDeclarations: []
+  serializedDeclarations:
+  - name: $PlayerName
+    typeName: String
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in Vhabi.yarn, node Introduction_History
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 6231defdac685494d9eb87fb6b17fbb3,
+      type: 3}
   defaultLanguage: en-GB
   languagesToSourceAssets: []
   useAddressableAssets: 0

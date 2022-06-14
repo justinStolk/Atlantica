@@ -11,7 +11,10 @@ public static class EventSystem
         ON_BACKPACK_UPGRADE,
         ON_GAME_START, 
         ON_SCREEN_FADE_OUT,
-        ON_SCREEN_FADE_IN
+        ON_SCREEN_FADE_IN,
+        ON_ZERO_SOLAR_HITS,
+        ON_SINGLE_SOLAR_HIT,
+        ON_DUAL_SOLAR_HIT
     }
 
     private static Dictionary<EventType, System.Action> eventActions = new();
