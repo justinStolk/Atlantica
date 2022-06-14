@@ -203,7 +203,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""id"": ""ad6c21f7-34d7-4b0e-a3f0-a40b79649402"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
-                    ""processors"": ""InvertVector2(invertX=false,invertY=false)"",
+                    ""processors"": ""InvertVector2"",
                     ""groups"": ""KeyboardMouse"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
