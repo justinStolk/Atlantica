@@ -347,6 +347,9 @@ GameObject:
   - component: {fileID: 8370627331335033658}
   - component: {fileID: 4865482576907312287}
   - component: {fileID: 7233165736061528149}
+  - component: {fileID: 1040841534}
+  - component: {fileID: 1040841533}
+  - component: {fileID: 2583816783164801079}
   m_Layer: 0
   m_Name: GhostRobot
   m_TagString: Untagged
@@ -423,3 +426,46 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &1040841534
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9178795197513255296}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 25
+  m_Height: 90
+  m_Direction: 1
+  m_Center: {x: -3.5, y: 42, z: 5}
+--- !u!114 &1040841533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9178795197513255296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2845a1fd3a0ae543a56b80cf95ecd86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeToTrigger: Introduction_Ghost
+  yarnProject: {fileID: 7545569452688597077, guid: f785231434de74c4aa24b40e93dd4eb0,
+    type: 3}
+--- !u!64 &2583816783164801079
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9178795197513255296}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7474491776507049419, guid: a39c3dd4c2ee1334590cc2154cdfeabd, type: 3}

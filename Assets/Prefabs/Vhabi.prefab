@@ -385,6 +385,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2237439285843294218}
   - component: {fileID: 5326869926039560816}
+  - component: {fileID: 1913354735}
+  - component: {fileID: 1913354734}
   m_Layer: 0
   m_Name: Vhabi
   m_TagString: Untagged
@@ -430,6 +432,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &1913354735
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461184439664059056}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.4
+  m_Height: 1.75
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.875, z: 0}
+--- !u!114 &1913354734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461184439664059056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4642210d5e4898d4fb88276dd2994d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeToTrigger: Introduction_History
+  yarnProject: {fileID: 7545569452688597077, guid: f785231434de74c4aa24b40e93dd4eb0,
+    type: 3}
+  anim: {fileID: 5326869926039560816}
 --- !u!1 &1650618371482597012
 GameObject:
   m_ObjectHideFlags: 0
