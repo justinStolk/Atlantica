@@ -8,7 +8,10 @@ public static class EventSystem
     {
         ON_BACKPACK_RELEASE,
         ON_BACKPACK_TAKE,
-        ON_BACKPACK_UPGRADE
+        ON_BACKPACK_UPGRADE,
+        ON_GAME_START, 
+        ON_SCREEN_FADE_OUT,
+        ON_SCREEN_FADE_IN
     }
 
     private static Dictionary<EventType, System.Action> eventActions = new();
