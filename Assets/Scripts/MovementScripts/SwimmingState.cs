@@ -177,8 +177,8 @@ public class SwimmingState : BaseState
 
         if (sprintState == 1 && backpackFollow.followPlayer == true)
         {
-            maxSpeed = 10f;
-            moveForce = 2f;
+            maxSpeed = 20f;
+            moveForce = 4f;
         }
         else
         {
