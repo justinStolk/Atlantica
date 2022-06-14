@@ -26,6 +26,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_75234e64d8d74583bd442975e49b1b99:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_f5cde98bb612489cb401448024b3d077:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _AnisotropyMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -82,6 +90,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_4fd25418ab6e4e488156f3ffbca64261_Texture_1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecularColorMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -120,6 +132,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - Vector1_07c93c7e34df4237b5dd57255d7f857a: 0.2
+    - Vector1_3849afd7c2eb484893a68ec694cc75b3: 0.2
+    - Vector1_6f56a0970372485390c6587863c2374e: -3.5
+    - Vector1_7ab1e13367ff4c17b0a4403edd3d9450: 0.05
+    - Vector1_c0da6a80189144e5a45df6c62b281d57: 0.95
+    - Vector1_d70d07d7ef17405a961168abe8e24a3a: 20
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
@@ -137,6 +155,7 @@ Material:
     - _Anisotropy: 0
     - _BlendMode: 0
     - _CoatMask: 0
+    - _ConservativeDepthOffsetEnable: 0
     - _CullMode: 2
     - _CullModeForward: 2
     - _Cutoff: 0.5
@@ -191,6 +210,8 @@ Material:
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0
     - _RefractionModel: 0
+    - _RenderQueueType: 1
+    - _RequireSplitLighting: 0
     - _Smoothness: 0.9
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
@@ -200,10 +221,12 @@ Material:
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 0
+    - _StencilRefDistortionVec: 4
     - _StencilRefGBuffer: 2
     - _StencilRefMV: 32
     - _StencilWriteMask: 6
     - _StencilWriteMaskDepth: 8
+    - _StencilWriteMaskDistortionVec: 4
     - _StencilWriteMaskGBuffer: 14
     - _StencilWriteMaskMV: 40
     - _SubsurfaceMask: 1
@@ -230,6 +253,11 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
+    - Color_6a9a916e2c84442984edc20c082efe79: {r: 0.03921569, g: 0.5490196, b: 0.5490196,
+        a: 0.1960784}
+    - Color_c9a840f2115c4802ba54d713194f761d: {r: 0.03921569, g: 0.09803919, b: 0.27450976,
+        a: 0.7058824}
+    - Vector2_130994fa54a3486dacf33287c0070f7f: {r: 10, g: 10, b: 0, a: 0}
     - _BaseColor: {r: 0.11792449, g: 0.90340436, b: 1, a: 0.23921569}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 0.11792446, g: 0.90340436, b: 1, a: 0.23921569}
