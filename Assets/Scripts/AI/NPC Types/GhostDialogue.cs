@@ -16,6 +16,8 @@ public class GhostDialogue : MonoBehaviour, IInteractable
         dialogueRunner = FindObjectOfType<DialogueRunner>();
         dialogueRunner.dialogueViews = FindObjectsOfType<DialogueViewBase>();
 
+        dialogueRunner.onDialogueComplete.AddListener(SetExplanationDialogue);
+
         EventSystem.SubscribeEvent(EventSystem.EventType.ON_ZERO_SOLAR_HITS, () => nodeToTrigger = "PuzzleExplanation");
         EventSystem.SubscribeEvent(EventSystem.EventType.ON_SINGLE_SOLAR_HIT,() => nodeToTrigger = "UpgradeExplanation");
         EventSystem.SubscribeEvent(EventSystem.EventType.ON_DUAL_SOLAR_HIT, () => nodeToTrigger = "PuzzleFinished");
@@ -27,5 +29,11 @@ public class GhostDialogue : MonoBehaviour, IInteractable
         dialogueRunner.SetProject(yarnProject);
         dialogueRunner.startNode = nodeToTrigger;
         dialogueRunner.StartDialogue(dialogueRunner.startNode);
+    }
+
+    private void SetExplanationDialogue()
+    {
+        nodeToTrigger = "PuzzleExplanation";
+        dialogueRunner.onDialogueComplete.RemoveListener(SetExplanationDialogue);
     }
 }
