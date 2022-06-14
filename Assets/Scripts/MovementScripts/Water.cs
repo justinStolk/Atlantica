@@ -20,7 +20,7 @@ public class Water : MonoBehaviour
         float waterSize = Vector3.Distance(transform.position, floorLevel.position);
         float waterCentre = waterSize / 2;
 
-        col.size = new Vector3(col.size.x, waterSize + 0.25f, col.size.z);
+        col.size = new Vector3(col.size.x, waterSize + 0.1f , col.size.z);
         col.center = new Vector3(0, -waterCentre, 0);
     }
     
