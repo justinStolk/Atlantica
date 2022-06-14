@@ -161,7 +161,8 @@ public class WalkingState : BaseState
         if (waterLevel.InWater)
         {
             waterLevel.GetWaterLevel();
-            waterLevel.swimLevel = -5.3f;
+            //waterLevel.swimLevel = 0f;
+            
         }
 
         if (waterLevel.Distance_Surface >= waterLevel.swimLevel)

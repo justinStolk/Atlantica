@@ -391,6 +391,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""f25a65ab-9f15-4f04-8530-0b1360b43cac"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -580,6 +589,28 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Boost"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""539ef947-0bc6-4a03-8ca4-e48350a9eae9"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e4375610-486d-4381-aac9-a4ffc283c466"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -632,6 +663,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Backpack_UpDown = m_Backpack.FindAction("UpDown", throwIfNotFound: true);
         m_Backpack_TogglePlayerFollow = m_Backpack.FindAction("TogglePlayerFollow", throwIfNotFound: true);
         m_Backpack_Boost = m_Backpack.FindAction("Boost", throwIfNotFound: true);
+        m_Backpack_Interact = m_Backpack.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -793,6 +825,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Backpack_UpDown;
     private readonly InputAction m_Backpack_TogglePlayerFollow;
     private readonly InputAction m_Backpack_Boost;
+    private readonly InputAction m_Backpack_Interact;
     public struct BackpackActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -802,6 +835,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @UpDown => m_Wrapper.m_Backpack_UpDown;
         public InputAction @TogglePlayerFollow => m_Wrapper.m_Backpack_TogglePlayerFollow;
         public InputAction @Boost => m_Wrapper.m_Backpack_Boost;
+        public InputAction @Interact => m_Wrapper.m_Backpack_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Backpack; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -826,6 +860,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Boost.started -= m_Wrapper.m_BackpackActionsCallbackInterface.OnBoost;
                 @Boost.performed -= m_Wrapper.m_BackpackActionsCallbackInterface.OnBoost;
                 @Boost.canceled -= m_Wrapper.m_BackpackActionsCallbackInterface.OnBoost;
+                @Interact.started -= m_Wrapper.m_BackpackActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_BackpackActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_BackpackActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_BackpackActionsCallbackInterface = instance;
             if (instance != null)
@@ -845,6 +882,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Boost.started += instance.OnBoost;
                 @Boost.performed += instance.OnBoost;
                 @Boost.canceled += instance.OnBoost;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -886,5 +926,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnUpDown(InputAction.CallbackContext context);
         void OnTogglePlayerFollow(InputAction.CallbackContext context);
         void OnBoost(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

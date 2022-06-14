@@ -22,7 +22,7 @@ public class PlayerManager : MonoBehaviour
     private WalkingState walkingState;
     private WaterLevelCheck waterLevelCheck;
     private FSM stateMachine;
-    private PlayerInteract playerInteract;
+    public PlayerInteract playerInteract;
 
     // Start is called before the first frame update
     void Awake()
@@ -39,7 +39,9 @@ public class PlayerManager : MonoBehaviour
         move = playerActionsAsset.Player.Move;
 
         playerActionsAsset.Player.SwitchToBackPack.canceled += SwitchToBackpack;
-        playerActionsAsset.Backpack.SwitchToPlayer.started += SwitchToPlayer;        
+        playerActionsAsset.Backpack.SwitchToPlayer.started += SwitchToPlayer;
+
+        Cursor.visible = false;
     }
 
 
@@ -69,6 +71,8 @@ public class PlayerManager : MonoBehaviour
             cameraLook.transform.position = new Vector3(backpack.transform.position.x, backpack.transform.position.y + 1, backpack.transform.position.z);
             EventSystem.CallEvent(EventSystem.EventType.ON_BACKPACK_RELEASE);
             playerInteract.PlayerActive = false;
+            playerInteract.InteractText.gameObject.SetActive(false);
+
             stateMachine.SwitchState(typeof(BackpackFlyingState));
             playerInput.SwitchCurrentActionMap("Backpack");
             Debug.Log("GA NAAR BACKPACK");
@@ -81,7 +85,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     //ON PRESS R, TOGGLES VIEW AND MOVEMENT TO PLAYER
-    private void SwitchToPlayer(InputAction.CallbackContext obj)
+    public void SwitchToPlayer(InputAction.CallbackContext obj)
     {
         cameraLook.transform.SetParent(player);
         cameraLook.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z);
