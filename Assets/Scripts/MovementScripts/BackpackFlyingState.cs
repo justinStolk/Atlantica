@@ -25,6 +25,7 @@ public class BackpackFlyingState : BaseState
     private float upDown;
     private PlayerAnimationManager playerAnim;
     private float boostState;
+
     private void Start()
     {
         playerActionsAsset = GetComponent<PlayerManager>().playerActionsAsset;
