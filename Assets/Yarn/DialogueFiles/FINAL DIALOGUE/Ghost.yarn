@@ -51,7 +51,6 @@ position: 254.63649940490723,498.00405502319336
     Ghost: Only my work.
     //Ghost: and my fear,
     //Ghost: and my anger.
-    <<jump PuzzleExplanation>>
 ===
 
 title: PuzzleExplanation
@@ -85,6 +84,7 @@ Ghost: You will need a second light to power it whole.
 {$PlayerName}: My Raypack could get through the cracked wall downstairs, but it doesn't have enough power to separate..
 Ghost: Behind you is my workbench.
 Ghost: You could magnify it's power input there.
+<<stop>>
 ===
 
 title: PuzzleFinished
@@ -97,4 +97,5 @@ Ghost: As a result, my memory has been restored.
 Ghost: I cannot thank you enough.
 // Hologrammen verdwijnen met pretty particles ofzo?
 I should tell Vhabi about what happened here.
+<<stop>>
 ===
