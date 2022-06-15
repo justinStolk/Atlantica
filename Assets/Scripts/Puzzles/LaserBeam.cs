@@ -15,6 +15,9 @@ public class LaserBeam
     private LayerMask mask;
     private ILaserTarget hitTarget;
 
+    Color Groenig = new Color(0, 255, 221, 1);
+    Color Blauwig = new Color(0, 110, 255, 1);
+
     public LaserBeam(Vector3 laserPosition, Vector3 laserDirection, float maxLaserDistance, Material laserMaterial, LayerMask beamMask)
     {
         laserObject = new GameObject("Laser", typeof(LineRenderer));
@@ -26,8 +29,8 @@ public class LaserBeam
 
         laser.startWidth = 0.1f;
         laser.endWidth = 0.1f;
-        laser.startColor = Color.red;
-        laser.endColor = Color.yellow;
+        laser.startColor = Groenig;
+        laser.endColor = Blauwig;
         laser.material = laserMaterial;
 
         mask = beamMask;
@@ -97,8 +100,8 @@ public class LaserBeam
         hitTarget = null;
         laser.startWidth = 0.1f;
         laser.endWidth = 0.1f;
-        laser.startColor = Color.red;
-        laser.endColor = Color.yellow;
+        laser.startColor = Groenig;
+        laser.endColor = Blauwig;
 
         laserPoints.Clear();
         reflectorPoints.Clear();
