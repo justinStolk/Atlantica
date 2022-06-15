@@ -12,7 +12,7 @@ public class WalkingState : BaseState
     //LayerMasks
     public LayerMask GroundMask;
     public LayerMask WaterMask;
-
+    public GameObject feet;
     //Input fields
     private PlayerManager playerManager;
     private CinemachineFreeLook camera;
@@ -184,7 +184,7 @@ public class WalkingState : BaseState
 
     private bool IsGrounded()
     {
-        return Physics.Raycast(transform.position, Vector3.down, 1.1f);
+        return Physics.Raycast(feet.transform.position, Vector3.down, 1.1f);
     }
 
     private void CheckWaterLevel()
