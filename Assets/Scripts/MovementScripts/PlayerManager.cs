@@ -42,6 +42,7 @@ public class PlayerManager : MonoBehaviour
         playerActionsAsset.Backpack.SwitchToPlayer.started += SwitchToPlayer;
 
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
 

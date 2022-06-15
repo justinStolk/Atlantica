@@ -17,7 +17,8 @@ public class VhabiDialogue : MonoBehaviour, IInteractable
         dialogueRunner = FindObjectOfType<DialogueRunner>();
         dialogueRunner.dialogueViews = FindObjectsOfType<DialogueViewBase>();
         dialogueRunner.onDialogueComplete.AddListener(() => anim.SetBool("isTalking", false));
-        
+        dialogueRunner.onDialogueComplete.AddListener(ToggleMouse);
+
         EventSystem.SubscribeEvent(EventSystem.EventType.ON_DUAL_SOLAR_HIT, ShiftToEndDialogue);
     }
 
@@ -28,6 +29,12 @@ public class VhabiDialogue : MonoBehaviour, IInteractable
         dialogueRunner.SetProject(yarnProject);
         dialogueRunner.startNode = nodeToTrigger;
         dialogueRunner.StartDialogue(dialogueRunner.startNode);
+    }
+
+    private void ToggleMouse()
+    {
+        Cursor.visible = false;
+
     }
 
     private void ShiftToEndDialogue()

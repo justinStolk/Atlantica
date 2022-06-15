@@ -8,7 +8,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/OutdoorsScene.unity
     guid: 8124e5870f4fd4c779e7a5f994e84ad1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DesignScenes/BartProto1.unity
     guid: 788cd0dc73078854183264577ccce763
+  - enabled: 1
+    path: Assets/Scenes/FINALSCENES/StartMenu.unity
+    guid: 558a694a828323947b02ab8086703b71
+  - enabled: 1
+    path: Assets/Scenes/FINALSCENES/NewCiv.unity
+    guid: 39c9a5ca512c4834d9a361740be6f1ed
   m_configObjects: {}
