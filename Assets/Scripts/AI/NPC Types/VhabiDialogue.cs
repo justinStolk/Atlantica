@@ -9,6 +9,7 @@ public class VhabiDialogue : MonoBehaviour, IInteractable
 
     [SerializeField] private YarnProject yarnProject;
     [SerializeField] private Animator anim;
+    [SerializeField] private Sprite customDialogueBG;
 
     private DialogueRunner dialogueRunner;
 
@@ -26,6 +27,7 @@ public class VhabiDialogue : MonoBehaviour, IInteractable
     {
         anim.SetBool("isTalking", true);
         Cursor.visible = true;
+        UIManager.instance.SetDialogueBackground(customDialogueBG);
         dialogueRunner.SetProject(yarnProject);
         dialogueRunner.startNode = nodeToTrigger;
         dialogueRunner.StartDialogue(dialogueRunner.startNode);
