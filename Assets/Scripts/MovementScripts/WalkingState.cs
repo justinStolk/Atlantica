@@ -68,6 +68,37 @@ public class WalkingState : BaseState
         playerManager.playerActionsAsset.Player.Jump.started -= DoJump;
     }
 
+    private void LateUpdate()
+    {
+        //forceDirection += playerManager.move.ReadValue<Vector2>().x * GetCameraRight(camera) * moveForce;
+        //forceDirection += playerManager.move.ReadValue<Vector2>().y * GetCameraForward(camera) * moveForce;
+
+        //rb.AddForce(forceDirection, ForceMode.Impulse);
+        //forceDirection = Vector3.zero;
+
+        //if (rb.velocity.y < 0f)
+        //{
+        //    rb.velocity -= Vector3.down * Physics.gravity.y * Time.fixedDeltaTime;
+        //}
+
+        //Vector3 horizontalVelocity = rb.velocity;
+        //horizontalVelocity.y = 0;
+        //if (horizontalVelocity.sqrMagnitude > maxSpeed * maxSpeed)
+        //{
+        //    rb.velocity = horizontalVelocity.normalized * maxSpeed + Vector3.up * rb.velocity.y;
+        //}
+
+        //LookAt();
+        //DoSprint();
+        //CheckWaterLevel();
+        //IsGrounded();
+        //if (!IsGrounded())
+        //{
+        //    playerAnim.jumping = false;
+
+        //}
+    }
+
     public override void OnStateFixedUpdate()
     {
 
@@ -92,12 +123,12 @@ public class WalkingState : BaseState
         LookAt();
         DoSprint();
         CheckWaterLevel();
-        //IsGrounded();
-        //if (!IsGrounded())
-        //{
-        //    playerAnim.jumping = false;
+        IsGrounded();
+        if (!IsGrounded())
+        {
+            playerAnim.jumping = false;
 
-        //}
+        }
     }
 
     public override void OnStateUpdate()
