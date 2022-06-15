@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FINALSCENES/NewCiv.unity
     guid: 39c9a5ca512c4834d9a361740be6f1ed
+  - enabled: 1
+    path: Assets/Scenes/DevelopmentScenes/PlayerMovement.unity
+    guid: 86eecf8055e77684a8d093a1d7853397
   m_configObjects: {}

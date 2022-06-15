@@ -27,11 +27,19 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+
         playerActionsAsset = new PlayerInputActions();
         playerActionsAsset.Player.Enable();
-        upgradeBackpack = backpack.GetComponent<UpgradeBackpack>();
-        playerInput = GetComponent<PlayerInput>();
+        stateMachine = new FSM(typeof(WalkingState), GetComponents<BaseState>());
         walkingState = GetComponent<WalkingState>();
+    }
+
+
+    private void Start()
+    {
+
+        playerInput = GetComponent<PlayerInput>();
+        upgradeBackpack = backpack.GetComponent<UpgradeBackpack>();
         waterLevelCheck = GetComponent<WaterLevelCheck>();
         playerInteract = GetComponent<PlayerInteract>();
         playerAnim = GetComponent<PlayerAnimationManager>();
@@ -45,17 +53,12 @@ public class PlayerManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
     }
 
-
-    private void Start()
-    {
-        stateMachine = new FSM(typeof(WalkingState), GetComponents<BaseState>());
-    }
-
     // Update is called once per frame
     void Update()
     {
         stateMachine.FSMUpdate();
     }
+
     private void FixedUpdate()
     {
         stateMachine.FSMFixedUpdate();
