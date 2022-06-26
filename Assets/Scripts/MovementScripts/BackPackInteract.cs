@@ -5,7 +5,7 @@ using TMPro;
 
 public class BackPackInteract : MonoBehaviour
 {
-    public PlayerManager playerManager;
+    public PlayerManager PlayerManager;
     public TMP_Text InteractText;
     public bool BackpackActive;
 
@@ -21,7 +21,7 @@ public class BackPackInteract : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerManager.playerActionsAsset.Backpack.Interact.started += InteractWith;
+        PlayerManager.PlayerActionsAsset.Backpack.Interact.started += InteractWith;
         InteractText.gameObject.SetActive(false);
         interactionHit = false;
         BackpackActive = false;
@@ -34,7 +34,7 @@ public class BackPackInteract : MonoBehaviour
         origin = transform.position;
         direction = transform.up;
 
-        if(playerManager.playerInteract.PlayerActive == false)
+        if(PlayerManager.PlayerInteract.PlayerActive == false)
         {
             BackpackActive = true;
         }
@@ -86,7 +86,7 @@ public class BackPackInteract : MonoBehaviour
             {
                 Debug.Log("BACKPACK SPOTTED");
                 EventSystem.CallEvent(EventSystem.EventType.ON_BACKPACK_TAKE);
-                playerManager.SwitchToPlayer(obj);
+                PlayerManager.SwitchToPlayer(obj);
             }
 
 

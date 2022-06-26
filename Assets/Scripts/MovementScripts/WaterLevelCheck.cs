@@ -6,7 +6,7 @@ public class WaterLevelCheck : MonoBehaviour
 {
     public float WaterSurface, Distance_Surface;
     public bool InWater;
-    public float swimLevel;
+    public float SwimLevel;
 
     public void GetWaterLevel()
     {

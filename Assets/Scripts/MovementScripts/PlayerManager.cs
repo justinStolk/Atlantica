@@ -7,14 +7,14 @@ using System;
 
 public class PlayerManager : MonoBehaviour
 {
-    public PlayerInputActions playerActionsAsset;
-    public InputAction move;
-    public GameObject backpack;
-    public Transform player;
-    public Transform cameraLook;
-    //public BackpackFollow backpackFollow;
+    public PlayerInputActions PlayerActionsAsset;
+    public InputAction Move;
+    public GameObject Backpack;
+    public Transform Player;
+    public Transform CameraLook;
+    public CinemachineFreeLook Camera;
+    public PlayerInteract PlayerInteract;
 
-    public CinemachineFreeLook camera;
 
     private PlayerAnimationManager playerAnim;
     private UpgradeBackpack upgradeBackpack;
@@ -22,14 +22,13 @@ public class PlayerManager : MonoBehaviour
     private WalkingState walkingState;
     private WaterLevelCheck waterLevelCheck;
     private FSM stateMachine;
-    public PlayerInteract playerInteract;
 
     // Start is called before the first frame update
     void Awake()
     {
 
-        playerActionsAsset = new PlayerInputActions();
-        playerActionsAsset.Player.Enable();
+        PlayerActionsAsset = new PlayerInputActions();
+        PlayerActionsAsset.Player.Enable();
         stateMachine = new FSM(typeof(WalkingState), GetComponents<BaseState>());
         walkingState = GetComponent<WalkingState>();
     }
@@ -39,15 +38,15 @@ public class PlayerManager : MonoBehaviour
     {
 
         playerInput = GetComponent<PlayerInput>();
-        upgradeBackpack = backpack.GetComponent<UpgradeBackpack>();
+        upgradeBackpack = Backpack.GetComponent<UpgradeBackpack>();
         waterLevelCheck = GetComponent<WaterLevelCheck>();
-        playerInteract = GetComponent<PlayerInteract>();
+        PlayerInteract = GetComponent<PlayerInteract>();
         playerAnim = GetComponent<PlayerAnimationManager>();
 
-        move = playerActionsAsset.Player.Move;
+        Move = PlayerActionsAsset.Player.Move;
 
-        playerActionsAsset.Player.SwitchToBackPack.canceled += SwitchToBackpack;
-        playerActionsAsset.Backpack.SwitchToPlayer.started += SwitchToPlayer;
+        PlayerActionsAsset.Player.SwitchToBackPack.canceled += SwitchToBackpack;
+        PlayerActionsAsset.Backpack.SwitchToPlayer.started += SwitchToPlayer;
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
@@ -67,15 +66,15 @@ public class PlayerManager : MonoBehaviour
     //ON PRESS R, TOGGLES VIEW AND MOVEMENT TO BACKPACK
     private void SwitchToBackpack(InputAction.CallbackContext obj)
     {
-        if (upgradeBackpack.upgraded == true)
+        if (upgradeBackpack.Upgraded == true)
         {
-            camera.m_Follow = backpack.transform;
-            camera.m_LookAt = backpack.transform;
-            cameraLook.transform.SetParent(backpack.transform);
-            cameraLook.transform.position = new Vector3(backpack.transform.position.x, backpack.transform.position.y + 1, backpack.transform.position.z);
+            Camera.m_Follow = Backpack.transform;
+            Camera.m_LookAt = Backpack.transform;
+            CameraLook.transform.SetParent(Backpack.transform);
+            CameraLook.transform.position = new Vector3(Backpack.transform.position.x, Backpack.transform.position.y + 1, Backpack.transform.position.z);
             EventSystem.CallEvent(EventSystem.EventType.ON_BACKPACK_RELEASE);
-            playerInteract.PlayerActive = false;
-            playerInteract.InteractText.gameObject.SetActive(false);
+            PlayerInteract.PlayerActive = false;
+            PlayerInteract.InteractText.gameObject.SetActive(false);
 
             stateMachine.SwitchState(typeof(BackpackFlyingState));
             playerInput.SwitchCurrentActionMap("Backpack");
@@ -91,8 +90,8 @@ public class PlayerManager : MonoBehaviour
     //ON PRESS R, TOGGLES VIEW AND MOVEMENT TO PLAYER
     public void SwitchToPlayer(InputAction.CallbackContext obj)
     {
-        cameraLook.transform.SetParent(player);
-        cameraLook.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z);
+        CameraLook.transform.SetParent(Player);
+        CameraLook.transform.position = new Vector3(Player.transform.position.x, Player.transform.position.y + 1, Player.transform.position.z);
 
         if (waterLevelCheck.InWater == true)
         {
@@ -103,15 +102,15 @@ public class PlayerManager : MonoBehaviour
             stateMachine.SwitchState(typeof(WalkingState));
         }
 
-        playerInteract.PlayerActive = true;
+        PlayerInteract.PlayerActive = true;
 
         SwitchPlayerView();
     }
 
     public void SwitchPlayerView()
     {
-        camera.m_Follow = player;
-        camera.m_LookAt = player;
+        Camera.m_Follow = Player;
+        Camera.m_LookAt = Player;
         
         playerInput.SwitchCurrentActionMap("Player");
         //EventSystem.CallEvent(EventSystem.EventType.ON_PLAYER_VIEW);

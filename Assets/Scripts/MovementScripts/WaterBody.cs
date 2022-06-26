@@ -30,23 +30,23 @@ public class WaterBody : MonoBehaviour
     {
         if(other.GetComponent<WalkingState>() == playerWalk)
         {
-            if (!playerWalk.waterLevel.InWater)
+            if (!playerWalk.WaterLevel.InWater)
             {
-                playerWalk.waterLevel.InWater = true;
+                playerWalk.WaterLevel.InWater = true;
             }
 
-            if (playerWalk.waterLevel.WaterSurface != transform.position.y)
+            if (playerWalk.WaterLevel.WaterSurface != transform.position.y)
             {
-                playerWalk.waterLevel.WaterSurface = transform.position.y;
+                playerWalk.WaterLevel.WaterSurface = transform.position.y;
             }
 
         }
 
         if(other.GetComponent<SwimmingState>() == playerSwim)
         {
-            if (playerSwim.waterLevel.WaterSurface != transform.position.y)
+            if (playerSwim.WaterLevel.WaterSurface != transform.position.y)
             {
-                playerSwim.waterLevel.WaterSurface = transform.position.y;
+                playerSwim.WaterLevel.WaterSurface = transform.position.y;
             }
             //musicSystem.StartMusic();
         }
@@ -56,9 +56,9 @@ public class WaterBody : MonoBehaviour
     {
         if (other.GetComponent<SwimmingState>() == playerSwim)
         {
-            if (playerSwim.waterLevel.InWater)
+            if (playerSwim.WaterLevel.InWater)
             {
-                playerSwim.waterLevel.InWater = false;
+                playerSwim.WaterLevel.InWater = false;
                 //musicSystem.StopMusic();
                 eventEmitterRef.SendMessage("Stop");
                 Debug.Log("UIT T WATER");

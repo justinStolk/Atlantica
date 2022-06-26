@@ -6,7 +6,7 @@ using TMPro;
 
 public class PlayerInteract : MonoBehaviour
 {
-    public LayerMask layermask;
+    public LayerMask Layermask;
     public TMP_Text InteractText;
     public bool PlayerActive;
 
@@ -25,7 +25,7 @@ public class PlayerInteract : MonoBehaviour
     void Start()
     {
         playerManager = GetComponent<PlayerManager>();
-        playerManager.playerActionsAsset.Player.Interact.started += InteractWith;
+        playerManager.PlayerActionsAsset.Player.Interact.started += InteractWith;
         InteractText.gameObject.SetActive(false);
         interactionHit = false;
         PlayerActive = true;

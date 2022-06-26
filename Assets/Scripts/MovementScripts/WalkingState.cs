@@ -8,27 +8,25 @@ using System;
 [RequireComponent(typeof(Rigidbody))]
 public class WalkingState : BaseState
 {
-    public WaterLevelCheck waterLevel;
-    //LayerMasks
+    public WaterLevelCheck WaterLevel;
     public LayerMask GroundMask;
     public LayerMask WaterMask;
-    public GameObject feet;
-    //Input fields
-    public PlayerManager playerManager;
-    private CinemachineFreeLook camera;
-    //private IEnumerator jumpCooldown;
+    public GameObject Feet;
+    public PlayerManager PlayerManager;
+    public Rigidbody Rb;
+
 
     //Movement fields
     [SerializeField] private float moveForce = 1f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float maxSpeed = 5f;
     [SerializeField] private float jumpButtonTime = 2f;
-    //[SerializeField] private float jumpButtonGracePeriod = 2f;
-    public Rigidbody rb;
+
+    private CinemachineFreeLook camera;
     private Vector3 forceDirection = Vector3.zero;
     private PlayerAnimationManager playerAnim;
     private float jumpState;
-
+    private ThirdPersonCamera cameraControl;
 
     private void Awake()
     {
@@ -37,22 +35,22 @@ public class WalkingState : BaseState
 
     private void Start()
     {
-        camera = GetComponent<PlayerManager>().camera;
-        
+        camera = GetComponent<PlayerManager>().Camera;
+        cameraControl = GetComponent<ThirdPersonCamera>();
         playerAnim = GetComponent<PlayerAnimationManager>();
     }
 
     public override void OnStateEnter()
     {
-        playerManager.playerActionsAsset.Player.Jump.started += DoJump;
+        PlayerManager.PlayerActionsAsset.Player.Jump.started += DoJump;
         Debug.Log("WALK");
-        waterLevel.InWater = false;
-        rb.drag = 3.5f;
+        WaterLevel.InWater = false;
+        Rb.drag = 3.5f;
     }
 
     private void DoSprint()
     {
-        jumpState = (playerManager.playerActionsAsset.Player.Sprint.ReadValue<float>());
+        jumpState = (PlayerManager.PlayerActionsAsset.Player.Sprint.ReadValue<float>());
 
         if (jumpState == 1 && IsGrounded())
         {
@@ -68,7 +66,7 @@ public class WalkingState : BaseState
 
     public override void OnStateExit()
     {
-        playerManager.playerActionsAsset.Player.Jump.started -= DoJump;
+        PlayerManager.PlayerActionsAsset.Player.Jump.started -= DoJump;
     }
 
     
@@ -76,31 +74,32 @@ public class WalkingState : BaseState
     public override void OnStateFixedUpdate()
     {
 
-        forceDirection += playerManager.move.ReadValue<Vector2>().x * GetCameraRight(camera) * moveForce;
-        forceDirection += playerManager.move.ReadValue<Vector2>().y * GetCameraForward(camera) * moveForce;
+        forceDirection += PlayerManager.Move.ReadValue<Vector2>().x * cameraControl.GetCameraRight(camera) * moveForce;
+        forceDirection += PlayerManager.Move.ReadValue<Vector2>().y * cameraControl.GetCameraForward(camera) * moveForce;
 
-        rb.AddForce(forceDirection, ForceMode.Impulse);
+        Rb.AddForce(forceDirection, ForceMode.Impulse);
         forceDirection = Vector3.zero;
 
-        if (rb.velocity.y < 0f)
+        if (Rb.velocity.y < 0f)
         {
-            rb.velocity -= Vector3.down * Physics.gravity.y * Time.fixedDeltaTime;
+            Rb.velocity -= Vector3.down * Physics.gravity.y * Time.fixedDeltaTime;
         }
 
-        Vector3 horizontalVelocity = rb.velocity;
+        Vector3 horizontalVelocity = Rb.velocity;
         horizontalVelocity.y = 0;
         if (horizontalVelocity.sqrMagnitude > maxSpeed * maxSpeed)
         {
-            rb.velocity = horizontalVelocity.normalized * maxSpeed + Vector3.up * rb.velocity.y;
+            Rb.velocity = horizontalVelocity.normalized * maxSpeed + Vector3.up * Rb.velocity.y;
         }
 
-        LookAt();
+        cameraControl.PlayerLookAt();
+
         DoSprint();
         CheckWaterLevel();
         IsGrounded();
         if (!IsGrounded())
         {
-            playerAnim.jumping = false;
+            playerAnim.Jumping = false;
 
         }
     }
@@ -111,66 +110,39 @@ public class WalkingState : BaseState
     }
     
 
-    private void LookAt()
-    {
-        Vector3 direction = rb.velocity;
-        direction.y = 0f;
-
-        if (playerManager.move.ReadValue<Vector2>().sqrMagnitude > 0.1f && direction.sqrMagnitude > 0.1f)
-        {
-            this.rb.rotation = Quaternion.LookRotation(direction, Vector3.up);
-        }
-        else
-        {
-            rb.angularVelocity = Vector3.zero;
-        }
-    }
-
-    private Vector3 GetCameraForward(CinemachineFreeLook camera)
-    {
-        Vector3 forward = camera.transform.forward;
-        forward.y = 0;
-        return forward.normalized;
-    }
-
-    private Vector3 GetCameraRight(CinemachineFreeLook camera)
-    {
-        Vector3 right = camera.transform.right;
-        right.y = 0;
-        return right.normalized;
-    }
+    
 
     private void DoJump(InputAction.CallbackContext obj)
     {
 
         if (IsGrounded())
         {
-            playerAnim.jumping = true;
+            playerAnim.Jumping = true;
             forceDirection += Vector3.up * jumpForce;
             StartCoroutine(jumpCooldown());
             
         }
         else
         {
-            playerAnim.jumping = false;
+            playerAnim.Jumping = false;
         }
     }
 
     private bool IsGrounded()
     {
-        return Physics.Raycast(feet.transform.position, Vector3.down, 1.1f);
+        return Physics.Raycast(Feet.transform.position, Vector3.down, 1.1f);
     }
 
     private void CheckWaterLevel()
     {
-        if (waterLevel.InWater)
+        if (WaterLevel.InWater)
         {
-            waterLevel.GetWaterLevel();
+            WaterLevel.GetWaterLevel();
             //waterLevel.swimLevel = 0f;
             
         }
 
-        if (waterLevel.Distance_Surface >= waterLevel.swimLevel)
+        if (WaterLevel.Distance_Surface >= WaterLevel.SwimLevel)
         {
             owner.SwitchState(typeof(SwimmingState));
         }
@@ -179,7 +151,7 @@ public class WalkingState : BaseState
     IEnumerator jumpCooldown()
     {
         yield return new WaitForSeconds(jumpButtonTime);
-        playerAnim.jumping = false;
+        playerAnim.Jumping = false;
 
     }
 }
