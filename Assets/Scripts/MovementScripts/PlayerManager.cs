@@ -14,13 +14,12 @@ public class PlayerManager : MonoBehaviour
     public Transform CameraLook;
     public CinemachineFreeLook Camera;
     public PlayerInteract PlayerInteract;
-
-
-    private PlayerAnimationManager playerAnim;
-    private UpgradeBackpack upgradeBackpack;
+    public WaterLevelCheck waterLevelCheck;
+    
     private PlayerInput playerInput;
-    private WalkingState walkingState;
-    private WaterLevelCheck waterLevelCheck;
+
+    //Scripts
+    private UpgradeBackpack upgradeBackpack;
     private FSM stateMachine;
 
     // Start is called before the first frame update
@@ -30,7 +29,6 @@ public class PlayerManager : MonoBehaviour
         PlayerActionsAsset = new PlayerInputActions();
         PlayerActionsAsset.Player.Enable();
         stateMachine = new FSM(typeof(WalkingState), GetComponents<BaseState>());
-        walkingState = GetComponent<WalkingState>();
     }
 
 
@@ -41,7 +39,6 @@ public class PlayerManager : MonoBehaviour
         upgradeBackpack = Backpack.GetComponent<UpgradeBackpack>();
         waterLevelCheck = GetComponent<WaterLevelCheck>();
         PlayerInteract = GetComponent<PlayerInteract>();
-        playerAnim = GetComponent<PlayerAnimationManager>();
 
         Move = PlayerActionsAsset.Player.Move;
 

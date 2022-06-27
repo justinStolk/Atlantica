@@ -6,7 +6,6 @@ public class WaterBody : MonoBehaviour
 {
     WalkingState playerWalk;
     SwimmingState playerSwim;
-    //public MusicControl musicSystem;
 
     private FMODUnity.StudioEventEmitter eventEmitterRef;
 
@@ -30,23 +29,23 @@ public class WaterBody : MonoBehaviour
     {
         if(other.GetComponent<WalkingState>() == playerWalk)
         {
-            if (!playerWalk.WaterLevel.InWater)
+            if (!playerWalk.PlayerManager.waterLevelCheck.InWater)
             {
-                playerWalk.WaterLevel.InWater = true;
+                playerWalk.PlayerManager.waterLevelCheck.InWater = true;
             }
 
-            if (playerWalk.WaterLevel.WaterSurface != transform.position.y)
+            if (playerWalk.PlayerManager.waterLevelCheck.WaterSurface != transform.position.y)
             {
-                playerWalk.WaterLevel.WaterSurface = transform.position.y;
+                playerWalk.PlayerManager.waterLevelCheck.WaterSurface = transform.position.y;
             }
 
         }
 
         if(other.GetComponent<SwimmingState>() == playerSwim)
         {
-            if (playerSwim.WaterLevel.WaterSurface != transform.position.y)
+            if (playerSwim.playerManager.waterLevelCheck.WaterSurface != transform.position.y)
             {
-                playerSwim.WaterLevel.WaterSurface = transform.position.y;
+                playerSwim.playerManager.waterLevelCheck.WaterSurface = transform.position.y;
             }
             //musicSystem.StartMusic();
         }
@@ -56,9 +55,9 @@ public class WaterBody : MonoBehaviour
     {
         if (other.GetComponent<SwimmingState>() == playerSwim)
         {
-            if (playerSwim.WaterLevel.InWater)
+            if (playerSwim.playerManager.waterLevelCheck.InWater)
             {
-                playerSwim.WaterLevel.InWater = false;
+                playerSwim.playerManager.waterLevelCheck.InWater = false;
                 //musicSystem.StopMusic();
                 eventEmitterRef.SendMessage("Stop");
                 Debug.Log("UIT T WATER");

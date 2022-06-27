@@ -12,14 +12,11 @@ public class PlayerAnimationManager : MonoBehaviour
     private Animator anim;
     private float walkingSpeed;
     private WaterLevelCheck waterLevel;
-    private PlayerManager playerManager;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         waterLevel = GetComponent<WaterLevelCheck>();
-        playerManager = GetComponent<PlayerManager>();
-        //rb.GetComponent<Rigidbody>();
     }
 
     void PlaySound(string path)

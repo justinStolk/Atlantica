@@ -10,9 +10,10 @@ public class SwimmingState : BaseState
 
     public bool SwimmingUp = false;
     public bool SwimmingDown = false;
-    public WaterLevelCheck WaterLevel;
     public LayerMask GroundMask;
 
+    //Scripts
+    public PlayerManager playerManager;
 
     //Movement fields
     [SerializeField] private float moveForce = 1f;
@@ -20,11 +21,12 @@ public class SwimmingState : BaseState
     [SerializeField] private float maxSpeed = 5f;
 
 
-    private PlayerManager playerManager;
     private Rigidbody rb;
     private Vector3 forceDirection = Vector3.zero;
     private CinemachineFreeLook camera;
     private float sprintState;
+
+    //Scripts
     private BackpackFollow backpackFollow;
     private ThirdPersonCamera cameraControl;
 
@@ -33,7 +35,6 @@ public class SwimmingState : BaseState
         playerManager = GetComponent<PlayerManager>();
         camera = GetComponent<PlayerManager>().Camera;
         rb = GetComponent<Rigidbody>();
-        WaterLevel = GetComponent<WaterLevelCheck>();
         backpackFollow = playerManager.Backpack.GetComponent<BackpackFollow>();
         cameraControl = GetComponent<ThirdPersonCamera>();
 
@@ -42,8 +43,9 @@ public class SwimmingState : BaseState
     public override void OnStateEnter()
     {
         Debug.Log("SWIM");
-        WaterLevel.InWater = true;
+        //WaterLevel.InWater = true;
 
+        playerManager.waterLevelCheck.InWater = true;
         playerManager.PlayerActionsAsset.Player.SwimUp.started += SwimUp;
         playerManager.PlayerActionsAsset.Player.SwimDown.started += SwimDown;
         playerManager.PlayerActionsAsset.Player.SwimUp.canceled += ResetVelocity;
@@ -64,6 +66,27 @@ public class SwimmingState : BaseState
 
     public override void OnStateFixedUpdate()
     {
+
+        if (playerManager.waterLevelCheck.InWater)
+        {
+            playerManager.waterLevelCheck.GetWaterLevel();
+        }
+
+        cameraControl.PlayerLookAt();
+        DoSprint();
+        Swim();
+        CheckGround();
+
+    }
+
+    public override void OnStateUpdate()
+    {
+
+    }
+
+
+    private void Swim()
+    {
         forceDirection += playerManager.Move.ReadValue<Vector2>().x * cameraControl.GetCameraRight(camera) * moveForce;
         forceDirection += playerManager.Move.ReadValue<Vector2>().y * cameraControl.GetCameraForward(camera) * moveForce;
 
@@ -82,44 +105,33 @@ public class SwimmingState : BaseState
             rb.velocity = horizontalVelocity.normalized * maxSpeed + Vector3.up * rb.velocity.y;
         }
 
-        cameraControl.PlayerLookAt();
-
-        if (WaterLevel.InWater)
-        {
-            WaterLevel.GetWaterLevel();
-        }
-
-        if(SwimmingUp == true)
+        if (SwimmingUp == true)
         {
             forceDirection += Vector3.up * UpwardForce;
         }
 
-        if(SwimmingDown == true)
+        if (SwimmingDown == true)
         {
             forceDirection += Vector3.down * UpwardForce;
         }
 
-        DoSprint();
+    }
+    
+    private void CheckGround()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, 1.1f, GroundMask))
+        {
 
-        if (Physics.Raycast(transform.position, Vector3.down, 1.1f, GroundMask)){
-
-            if (WaterLevel.Distance_Surface < WaterLevel.SwimLevel)
+            if (playerManager.waterLevelCheck.Distance_Surface < playerManager.waterLevelCheck.SwimLevel)
             {
                 owner.SwitchState(typeof(WalkingState));
             }
         }
         else
         {
-            transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, float.MinValue, WaterLevel.WaterSurface - WaterLevel.SwimLevel), transform.position.z);
+            transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, float.MinValue, playerManager.waterLevelCheck.WaterSurface - playerManager.waterLevelCheck.SwimLevel), transform.position.z);
         }
-
     }
-
-    public override void OnStateUpdate()
-    {
-
-    }
-    
     private void SwimUp(InputAction.CallbackContext obj)
     {
         Debug.Log("UP");

@@ -8,12 +8,13 @@ using System;
 [RequireComponent(typeof(Rigidbody))]
 public class WalkingState : BaseState
 {
-    public WaterLevelCheck WaterLevel;
     public LayerMask GroundMask;
     public LayerMask WaterMask;
     public GameObject Feet;
-    public PlayerManager PlayerManager;
     public Rigidbody Rb;
+
+    //Scipts
+    public PlayerManager PlayerManager;
 
 
     //Movement fields
@@ -24,8 +25,10 @@ public class WalkingState : BaseState
 
     private CinemachineFreeLook camera;
     private Vector3 forceDirection = Vector3.zero;
-    private PlayerAnimationManager playerAnim;
     private float jumpState;
+
+    //Scripts
+    private PlayerAnimationManager playerAnim;
     private ThirdPersonCamera cameraControl;
 
     private void Awake()
@@ -44,25 +47,9 @@ public class WalkingState : BaseState
     {
         PlayerManager.PlayerActionsAsset.Player.Jump.started += DoJump;
         Debug.Log("WALK");
-        WaterLevel.InWater = false;
         Rb.drag = 3.5f;
     }
 
-    private void DoSprint()
-    {
-        jumpState = (PlayerManager.PlayerActionsAsset.Player.Sprint.ReadValue<float>());
-
-        if (jumpState == 1 && IsGrounded())
-        {
-            maxSpeed = 10f;
-        }
-        else
-        {
-            maxSpeed = 5f;
-
-        }
-
-    }
 
     public override void OnStateExit()
     {
@@ -73,7 +60,26 @@ public class WalkingState : BaseState
 
     public override void OnStateFixedUpdate()
     {
+        cameraControl.PlayerLookAt();
+        Walk();
+        DoSprint();
+        CheckWaterLevel();
+        IsGrounded();
+        if (!IsGrounded())
+        {
+            playerAnim.Jumping = false;
 
+        }
+    }
+
+    public override void OnStateUpdate()
+    {
+        
+    }
+    
+
+    private void Walk()
+    {
         forceDirection += PlayerManager.Move.ReadValue<Vector2>().x * cameraControl.GetCameraRight(camera) * moveForce;
         forceDirection += PlayerManager.Move.ReadValue<Vector2>().y * cameraControl.GetCameraForward(camera) * moveForce;
 
@@ -91,26 +97,7 @@ public class WalkingState : BaseState
         {
             Rb.velocity = horizontalVelocity.normalized * maxSpeed + Vector3.up * Rb.velocity.y;
         }
-
-        cameraControl.PlayerLookAt();
-
-        DoSprint();
-        CheckWaterLevel();
-        IsGrounded();
-        if (!IsGrounded())
-        {
-            playerAnim.Jumping = false;
-
-        }
     }
-
-    public override void OnStateUpdate()
-    {
-        
-    }
-    
-
-    
 
     private void DoJump(InputAction.CallbackContext obj)
     {
@@ -132,17 +119,32 @@ public class WalkingState : BaseState
     {
         return Physics.Raycast(Feet.transform.position, Vector3.down, 1.1f);
     }
+    private void DoSprint()
+    {
+        jumpState = (PlayerManager.PlayerActionsAsset.Player.Sprint.ReadValue<float>());
+
+        if (jumpState == 1 && IsGrounded())
+        {
+            maxSpeed = 10f;
+        }
+        else
+        {
+            maxSpeed = 5f;
+
+        }
+
+    }
 
     private void CheckWaterLevel()
     {
-        if (WaterLevel.InWater)
+        if (PlayerManager.waterLevelCheck.InWater)
         {
-            WaterLevel.GetWaterLevel();
+            PlayerManager.waterLevelCheck.GetWaterLevel();
             //waterLevel.swimLevel = 0f;
             
         }
 
-        if (WaterLevel.Distance_Surface >= WaterLevel.SwimLevel)
+        if (PlayerManager.waterLevelCheck.Distance_Surface >= PlayerManager.waterLevelCheck.SwimLevel)
         {
             owner.SwitchState(typeof(SwimmingState));
         }

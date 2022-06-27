@@ -14,15 +14,14 @@ public class BackpackFlyingState : BaseState
     [SerializeField] private float maxSpeed = 5f;
 
 
-    private CinemachineFreeLook camera;
-    private PlayerInputActions playerActionsAsset;
-    private PlayerManager playerManager;
-    private Vector3 forceDirection = Vector3.zero;
-    private WaterLevelCheck waterLevelCheck;
     private float upDown;
-    private PlayerAnimationManager playerAnim;
     private float boostState;
+    private CinemachineFreeLook camera;
+    private Vector3 forceDirection = Vector3.zero;
+    private PlayerInputActions playerActionsAsset;
 
+    //Scripts
+    private PlayerManager playerManager;
     private void Start()
     {
         playerActionsAsset = GetComponent<PlayerManager>().PlayerActionsAsset;
@@ -31,8 +30,6 @@ public class BackpackFlyingState : BaseState
         playerActionsAsset.Backpack.UpDown.canceled += ctx => upDown = 0;
         camera = GetComponent<PlayerManager>().Camera;
         playerManager = GetComponent<PlayerManager>();
-        waterLevelCheck = GetComponent<WaterLevelCheck>();
-        playerAnim = GetComponent<PlayerAnimationManager>();
     }
 
     private void DoBoost()
