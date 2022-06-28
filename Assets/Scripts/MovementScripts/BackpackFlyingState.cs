@@ -7,12 +7,12 @@ using UnityEngine.InputSystem;
 
 public class BackpackFlyingState : BaseState
 {
-    public float UpDownForce;
 
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float moveForce = 1f;
     [SerializeField] private float maxSpeed = 5f;
-
+    [SerializeField]private float UpDownForce = 15f;
+    
 
     private float upDown;
     private float boostState;
@@ -32,20 +32,6 @@ public class BackpackFlyingState : BaseState
         playerManager = GetComponent<PlayerManager>();
     }
 
-    private void DoBoost()
-    {
-        boostState = (playerManager.PlayerActionsAsset.Backpack.Boost.ReadValue<float>());
-
-        if (boostState == 1)
-        {
-            moveForce = 2f;
-        }
-        else
-        {
-            moveForce = 1f;
-        }
-
-    }
 
     public override void OnStateEnter()
     {
@@ -98,6 +84,20 @@ public class BackpackFlyingState : BaseState
         {
             rb.angularVelocity = Vector3.zero;
         }
+    }
+    private void DoBoost()
+    {
+        boostState = (playerManager.PlayerActionsAsset.Backpack.Boost.ReadValue<float>());
+
+        if (boostState == 1)
+        {
+            moveForce = 2f;
+        }
+        else
+        {
+            moveForce = 1f;
+        }
+
     }
 
     private Vector3 GetCameraForward(CinemachineFreeLook camera)

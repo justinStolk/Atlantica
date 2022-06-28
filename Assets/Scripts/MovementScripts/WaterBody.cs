@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class WaterBody : MonoBehaviour
 {
-    WalkingState playerWalk;
-    SwimmingState playerSwim;
+
+
+    private WalkingState playerWalk;
+    private SwimmingState playerSwim;
 
     private FMODUnity.StudioEventEmitter eventEmitterRef;
 

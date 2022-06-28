@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BackpackFlyingState" Collapsed="true">
+    <Position X="6.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEQAAAmEBBAQEAAGAQAAAAYAAAAAAECAAAIAAAAI=</HashCode>
+      <FileName>Assets\Scripts\MovementScripts\BackpackFlyingState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BackpackFollow" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAABAAAAAAAAAAAEAAAEAQAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\MovementScripts\BackpackFollow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BackPackInteract" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAUAgRAAACIAIgAAgIAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\MovementScripts\BackPackInteract.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicControl" Collapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAQCAAAAAAAAQAAAQAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Assets\Scripts\MovementScripts\MusicControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerAnimationManager" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAQAACAAAAAABAAABAgAQEAAAAAAAQAAAQAAIAA=</HashCode>
+      <FileName>Assets\Scripts\MovementScripts\PlayerAnimationManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerFSM" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAiCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\MovementScripts\PlayerFSM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerInteract" Collapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>SAUAgQAAACIAIgAAgIAAAAEAAAAAAAAAEAAAgAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\MovementScripts\PlayerInteract.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerManager">
+    <Position X="16.75" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AgQCCAAAAqCABAAAAACAQQIAAAAAAAAAAQEAAQAAAEg=</HashCode>
+      <FileName>Assets\Scripts\MovementScripts\PlayerManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SwimmingState" Collapsed="true">
+    <Position X="4" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAUAAoikABAQEAAAAAAAAAaAQgCBAECAAQIgAAAA=</HashCode>
+      <FileName>Assets\Scripts\MovementScripts\SwimmingState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ThirdPersonCamera" Collapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEBAAAEAAAAAAAAgABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\MovementScripts\ThirdPersonCamera.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ThirdPersonController" Collapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\MovementScripts\ThirdPersonController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UpgradeBackpack" Collapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAgAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\MovementScripts\UpgradeBackpack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WalkingState" Collapsed="true">
+    <Position X="1.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAKAARAAgiEgBAQAAAAABACAAYoApEAAAIAACIAAAEA=</HashCode>
+      <FileName>Assets\Scripts\MovementScripts\WalkingState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Water" Collapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACBAAAAAAAAAAQAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Assets\Scripts\MovementScripts\Water.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WaterBody" Collapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAACBICAAAAAAAAAAAAAIAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\MovementScripts\WaterBody.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WaterLevelCheck" Collapsed="true">
+    <Position X="14.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAQAAAAAAAAEAAAABAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\MovementScripts\WaterLevelCheck.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameData" Collapsed="true">
+    <Position X="6.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAggBA=</HashCode>
+      <FileName>Assets\Scripts\Systems\GameData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoadSystem" Collapsed="true">
+    <Position X="8.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAQAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Systems\LoadSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SaveSystem" Collapsed="true">
+    <Position X="4.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Assets\Scripts\Systems\SaveSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BaseState" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAgAAAAAAAAAAAEYAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Assets\Scripts\BaseState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EventSystem" Collapsed="true">
+    <Position X="10.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAQCAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\EventSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FSM" Collapsed="true">
+    <Position X="7.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgBAAAAAIAAAACAAAAAAAAAECAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\FSM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager" Collapsed="true">
+    <Position X="4.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAEACAAAAAAAAAAAIAgCAAAAAADAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="IInteractable" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Interfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ILaserTarget" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Interfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

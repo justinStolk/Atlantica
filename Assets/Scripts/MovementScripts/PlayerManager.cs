@@ -13,11 +13,12 @@ public class PlayerManager : MonoBehaviour
     public Transform Player;
     public Transform CameraLook;
     public CinemachineFreeLook Camera;
+
     public PlayerInteract PlayerInteract;
     public WaterLevelCheck waterLevelCheck;
     
     private PlayerInput playerInput;
-
+    private bool followPlayer;
     //Scripts
     private UpgradeBackpack upgradeBackpack;
     private FSM stateMachine;
@@ -34,7 +35,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-
+        followPlayer = true;
         playerInput = GetComponent<PlayerInput>();
         upgradeBackpack = Backpack.GetComponent<UpgradeBackpack>();
         waterLevelCheck = GetComponent<WaterLevelCheck>();
@@ -58,7 +59,9 @@ public class PlayerManager : MonoBehaviour
     private void FixedUpdate()
     {
         stateMachine.FSMFixedUpdate();
+
     }
+
 
     //ON PRESS R, TOGGLES VIEW AND MOVEMENT TO BACKPACK
     private void SwitchToBackpack(InputAction.CallbackContext obj)
@@ -73,6 +76,7 @@ public class PlayerManager : MonoBehaviour
             PlayerInteract.PlayerActive = false;
             PlayerInteract.InteractText.gameObject.SetActive(false);
 
+            followPlayer = false;
             stateMachine.SwitchState(typeof(BackpackFlyingState));
             playerInput.SwitchCurrentActionMap("Backpack");
             Debug.Log("GA NAAR BACKPACK");
@@ -89,7 +93,7 @@ public class PlayerManager : MonoBehaviour
     {
         CameraLook.transform.SetParent(Player);
         CameraLook.transform.position = new Vector3(Player.transform.position.x, Player.transform.position.y + 1, Player.transform.position.z);
-
+        followPlayer = true;
         if (waterLevelCheck.InWater == true)
         {
             stateMachine.SwitchState(typeof(SwimmingState));
@@ -113,5 +117,26 @@ public class PlayerManager : MonoBehaviour
         //EventSystem.CallEvent(EventSystem.EventType.ON_PLAYER_VIEW);
     }
 
+    private void CheckWaterLevel()
+    {
+        if (waterLevelCheck.InWater)
+        {
+            waterLevelCheck.GetWaterLevel();
 
+        }
+
+        if (waterLevelCheck.Distance_Surface >= waterLevelCheck.SwimLevel && followPlayer == true)
+        {
+            stateMachine.SwitchState(typeof(SwimmingState));
+        }
+        else
+        {
+            stateMachine.SwitchState(typeof(WalkingState));
+        }
+
+        if(followPlayer == false)
+        {
+            stateMachine.SwitchState(typeof(BackpackFlyingState));
+        }
+    }
 }
