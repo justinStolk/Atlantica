@@ -61,7 +61,6 @@ public class SwimmingState : BaseState
         playerManager.PlayerActionsAsset.Player.SwimDown.started -= SwimDown;
 
         rb.useGravity = true;
-        Debug.Log("Changing");
     }
 
     public override void OnStateFixedUpdate()
@@ -73,7 +72,7 @@ public class SwimmingState : BaseState
         }
 
         cameraControl.PlayerLookAt();
-        DoSprint();
+        DoBoost();
         Swim();
         CheckGround();
 
@@ -132,6 +131,7 @@ public class SwimmingState : BaseState
             transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, float.MinValue, playerManager.waterLevelCheck.WaterSurface - playerManager.waterLevelCheck.SwimLevel), transform.position.z);
         }
     }
+
     private void SwimUp(InputAction.CallbackContext obj)
     {
         Debug.Log("UP");
@@ -153,7 +153,7 @@ public class SwimmingState : BaseState
         SwimmingUp = false;
     }
 
-    private void DoSprint()
+    private void DoBoost()
     {
         sprintState = (playerManager.PlayerActionsAsset.Player.Sprint.ReadValue<float>());
 
