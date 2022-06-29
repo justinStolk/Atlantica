@@ -121,7 +121,7 @@ public class SwimmingState : BaseState
         if (Physics.Raycast(transform.position, Vector3.down, 1.1f, GroundMask))
         {
 
-            if (playerManager.waterLevelCheck.Distance_Surface < playerManager.waterLevelCheck.SwimLevel)
+            if (playerManager.waterLevelCheck.DistanceSurface < playerManager.waterLevelCheck.SwimLevel)
             {
                 owner.SwitchState(typeof(WalkingState));
             }

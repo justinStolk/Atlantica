@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class WaterLevelCheck : MonoBehaviour
 {
-    public float WaterSurface, Distance_Surface;
+    public float WaterSurface, DistanceSurface;
     public bool InWater;
     public float SwimLevel;
 
     public void GetWaterLevel()
     {
-        Distance_Surface = WaterSurface - transform.position.y;
-        Distance_Surface = Mathf.Clamp(Distance_Surface, 0, float.MaxValue);
+        DistanceSurface = WaterSurface - transform.position.y;
+        DistanceSurface = Mathf.Clamp(DistanceSurface, 0, float.MaxValue);
     }
 }

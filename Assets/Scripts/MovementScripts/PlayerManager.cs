@@ -125,7 +125,7 @@ public class PlayerManager : MonoBehaviour
 
         }
 
-        if (waterLevelCheck.Distance_Surface >= waterLevelCheck.SwimLevel && followPlayer == true)
+        if (waterLevelCheck.DistanceSurface >= waterLevelCheck.SwimLevel && followPlayer == true)
         {
             stateMachine.SwitchState(typeof(SwimmingState));
         }

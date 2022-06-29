@@ -144,7 +144,7 @@ public class WalkingState : BaseState
             
         }
 
-        if (PlayerManager.waterLevelCheck.Distance_Surface >= PlayerManager.waterLevelCheck.SwimLevel)
+        if (PlayerManager.waterLevelCheck.DistanceSurface >= PlayerManager.waterLevelCheck.SwimLevel)
         {
             owner.SwitchState(typeof(SwimmingState));
         }
