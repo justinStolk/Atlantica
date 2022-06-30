@@ -5,7 +5,7 @@ using TMPro;
 
 public class BackPackInteract : MonoBehaviour
 {
-    public PlayerManager playerManager;
+    public PlayerManager PlayerManager;
     public TMP_Text InteractText;
     public bool BackpackActive;
 
@@ -21,7 +21,7 @@ public class BackPackInteract : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerManager.playerActionsAsset.Backpack.Interact.started += InteractWith;
+        PlayerManager.PlayerActionsAsset.Backpack.Interact.started += InteractWith;
         InteractText.gameObject.SetActive(false);
         interactionHit = false;
         BackpackActive = false;
@@ -34,42 +34,30 @@ public class BackPackInteract : MonoBehaviour
         origin = transform.position;
         direction = transform.up;
 
-        if(playerManager.playerInteract.PlayerActive == false)
-        {
-            BackpackActive = true;
-        }
-        else
-        {
-            BackpackActive = false;
-        }
+        BackpackActive = !PlayerManager.PlayerInteract.PlayerActive;
 
-        if (BackpackActive == true)
+        if (BackpackActive)
         {
 
             if (Physics.SphereCast(origin, sphereRadius, direction, out hit, maxDistance))
             {
                 currentHitDistance = hit.distance;
-                //Debug.Log(currentHitDistance);
                 interactionHit = true;
 
                 if (hit.transform.tag == "Player")
                 {
                     InteractText.gameObject.SetActive(true);
-
                 }
 
                 if (hit.collider.gameObject.GetComponentInParent<IInteractable>() != null)
                 {
                     InteractText.gameObject.SetActive(true);
-
                 }
             }
             else
             {
-                //Debug.Log("NOTHING");
                 interactionHit = false;
                 InteractText.gameObject.SetActive(false);
-
             }
         }
     }
@@ -86,7 +74,7 @@ public class BackPackInteract : MonoBehaviour
             {
                 Debug.Log("BACKPACK SPOTTED");
                 EventSystem.CallEvent(EventSystem.EventType.ON_BACKPACK_TAKE);
-                playerManager.SwitchToPlayer(obj);
+                PlayerManager.SwitchToPlayer(obj);
             }
 
 

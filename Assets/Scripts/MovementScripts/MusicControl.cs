@@ -6,14 +6,14 @@ public class MusicControl : MonoBehaviour
 {
 
     [FMODUnity.EventRef]
-    public string ambience = "event:/Ambience/Underwater";
+    public string Ambience = "event:/Ambience/Underwater";
 
     FMOD.Studio.EventInstance musicEV;
 
     // Start is called before the first frame update
     void Start()
     {
-        musicEV = FMODUnity.RuntimeManager.CreateInstance(ambience);
+        musicEV = FMODUnity.RuntimeManager.CreateInstance(Ambience);
     }
 
     public void StartMusic()

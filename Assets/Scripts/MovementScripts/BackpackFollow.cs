@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BackpackFollow : MonoBehaviour
 {
-    public bool followPlayer = true;
-    public GameObject backpackHolder;
+    public bool FollowPlayer = true;
+    public GameObject BackpackHolder;
     
     // Start is called before the first frame update
     void Start()
@@ -17,22 +17,22 @@ public class BackpackFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(followPlayer)
+        if(FollowPlayer)
         {
-            transform.rotation = backpackHolder.transform.rotation;
-            transform.position = backpackHolder.transform.position;
+            transform.rotation = BackpackHolder.transform.rotation;
+            transform.position = BackpackHolder.transform.position;
         }
     }
 
     void ReleaseBackPack()
     {
-            followPlayer = false;
+            FollowPlayer = false;
         
     }
 
     void TakeBackPack()
     {
-            followPlayer = true;
+            FollowPlayer = true;
     }
 
 }

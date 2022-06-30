@@ -200,7 +200,7 @@ MonoBehaviour:
   Path: Assets/FMODRootFolder/ExamplesUnity/Build/Desktop/Dialogue_JP.bank
   Name: Dialogue_JP
   StudioPath: bank:/Dialogue_JP
-  lastModified: 637907572795748712
+  lastModified: 637919563786843829
   FileSizes:
   - Name: Desktop
     Value: 66560
@@ -273,7 +273,7 @@ MonoBehaviour:
   Path: Assets/FMODRootFolder/ExamplesUnity/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 637907572797549244
+  lastModified: 637919563815110275
   FileSizes:
   - Name: Desktop
     Value: 21580064
@@ -619,7 +619,7 @@ MonoBehaviour:
   Path: Assets/FMODRootFolder/ExamplesUnity/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637907572795768659
+  lastModified: 637919563786883716
   FileSizes:
   - Name: Desktop
     Value: 4054
@@ -740,7 +740,7 @@ MonoBehaviour:
   Path: Assets/FMODRootFolder/ExamplesUnity/Build/Desktop/Dialogue_EN.bank
   Name: Dialogue_EN
   StudioPath: bank:/Dialogue_EN
-  lastModified: 637907572795738741
+  lastModified: 637919563786824130
   FileSizes:
   - Name: Desktop
     Value: 61120
@@ -991,7 +991,7 @@ MonoBehaviour:
   - {fileID: 4310142326979452872}
   StringsBanks:
   - {fileID: -2259506720708778765}
-  cacheTime: 637907572797599110
+  cacheTime: 637919563815212991
   cacheVersion: 131591
 --- !u!114 &490716303940993010
 MonoBehaviour:
@@ -1060,7 +1060,7 @@ MonoBehaviour:
   Path: Assets/FMODRootFolder/ExamplesUnity/Build/Desktop/Dialogue_CN.bank
   Name: Dialogue_CN
   StudioPath: bank:/Dialogue_CN
-  lastModified: 637907572795728767
+  lastModified: 637919563786793961
   FileSizes:
   - Name: Desktop
     Value: 52416
@@ -1207,7 +1207,7 @@ MonoBehaviour:
   Path: Assets/FMODRootFolder/ExamplesUnity/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637907572795758682
+  lastModified: 637919563786873745
   FileSizes:
   - Name: Desktop
     Value: 15592
@@ -1380,7 +1380,7 @@ MonoBehaviour:
   Path: Assets/FMODRootFolder/ExamplesUnity/Build/Desktop/VO.bank
   Name: VO
   StudioPath: bank:/VO
-  lastModified: 637907572797579159
+  lastModified: 637919563815170140
   FileSizes:
   - Name: Desktop
     Value: 38624
@@ -1428,7 +1428,7 @@ MonoBehaviour:
   Path: Assets/FMODRootFolder/ExamplesUnity/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 637907572796536633
+  lastModified: 637919563795091868
   FileSizes:
   - Name: Desktop
     Value: 12157376
@@ -1503,7 +1503,7 @@ MonoBehaviour:
   Path: Assets/FMODRootFolder/ExamplesUnity/Build/Desktop/Vehicles.bank
   Name: Vehicles
   StudioPath: bank:/Vehicles
-  lastModified: 637907572797599110
+  lastModified: 637919563815212991
   FileSizes:
   - Name: Desktop
     Value: 222464

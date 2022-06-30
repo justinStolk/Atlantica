@@ -4,22 +4,19 @@ using UnityEngine;
 
 public class PlayerAnimationManager : MonoBehaviour
 {
-    private Animator anim;
-    public Rigidbody rb;
-    public bool jumping = false;
-    public GameObject backPackHolder;
-    public GameObject player;
+    public Rigidbody Rb;
+    public bool Jumping = false;
+    public GameObject BackPackHolder;
+    public GameObject Player;
 
-    private float WalkingSpeed;
+    private Animator anim;
+    private float walkingSpeed;
     private WaterLevelCheck waterLevel;
-    private PlayerManager playerManager;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         waterLevel = GetComponent<WaterLevelCheck>();
-        playerManager = GetComponent<PlayerManager>();
-        //rb.GetComponent<Rigidbody>();
     }
 
     void PlaySound(string path)
@@ -33,16 +30,16 @@ public class PlayerAnimationManager : MonoBehaviour
         if(waterLevel.InWater == false)
         {
             anim.SetBool("Swimming", false);
-            WalkingSpeed = rb.velocity.magnitude;
-            anim.SetFloat("WalkingSpeed", WalkingSpeed);
+            walkingSpeed = Rb.velocity.magnitude;
+            anim.SetFloat("WalkingSpeed", walkingSpeed);
 
-            if(jumping == false)
+            if(Jumping == false)
             {
                 ResetJumpAnim();
                 anim.SetBool("Jumping", false);
             }
 
-            if (jumping == true)
+            if (Jumping == true)
             {
                 anim.SetBool("Jumping", true);
             }

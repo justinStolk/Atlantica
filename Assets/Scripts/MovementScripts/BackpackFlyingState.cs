@@ -7,62 +7,39 @@ using UnityEngine.InputSystem;
 
 public class BackpackFlyingState : BaseState
 {
-    public InputAction move;
-    public float UpDownForce;
 
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float moveForce = 1f;
     [SerializeField] private float maxSpeed = 5f;
+    [SerializeField]private float UpDownForce = 15f;
+    
 
-    //[SerializeField] private Camera bpCamera;
-
-    private CinemachineFreeLook camera;
-
-    private PlayerInputActions playerActionsAsset;
-    private PlayerManager playerManager;
-    private Vector3 forceDirection = Vector3.zero;
-    private WaterLevelCheck waterLevelCheck;
     private float upDown;
-    private PlayerAnimationManager playerAnim;
     private float boostState;
+    private CinemachineFreeLook camera;
+    private Vector3 forceDirection = Vector3.zero;
+    private PlayerInputActions playerActionsAsset;
 
+    //Scripts
+    private PlayerManager playerManager;
     private void Start()
     {
-        playerActionsAsset = GetComponent<PlayerManager>().playerActionsAsset;
+        playerActionsAsset = GetComponent<PlayerManager>().PlayerActionsAsset;
 
-        //playerActionsAsset.Backpack.SwitchToPlayer.started += SwitchToPlayer;
         playerActionsAsset.Backpack.UpDown.started += ctx => upDown = ctx.ReadValue<float>();
         playerActionsAsset.Backpack.UpDown.canceled += ctx => upDown = 0;
-        camera = GetComponent<PlayerManager>().camera;
+        camera = GetComponent<PlayerManager>().Camera;
         playerManager = GetComponent<PlayerManager>();
-        waterLevelCheck = GetComponent<WaterLevelCheck>();
-        playerAnim = GetComponent<PlayerAnimationManager>();
     }
 
-    private void DoBoost()
-    {
-        boostState = (playerManager.playerActionsAsset.Backpack.Boost.ReadValue<float>());
-
-        if (boostState == 1)
-        {
-            moveForce = 2f;
-        }
-        else
-        {
-            moveForce = 1f;
-        }
-
-    }
 
     public override void OnStateEnter()
     {
         playerActionsAsset.Player.Disable();
         playerActionsAsset.Backpack.Enable();
-        //playerAnim.controlBackpack = true;
-        playerManager.backpack.transform.Rotate(90f, 0, 0);
-        //playerActionsAsset.Backpack.Enable();
-        move = playerActionsAsset.Backpack.Move;
-        playerManager.backpack.GetComponentInChildren<MeshCollider>().isTrigger = false;
+
+        playerManager.Backpack.transform.Rotate(90f, 0, 0);
+        playerManager.Backpack.GetComponentInChildren<MeshCollider>().isTrigger = false;
 
         EventSystem.CallEvent(EventSystem.EventType.ON_BACKPACK_RELEASE);
 
@@ -73,13 +50,13 @@ public class BackpackFlyingState : BaseState
     {
         playerActionsAsset.Player.Enable();
         playerActionsAsset.Backpack.Disable();
-        playerManager.backpack.GetComponentInChildren<MeshCollider>().isTrigger = true;
+        playerManager.Backpack.GetComponentInChildren<MeshCollider>().isTrigger = true;
     }
 
     public override void OnStateFixedUpdate()
     {
-        forceDirection += move.ReadValue<Vector2>().x * GetCameraRight(camera) * moveForce;
-        forceDirection += move.ReadValue<Vector2>().y * GetCameraForward(camera) * moveForce;
+        forceDirection += playerManager.PlayerActionsAsset.Backpack.Move.ReadValue<Vector2>().x * GetCameraRight(camera) * moveForce;
+        forceDirection += playerManager.PlayerActionsAsset.Backpack.Move.ReadValue<Vector2>().y * GetCameraForward(camera) * moveForce;
 
         rb.AddForce(forceDirection, ForceMode.Impulse);
         forceDirection = Vector3.zero;
@@ -99,7 +76,7 @@ public class BackpackFlyingState : BaseState
         Vector3 direction = rb.velocity;
         direction.y = -90f;
 
-        if (move.ReadValue<Vector2>().sqrMagnitude > 0.1f && direction.sqrMagnitude > 0.1f)
+        if (playerManager.PlayerActionsAsset.Backpack.Move.ReadValue<Vector2>().sqrMagnitude > 0.1f && direction.sqrMagnitude > 0.1f)
         {
             this.rb.rotation = Quaternion.LookRotation(direction, Vector3.up);
         }
@@ -107,6 +84,20 @@ public class BackpackFlyingState : BaseState
         {
             rb.angularVelocity = Vector3.zero;
         }
+    }
+    private void DoBoost()
+    {
+        boostState = (playerManager.PlayerActionsAsset.Backpack.Boost.ReadValue<float>());
+
+        if (boostState == 1)
+        {
+            moveForce = 2f;
+        }
+        else
+        {
+            moveForce = 1f;
+        }
+
     }
 
     private Vector3 GetCameraForward(CinemachineFreeLook camera)

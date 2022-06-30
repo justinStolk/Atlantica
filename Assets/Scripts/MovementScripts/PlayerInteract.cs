@@ -1,20 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class PlayerInteract : MonoBehaviour
 {
-    public LayerMask layermask;
+    public LayerMask Layermask;
     public TMP_Text InteractText;
     public bool PlayerActive;
 
     [SerializeField] private float sphereRadius;
     [SerializeField] private float maxDistance;
 
-
+    //script
     private PlayerManager playerManager;
+
     private bool interactionHit;
     private RaycastHit hit;
     private Vector3 origin;
@@ -25,7 +25,7 @@ public class PlayerInteract : MonoBehaviour
     void Start()
     {
         playerManager = GetComponent<PlayerManager>();
-        playerManager.playerActionsAsset.Player.Interact.started += InteractWith;
+        playerManager.PlayerActionsAsset.Player.Interact.started += InteractWith;
         InteractText.gameObject.SetActive(false);
         interactionHit = false;
         PlayerActive = true;
@@ -43,7 +43,6 @@ public class PlayerInteract : MonoBehaviour
             if (Physics.SphereCast(origin, sphereRadius, direction, out hit, maxDistance))
             {
                 currentHitDistance = hit.distance;
-                //Debug.Log(currentHitDistance);
                 interactionHit = true;
 
                 if (hit.transform.tag == "Backpack")
@@ -55,12 +54,10 @@ public class PlayerInteract : MonoBehaviour
                 if (hit.collider.gameObject.GetComponentInParent<IInteractable>() != null)
                 {
                     InteractText.gameObject.SetActive(true);
-
                 }
             }
             else
             {
-                //Debug.Log("NOTHING");
                 interactionHit = false;
                 InteractText.gameObject.SetActive(false);
 
@@ -76,7 +73,6 @@ public class PlayerInteract : MonoBehaviour
 
             if (hit.transform.tag == "Backpack")
             {
-                Debug.Log("BACKPACK SPOTTED");
                 EventSystem.CallEvent(EventSystem.EventType.ON_BACKPACK_TAKE);
             }
 

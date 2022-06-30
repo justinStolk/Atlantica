@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class WaterBody : MonoBehaviour
 {
-    WalkingState playerWalk;
-    SwimmingState playerSwim;
-    //public MusicControl musicSystem;
+
+
+    private WalkingState playerWalk;
+    private SwimmingState playerSwim;
 
     private FMODUnity.StudioEventEmitter eventEmitterRef;
 
@@ -30,23 +31,23 @@ public class WaterBody : MonoBehaviour
     {
         if(other.GetComponent<WalkingState>() == playerWalk)
         {
-            if (!playerWalk.waterLevel.InWater)
+            if (!playerWalk.PlayerManager.waterLevelCheck.InWater)
             {
-                playerWalk.waterLevel.InWater = true;
+                playerWalk.PlayerManager.waterLevelCheck.InWater = true;
             }
 
-            if (playerWalk.waterLevel.WaterSurface != transform.position.y)
+            if (playerWalk.PlayerManager.waterLevelCheck.WaterSurface != transform.position.y)
             {
-                playerWalk.waterLevel.WaterSurface = transform.position.y;
+                playerWalk.PlayerManager.waterLevelCheck.WaterSurface = transform.position.y;
             }
 
         }
 
         if(other.GetComponent<SwimmingState>() == playerSwim)
         {
-            if (playerSwim.waterLevel.WaterSurface != transform.position.y)
+            if (playerSwim.playerManager.waterLevelCheck.WaterSurface != transform.position.y)
             {
-                playerSwim.waterLevel.WaterSurface = transform.position.y;
+                playerSwim.playerManager.waterLevelCheck.WaterSurface = transform.position.y;
             }
             //musicSystem.StartMusic();
         }
@@ -56,9 +57,9 @@ public class WaterBody : MonoBehaviour
     {
         if (other.GetComponent<SwimmingState>() == playerSwim)
         {
-            if (playerSwim.waterLevel.InWater)
+            if (playerSwim.playerManager.waterLevelCheck.InWater)
             {
-                playerSwim.waterLevel.InWater = false;
+                playerSwim.playerManager.waterLevelCheck.InWater = false;
                 //musicSystem.StopMusic();
                 eventEmitterRef.SendMessage("Stop");
                 Debug.Log("UIT T WATER");

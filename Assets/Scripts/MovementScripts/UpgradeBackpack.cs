@@ -5,7 +5,7 @@ using UnityEngine;
 public class UpgradeBackpack : MonoBehaviour
 {
 
-    public bool upgraded = false;
+    public bool Upgraded = false;
 
 
     
@@ -17,7 +17,7 @@ public class UpgradeBackpack : MonoBehaviour
     
     void Upgrade()
     {
-        upgraded = true;
+        Upgraded = true;
         EventSystem.UnsubscribeEvent(EventSystem.EventType.ON_BACKPACK_UPGRADE, Upgrade);
     }
 }
